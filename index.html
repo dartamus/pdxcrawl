@@ -107,7 +107,7 @@ color: rgba(250,243,232,0.35);
 .stat-chip { background:rgba(0,0,0,0.3); color:#FAF3E8 !important; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; }
 #total-cost { color:var(–gold); font-weight:700; }
 .app-shell { display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 180px); }
-.sidebar { background:var(–charcoal); color:var(–cream); padding:1.5rem 1rem; border-right:3px solid var(–red); position:sticky; top:0; height:calc(100vh - 130px); overflow-y:auto; }
+.sidebar { background:#1C1C1C !important; color:#FAF3E8 !important; padding:1.5rem 1rem; border-right:3px solid #D9231B; position:sticky; top:0; height:calc(100vh - 130px); overflow-y:auto; }
 .sidebar-title { font-family:‘Bebas Neue’,Impact,sans-serif; font-size:1.4rem; letter-spacing:0.05em; color:var(–orange); margin-bottom:1rem; border-bottom:1px solid #333; padding-bottom:0.5rem; }
 .neighborhood-btn { display:flex; width:100%; background:transparent; border:1px solid #333; color:var(–cream); font-family:‘Space Mono’,monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; padding:0.6rem 0.75rem; text-align:left; cursor:pointer; margin-bottom:0.35rem; transition:all 0.15s; justify-content:space-between; align-items:center; }
 .neighborhood-btn:hover { background:#2a2a2a; border-color:var(–orange); color:var(–orange); }
@@ -301,7 +301,7 @@ h1 { font-size:3rem; }
 </div>
 
 <div class="app-shell">
-  <aside class="sidebar">
+  <aside class="sidebar" style="background:#1C1C1C;color:#FAF3E8;">
     <div class="sidebar-title">Neighborhoods</div>
     <button class="neighborhood-btn active" onclick="filterNeighborhood('all',this)">All Portland <span class="nbhd-count" id="count-all">0</span></button>
     <button class="neighborhood-btn" onclick="filterNeighborhood('Northwest',this)">Northwest / Pearl <span class="nbhd-count" id="count-Northwest">0</span></button>
@@ -384,7 +384,7 @@ h1 { font-size:3rem; }
   </div>
 </div>
 
-<div class="routes-section" style="background:#111111;">
+<div class="routes-section" style="background:#111111 !important;color:#FAF3E8;">
   <div class="routes-top">
     <h2>🗺 Suggested Crawls</h2>
     <p>Curated roundtrip walking routes · all under 3 miles · tap "Load Crawl" to add stops</p>
