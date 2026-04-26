@@ -12,7 +12,7 @@
   * { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--cream); color:var(--black); font-family:'Space Mono',monospace; min-height:100vh; overflow-x:hidden; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1000; opacity:0.5; }
-  header { background:#0F0F0F; color:var(--cream); }
+  header { background:#0F0F0F; color:#FAF3E8; }
   /* ── HEADER ── */
   .header-stripe { background:var(--red); height:6px; }
   .header-inner {
@@ -63,8 +63,8 @@
     align-self: center;
   }
   .header-logo {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     object-fit: contain;
     filter: drop-shadow(0 0 20px rgba(242,101,34,0.2));
     display: block;
@@ -94,14 +94,14 @@ display: flex;
 align-items: center;
 gap: 0.4rem;
 }
-.meta-pill::before { content:’’; display:inline-block; width:3px; height:3px; background:var(–orange); border-radius:50%; }
+.meta-pill::before { content:’· ’; color:var(–orange); font-size:0.7rem; }
 .header-event-badge {
 font-size: 0.58rem;
 letter-spacing: 0.1em;
 text-transform: uppercase;
 color: rgba(250,243,232,0.35);
 }
-.crawl-bar { background:var(–red); padding:0.75rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
+.crawl-bar { background:#D9231B; padding:0.75rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
 .crawl-bar-text { font-family:‘Bebas Neue’,Impact,sans-serif; font-size:1.2rem; color:#FAF3E8; letter-spacing:0.05em; }
 .stat-chip { background:rgba(0,0,0,0.3); color:var(–cream); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; }
 #total-cost { color:var(–gold); font-weight:700; }
