@@ -7,168 +7,131 @@
 <title>Portland Pizza Week 2026 — Crawl Planner</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --red: #D9231B; --orange: #F26522; --cream: #FAF3E8;
-    --black: #0F0F0F; --charcoal: #1C1C1C; --gold: #E8A838;
-    --muted: #7A6F62; --green: #2C6B3F;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--cream); color: var(--black); font-family: 'Space Mono', monospace; min-height: 100vh; overflow-x: hidden; }
-  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.5; }
-  header { background: #0F0F0F; color: var(--cream); padding: 0; position: relative; overflow: hidden; }
-  .header-stripe { background: var(--red); height: 8px; }
-  .header-inner { padding: 2rem 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
-  .header-eyebrow { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.25em; color: #F26522; text-transform: uppercase; }
-  h1 { font-family: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif; font-size: clamp(3.5rem, 10vw, 7rem); line-height: 0.9; color: #FAF3E8; letter-spacing: 0.02em; }
-  h1 span { color: #F26522; }
-  .header-sub { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1rem; color: var(--muted); margin-top: 0.5rem; }
-  .header-meta { display: flex; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
-  .meta-pill { background: var(--charcoal); border: 1px solid #333; padding: 0.35rem 0.75rem; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: #E8A838; }
-  .crawl-bar { background: var(--red); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-  .crawl-bar-text { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.2rem; color: #FAF3E8; letter-spacing: 0.05em; }
-  .stat-chip { background: rgba(0,0,0,0.3); color: var(--cream); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; }
-  #total-cost { color: var(--gold); font-weight: 700; }
-  .app-shell { display: grid; grid-template-columns: 260px 1fr; min-height: calc(100vh - 180px); }
-  .sidebar { background: var(--charcoal); color: var(--cream); padding: 1.5rem 1rem; border-right: 3px solid var(--red); position: sticky; top: 0; height: calc(100vh - 130px); overflow-y: auto; }
-  .sidebar-title { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; color: var(--orange); margin-bottom: 1rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
-  .neighborhood-btn { display: flex; width: 100%; background: transparent; border: 1px solid #333; color: var(--cream); font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.6rem 0.75rem; text-align: left; cursor: pointer; margin-bottom: 0.35rem; transition: all 0.15s ease; justify-content: space-between; align-items: center; }
-  .neighborhood-btn:hover { background: #2a2a2a; border-color: var(--orange); color: var(--orange); }
-  .neighborhood-btn.active { background: var(--red); border-color: var(--red); color: var(--cream); }
-  .nbhd-count { background: rgba(255,255,255,0.1); padding: 0.1rem 0.4rem; font-size: 0.6rem; border-radius: 999px; }
-  .neighborhood-btn.active .nbhd-count { background: rgba(255,255,255,0.2); }
-  .your-crawl { margin-top: 1.5rem; border-top: 1px solid #333; padding-top: 1rem; }
-  .crawl-list { list-style: none; max-height: 280px; overflow-y: auto; }
-  .crawl-list li { background: #252525; border-left: 3px solid var(--orange); padding: 0.5rem 0.6rem; margin-bottom: 0.4rem; font-size: 0.65rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
-  .crawl-item-name { font-weight: 700; color: var(--cream); line-height: 1.3; flex: 1; }
-  .crawl-item-nbhd { color: var(--muted); font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; }
-  .remove-btn { background: none; border: none; color: var(--red); cursor: pointer; font-size: 0.9rem; padding: 0; flex-shrink: 0; line-height: 1; }
-  .empty-crawl { color: var(--muted); font-size: 0.65rem; font-style: italic; text-align: center; padding: 1rem 0; }
-  .clear-crawl-btn { display: block; width: 100%; background: transparent; border: 1px solid #444; color: var(--muted); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem; cursor: pointer; margin-top: 0.5rem; transition: all 0.15s; }
-  .clear-crawl-btn:hover { border-color: var(--red); color: var(--red); }
-  .main-content { padding: 1.5rem 2rem; overflow-y: auto; }
-  /* TABS */
-  .tab-nav { display: flex; border-bottom: 3px solid var(--red); margin-bottom: 1.5rem; }
-  .tab-btn { background: transparent; border: none; font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 0.6rem 1.2rem; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -3px; transition: all 0.15s; }
-  .tab-btn:hover { color: var(--black); }
-  .tab-btn.active { color: var(--red); border-bottom-color: var(--red); font-weight: 700; }
-  .search-bar { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; align-items: center; }
-  .search-input { flex: 1; background: white; border: 2px solid var(--black); font-family: 'Space Mono', monospace; font-size: 0.8rem; padding: 0.6rem 0.9rem; outline: none; transition: border-color 0.15s; }
-  .search-input:focus { border-color: var(--red); }
-  .search-input::placeholder { color: #aaa; }
-  .filter-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .filter-tag { background: white; border: 1.5px solid #ccc; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.3rem 0.6rem; cursor: pointer; transition: all 0.15s; color: var(--black); }
-  .filter-tag:hover, .filter-tag.active { background: var(--black); border-color: var(--black); color: var(--cream); }
-  .section-header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1rem; }
-  .section-header h2 { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 2rem; letter-spacing: 0.03em; line-height: 1; }
-  .section-count { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
-  .pizza-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-  .pizza-card { background: white; border: 2px solid transparent; border-bottom: 4px solid var(--black); padding: 1rem; cursor: pointer; transition: all 0.15s ease; position: relative; overflow: hidden; }
-  .pizza-card:hover { border-color: var(--red); transform: translateY(-2px); box-shadow: 4px 4px 0 var(--red); }
-  .pizza-card.in-crawl { border-color: var(--green); box-shadow: 4px 4px 0 var(--green); background: #f5fdf7; }
-  .pizza-card.in-crawl::after { content: '✓ IN CRAWL'; position: absolute; top: 0.6rem; right: 0.75rem; background: var(--green); color: white; font-size: 0.55rem; letter-spacing: 0.1em; padding: 0.2rem 0.4rem; font-family: 'Space Mono', monospace; font-weight: 700; }
-  .pizza-card.visited { border-left: 4px solid #F5A623; }
-  .card-visited-badge { display: inline-block; background: #F5A623; color: white; font-size: 0.55rem; letter-spacing: 0.08em; padding: 0.15rem 0.4rem; font-family: 'Space Mono', monospace; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem; }
-  .card-neighborhood { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 0.25rem; }
-  .card-name { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.3rem; letter-spacing: 0.03em; line-height: 1.1; margin-bottom: 0.2rem; color: var(--black); }
-  .card-address { font-size: 0.6rem; color: var(--muted); margin-bottom: 0.65rem; letter-spacing: 0.03em; }
-  .card-pie-name { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.95rem; color: var(--charcoal); margin-bottom: 0.4rem; line-height: 1.3; }
-  .card-toppings { font-size: 0.62rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
-  .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 0.6rem; flex-wrap: wrap; gap: 0.3rem; }
-  .card-price { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.1rem; color: var(--green); letter-spacing: 0.05em; }
-  .card-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-  .tag { font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.15rem 0.4rem; border: 1px solid; }
-  .tag-veg { border-color: var(--green); color: var(--green); }
-  .tag-vegan { border-color: #6aab6a; color: #6aab6a; background: #f0fff0; }
-  .tag-spicy { border-color: var(--red); color: var(--red); }
-  .tag-pork { border-color: #b06030; color: #b06030; }
-  .add-btn { background: var(--black); color: var(--cream); border: none; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.35rem 0.65rem; cursor: pointer; transition: background 0.15s; }
-  .add-btn:hover { background: var(--red); }
-  .add-btn.added { background: var(--green); }
-  .rate-btn { background: #555; color: var(--cream); border: none; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.35rem 0.65rem; cursor: pointer; transition: background 0.15s; }
-  .rate-btn:hover { background: #F5A623; }
-  .rate-btn.rated { background: #b07d00; }
-  .no-results { text-align: center; padding: 3rem 1rem; color: var(--muted); }
-  .no-results .emoji { font-size: 3rem; margin-bottom: 1rem; }
-  .no-results p { font-size: 0.8rem; font-style: italic; }
-  /* ROUTE PANEL */
-  .route-panel { background: var(--black); color: var(--cream); padding: 1.5rem 2rem; display: none; }
-  .route-panel.visible { display: block; }
-  .route-panel h2 { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 2rem; color: var(--orange); margin-bottom: 0.5rem; }
-  .route-stops { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
-  .route-stop { background: #252525; border-left: 3px solid var(--orange); padding: 0.5rem 0.75rem; font-size: 0.65rem; }
-  .route-stop .stop-num { color: var(--orange); font-weight: 700; margin-bottom: 0.15rem; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .route-stop .stop-name { font-weight: 700; margin-bottom: 0.1rem; }
-  .route-stop .stop-slice { color: var(--muted); font-style: italic; }
-  .route-panel-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-top: 1rem; }
-  .map-link-btn { display: inline-block; background: var(--orange); color: var(--black); font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 1rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: all 0.15s; }
-  .map-link-btn:hover { background: transparent; border-color: var(--orange); color: var(--orange); }
-  .share-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: transparent; border: 1.5px solid var(--gold); color: var(--gold); font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.15s; }
-  .share-btn:hover { background: var(--gold); color: var(--black); }
-  /* SUGGESTED ROUTES */
-  .routes-section { background: #1C1C1C; padding: 1.5rem 2rem; border-top: 4px solid var(--orange); }
-  .routes-top { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
-  .routes-top h2 { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 2rem; color: var(--orange); letter-spacing: 0.03em; }
-  .routes-top p { font-size: 0.65rem; color: #AAA; font-style: italic; letter-spacing: 0.05em; }
-  .routes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-  .route-card { background: #2a2a2a; border: 1.5px solid #444; border-top: 3px solid var(--red); padding: 1rem; transition: border-color 0.15s; }
-  .route-card:hover { border-color: #555; border-top-color: var(--orange); }
-  .route-card-nbhd { font-size: 0.58rem; color: var(--orange); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.15rem; font-weight: 700; }
-  .route-card-name { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.3rem; color: var(--cream); letter-spacing: 0.03em; line-height: 1.1; margin-bottom: 0.5rem; }
-  .route-meta { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.65rem; }
-  .route-badge { font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.45rem; border: 1px solid #555; color: #CCC; }
-  .route-badge.badge-dist { border-color: var(--gold); color: var(--gold); }
-  .route-badge.badge-cost { border-color: #6dbb8a; color: #6dbb8a; }
-  .route-desc { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.85rem; color: #BBB; margin-bottom: 0.75rem; line-height: 1.5; }
-  .route-stops-list { list-style: none; margin-bottom: 0.75rem; }
-  .route-stops-list li { display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.4rem 0; border-bottom: 1px solid #333; font-size: 0.62rem; cursor: pointer; transition: background 0.12s; }
-  .route-stops-list li:last-child { border-bottom: none; }
-  .route-stops-list li:hover { background: #333; }
-  .route-stops-list li.is-start { background: #1e1a0e; }
-  .stop-num-dot { background: var(--red); color: white; font-size: 0.55rem; font-weight: 700; min-width: 1.2rem; height: 1.2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
-  .stop-info { flex: 1; }
-  .stop-info-name { color: var(--cream); font-weight: 700; line-height: 1.3; }
-  .stop-info-slice { color: #888; font-style: italic; font-size: 0.58rem; }
-  .start-hint { flex-shrink: 0; margin-top: 0.15rem; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.06em; }
-  .route-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
-  .route-load-btn { flex: 1; background: var(--red); color: var(--cream); border: none; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem; cursor: pointer; transition: background 0.15s; font-weight: 700; }
-  .route-load-btn:hover { background: #b01a14; }
-  .route-map-btn { background: transparent; border: 1px solid #555; color: #AAA; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.5rem 0.75rem; cursor: pointer; text-decoration: none; transition: all 0.15s; display: inline-flex; align-items: center; }
-  .route-map-btn:hover { border-color: var(--orange); color: var(--orange); }
-  /* VISITS TAB */
-  .visits-empty { text-align: center; padding: 3rem 1rem; color: var(--muted); font-style: italic; font-size: 0.8rem; }
-  .visits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
-  .visit-card { background: white; border: 2px solid #eee; border-bottom: 4px solid var(--black); padding: 1rem; position: relative; }
-  .visit-badge { position: absolute; top: 0.6rem; right: 0.75rem; background: var(--green); color: white; font-size: 0.55rem; letter-spacing: 0.1em; padding: 0.2rem 0.4rem; font-family: 'Space Mono', monospace; font-weight: 700; text-transform: uppercase; }
-  .visit-card-nbhd { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 0.2rem; }
-  .visit-card-name { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.2rem; color: var(--black); line-height: 1.1; margin-bottom: 0.1rem; }
-  .visit-card-slice { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.9rem; color: var(--charcoal); margin-bottom: 0.75rem; }
-  .star-row { display: flex; gap: 0.2rem; margin-bottom: 0.75rem; }
-  .star-btn { background: none; border: none; font-size: 1.4rem; cursor: pointer; padding: 0; line-height: 1; transition: transform 0.1s; color: #ddd; }
-  .star-btn:hover { transform: scale(1.2); color: #F5A623; }
-  .star-btn.lit { color: #F5A623; }
-  .visit-note { width: 100%; background: #fafafa; border: 1.5px solid #eee; font-family: 'Space Mono', monospace; font-size: 0.65rem; padding: 0.5rem; resize: vertical; min-height: 56px; outline: none; transition: border-color 0.15s; color: var(--black); }
-  .visit-note:focus { border-color: var(--red); }
-  .visit-note::placeholder { color: #bbb; }
-  .visits-summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; padding: 1rem 1.25rem; background: var(--black); color: var(--cream); }
-  .summary-stat { text-align: center; }
-  .summary-num { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 2rem; color: var(--orange); line-height: 1; }
-  .summary-label { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-  .visits-share-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: transparent; border: 1.5px solid var(--gold); color: var(--gold); font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.15s; margin-bottom: 1.5rem; }
-  .visits-share-btn:hover { background: var(--gold); color: var(--black); }
-  /* TOAST */
-  .share-toast { display: none; position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: var(--green); color: white; font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.5rem; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.3); white-space: nowrap; }
-  .share-toast.visible { display: block; }
-  @media (max-width: 720px) {
-    .app-shell { grid-template-columns: 1fr; }
-    .sidebar { position: static; height: auto; }
-    .main-content { padding: 1rem; }
-    h1 { font-size: 3rem; }
-    .routes-section { padding: 1rem; }
-    .routes-grid { grid-template-columns: 1fr; }
+  :root { --red:#D9231B; --orange:#F26522; --cream:#FAF3E8; --black:#0F0F0F; --charcoal:#1C1C1C; --gold:#E8A838; --muted:#7A6F62; --green:#2C6B3F; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--cream); color:var(--black); font-family:'Space Mono',monospace; min-height:100vh; overflow-x:hidden; }
+  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1000; opacity:0.5; }
+  header { background:#0F0F0F; color:var(--cream); }
+  .header-stripe { background:var(--red); height:8px; }
+  .header-inner { padding:2rem 2rem 1.5rem; display:flex; flex-direction:column; gap:0.25rem; }
+  .header-eyebrow { font-size:0.65rem; letter-spacing:0.25em; color:#F26522; text-transform:uppercase; }
+  h1 { font-family:'Bebas Neue',Impact,'Arial Narrow',sans-serif; font-size:clamp(3.5rem,10vw,7rem); line-height:0.9; color:#FAF3E8; letter-spacing:0.02em; }
+  h1 span { color:#F26522; }
+  .header-sub { font-family:'Instrument Serif',serif; font-style:italic; font-size:1rem; color:var(--muted); margin-top:0.5rem; }
+  .header-meta { display:flex; gap:1.5rem; margin-top:1rem; flex-wrap:wrap; }
+  .meta-pill { background:var(--charcoal); border:1px solid #333; padding:0.35rem 0.75rem; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:#E8A838; }
+  .crawl-bar { background:var(--red); padding:0.75rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; }
+  .crawl-bar-text { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.2rem; color:#FAF3E8; letter-spacing:0.05em; }
+  .stat-chip { background:rgba(0,0,0,0.3); color:var(--cream); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; }
+  #total-cost { color:var(--gold); font-weight:700; }
+  .app-shell { display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 180px); }
+  .sidebar { background:var(--charcoal); color:var(--cream); padding:1.5rem 1rem; border-right:3px solid var(--red); position:sticky; top:0; height:calc(100vh - 130px); overflow-y:auto; }
+  .sidebar-title { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.4rem; letter-spacing:0.05em; color:var(--orange); margin-bottom:1rem; border-bottom:1px solid #333; padding-bottom:0.5rem; }
+  .neighborhood-btn { display:flex; width:100%; background:transparent; border:1px solid #333; color:var(--cream); font-family:'Space Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; padding:0.6rem 0.75rem; text-align:left; cursor:pointer; margin-bottom:0.35rem; transition:all 0.15s; justify-content:space-between; align-items:center; }
+  .neighborhood-btn:hover { background:#2a2a2a; border-color:var(--orange); color:var(--orange); }
+  .neighborhood-btn.active { background:var(--red); border-color:var(--red); color:var(--cream); }
+  .nbhd-count { background:rgba(255,255,255,0.1); padding:0.1rem 0.4rem; font-size:0.6rem; border-radius:999px; }
+  .neighborhood-btn.active .nbhd-count { background:rgba(255,255,255,0.2); }
+  .your-crawl { margin-top:1.5rem; border-top:1px solid #333; padding-top:1rem; }
+  .crawl-list { list-style:none; max-height:280px; overflow-y:auto; }
+  .crawl-list li { background:#252525; border-left:3px solid var(--orange); padding:0.5rem 0.6rem; margin-bottom:0.4rem; font-size:0.65rem; display:flex; justify-content:space-between; align-items:flex-start; gap:0.5rem; }
+  .crawl-item-name { font-weight:700; color:var(--cream); line-height:1.3; flex:1; }
+  .crawl-item-nbhd { color:var(--muted); font-size:0.58rem; letter-spacing:0.05em; text-transform:uppercase; }
+  .remove-btn { background:none; border:none; color:var(--red); cursor:pointer; font-size:0.9rem; padding:0; flex-shrink:0; line-height:1; }
+  .empty-crawl { color:var(--muted); font-size:0.65rem; font-style:italic; text-align:center; padding:1rem 0; }
+  .clear-crawl-btn { display:block; width:100%; background:transparent; border:1px solid #444; color:var(--muted); font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.4rem; cursor:pointer; margin-top:0.5rem; transition:all 0.15s; }
+  .clear-crawl-btn:hover { border-color:var(--red); color:var(--red); }
+  .main-content { padding:1.5rem 2rem; overflow-y:auto; }
+  .search-bar { display:flex; gap:0.75rem; margin-bottom:1.5rem; }
+  .search-input { flex:1; background:white; border:2px solid var(--black); font-family:'Space Mono',monospace; font-size:0.8rem; padding:0.6rem 0.9rem; outline:none; transition:border-color 0.15s; }
+  .search-input:focus { border-color:var(--red); }
+  .search-input::placeholder { color:#aaa; }
+  .filter-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .filter-tag { background:white; border:1.5px solid #ccc; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.08em; padding:0.3rem 0.6rem; cursor:pointer; transition:all 0.15s; color:var(--black); }
+  .filter-tag:hover,.filter-tag.active { background:var(--black); border-color:var(--black); color:var(--cream); }
+  .section-header { display:flex; align-items:baseline; gap:0.75rem; margin-bottom:1rem; }
+  .section-header h2 { font-family:'Bebas Neue',Impact,sans-serif; font-size:2rem; letter-spacing:0.03em; line-height:1; }
+  .section-count { font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; }
+  .pizza-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
+  .pizza-card { background:white; border:2px solid transparent; border-bottom:4px solid var(--black); padding:1rem; cursor:pointer; transition:all 0.15s; position:relative; overflow:hidden; }
+  .pizza-card:hover { border-color:var(--red); transform:translateY(-2px); box-shadow:4px 4px 0 var(--red); }
+  .pizza-card.in-crawl { border-color:var(--green); box-shadow:4px 4px 0 var(--green); background:#f5fdf7; }
+  .pizza-card.in-crawl::after { content:'✓ IN CRAWL'; position:absolute; top:0.6rem; right:0.75rem; background:var(--green); color:white; font-size:0.55rem; letter-spacing:0.1em; padding:0.2rem 0.4rem; font-family:'Space Mono',monospace; font-weight:700; }
+  .card-neighborhood { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:0.25rem; }
+  .card-name { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.3rem; letter-spacing:0.03em; line-height:1.1; margin-bottom:0.2rem; color:var(--black); }
+  .card-address { font-size:0.6rem; color:var(--muted); margin-bottom:0.65rem; }
+  .card-pie-name { font-family:'Instrument Serif',serif; font-style:italic; font-size:0.95rem; color:var(--charcoal); margin-bottom:0.4rem; line-height:1.3; }
+  .card-toppings { font-size:0.62rem; color:var(--muted); line-height:1.5; margin-bottom:0.75rem; }
+  .card-footer { display:flex; justify-content:space-between; align-items:center; border-top:1px solid #eee; padding-top:0.6rem; flex-wrap:wrap; gap:0.3rem; }
+  .card-price { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.1rem; color:var(--green); letter-spacing:0.05em; }
+  .card-tags { display:flex; gap:0.3rem; flex-wrap:wrap; }
+  .tag { font-size:0.55rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.15rem 0.4rem; border:1px solid; }
+  .tag-veg { border-color:var(--green); color:var(--green); }
+  .tag-vegan { border-color:#6aab6a; color:#6aab6a; background:#f0fff0; }
+  .tag-spicy { border-color:var(--red); color:var(--red); }
+  .tag-pork { border-color:#b06030; color:#b06030; }
+  .add-btn { background:var(--black); color:var(--cream); border:none; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; padding:0.35rem 0.65rem; cursor:pointer; transition:background 0.15s; }
+  .add-btn:hover { background:var(--red); }
+  .add-btn.added { background:var(--green); }
+  .no-results { text-align:center; padding:3rem 1rem; color:var(--muted); }
+  .no-results .emoji { font-size:3rem; margin-bottom:1rem; }
+  .no-results p { font-size:0.8rem; font-style:italic; }
+  .route-panel { background:var(--black); color:var(--cream); padding:1.5rem 2rem; display:none; }
+  .route-panel.visible { display:block; }
+  .route-panel h2 { font-family:'Bebas Neue',Impact,sans-serif; font-size:2rem; color:var(--orange); margin-bottom:0.5rem; }
+  .route-stops { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem; }
+  .route-stop { background:#252525; border-left:3px solid var(--orange); padding:0.5rem 0.75rem; font-size:0.65rem; }
+  .route-stop .stop-num { color:var(--orange); font-weight:700; margin-bottom:0.15rem; font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; }
+  .route-stop .stop-name { font-weight:700; margin-bottom:0.1rem; }
+  .route-stop .stop-slice { color:var(--muted); font-style:italic; }
+  .route-panel-btns { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1rem; }
+  .map-link-btn { display:inline-block; background:var(--orange); color:var(--black); font-family:'Space Mono',monospace; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1rem; text-decoration:none; border:2px solid transparent; cursor:pointer; transition:all 0.15s; }
+  .map-link-btn:hover { background:transparent; border-color:var(--orange); color:var(--orange); }
+  .share-btn { display:inline-flex; align-items:center; gap:0.4rem; background:transparent; border:1.5px solid var(--gold); color:var(--gold); font-family:'Space Mono',monospace; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; padding:0.5rem 1rem; cursor:pointer; transition:all 0.15s; }
+  .share-btn:hover { background:var(--gold); color:var(--black); }
+  .share-toast { display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:var(--green); color:white; font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.75rem 1.5rem; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.3); white-space:nowrap; }
+  .share-toast.visible { display:block; }
+  .routes-section { background:#1C1C1C; padding:1.5rem 2rem; border-top:4px solid var(--orange); }
+  .routes-top { display:flex; align-items:baseline; gap:1rem; margin-bottom:1.25rem; flex-wrap:wrap; }
+  .routes-top h2 { font-family:'Bebas Neue',Impact,sans-serif; font-size:2rem; color:var(--orange); letter-spacing:0.03em; }
+  .routes-top p { font-size:0.65rem; color:#AAA; font-style:italic; }
+  .routes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
+  .route-card { background:#2a2a2a; border:1.5px solid #444; border-top:3px solid var(--red); padding:1rem; transition:border-color 0.15s; }
+  .route-card:hover { border-color:#555; border-top-color:var(--orange); }
+  .route-card-nbhd { font-size:0.58rem; color:var(--orange); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.15rem; font-weight:700; }
+  .route-card-name { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.3rem; color:var(--cream); letter-spacing:0.03em; line-height:1.1; margin-bottom:0.5rem; }
+  .route-meta { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem; }
+  .route-badge { font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.2rem 0.45rem; border:1px solid #555; color:#CCC; }
+  .route-badge.badge-dist { border-color:var(--gold); color:var(--gold); }
+  .route-badge.badge-cost { border-color:#6dbb8a; color:#6dbb8a; }
+  .route-desc { font-family:'Instrument Serif',serif; font-style:italic; font-size:0.85rem; color:#BBB; margin-bottom:0.75rem; line-height:1.5; }
+  .route-stops-list { list-style:none; margin-bottom:0.75rem; }
+  .route-stops-list li { display:flex; gap:0.5rem; align-items:flex-start; padding:0.4rem 0; border-bottom:1px solid #333; font-size:0.62rem; cursor:pointer; transition:background 0.12s; }
+  .route-stops-list li:last-child { border-bottom:none; }
+  .route-stops-list li:hover { background:#333; }
+  .route-stops-list li.is-start { background:#1e1a0e; }
+  .stop-num-dot { background:var(--red); color:white; font-size:0.55rem; font-weight:700; min-width:1.2rem; height:1.2rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.1rem; }
+  .stop-info { flex:1; }
+  .stop-info-name { color:var(--cream); font-weight:700; line-height:1.3; }
+  .stop-info-slice { color:#888; font-style:italic; font-size:0.58rem; }
+  .start-hint { flex-shrink:0; margin-top:0.15rem; font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; }
+  .route-actions { display:flex; gap:0.5rem; margin-top:0.5rem; }
+  .route-load-btn { flex:1; background:var(--red); color:var(--cream); border:none; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; padding:0.5rem; cursor:pointer; transition:background 0.15s; font-weight:700; }
+  .route-load-btn:hover { background:#b01a14; }
+  .route-map-btn { background:transparent; border:1px solid #555; color:#AAA; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.08em; padding:0.5rem 0.75rem; cursor:pointer; text-decoration:none; transition:all 0.15s; display:inline-flex; align-items:center; }
+  .route-map-btn:hover { border-color:var(--orange); color:var(--orange); }
+  @media (max-width:720px) {
+    .app-shell { grid-template-columns:1fr; }
+    .sidebar { position:static; height:auto; }
+    .main-content { padding:1rem; }
+    h1 { font-size:3rem; }
+    .routes-section { padding:1rem; }
+    .routes-grid { grid-template-columns:1fr; }
   }
 </style>
 </head>
 <body>
+
 <header>
   <div class="header-stripe"></div>
   <div class="header-inner">
@@ -208,45 +171,25 @@
   </aside>
 
   <main class="main-content">
-    <div class="tab-nav">
-      <button class="tab-btn active" id="tab-browse" onclick="switchTab('browse')">🍕 Browse</button>
-      <button class="tab-btn" id="tab-visits" onclick="switchTab('visits')">⭐ My Visits</button>
+    <div class="search-bar">
+      <input type="text" class="search-input" id="search-input" placeholder="Search restaurants or toppings..." oninput="renderCards()">
     </div>
-
-```
-<div id="panel-browse">
-  <div class="search-bar">
-    <input type="text" class="search-input" id="search-input" placeholder="Search restaurants or toppings..." oninput="renderCards()">
-  </div>
-  <div class="filter-tags">
-    <button class="filter-tag" onclick="toggleFilter('veg',this)">🥦 Veggie</button>
-    <button class="filter-tag" onclick="toggleFilter('vegan',this)">🌱 Vegan</button>
-    <button class="filter-tag" onclick="toggleFilter('spicy',this)">🌶 Spicy</button>
-    <button class="filter-tag" onclick="toggleFilter('pork',this)">🐷 Pork</button>
-    <button class="filter-tag" onclick="toggleFilter('pie',this)">🥧 Whole Pie Available</button>
-  </div>
-  <div class="section-header">
-    <h2 id="section-title">All Portland</h2>
-    <span class="section-count" id="section-count"></span>
-  </div>
-  <div class="pizza-grid" id="pizza-grid"></div>
-  <div id="no-results" class="no-results" style="display:none">
-    <div class="emoji">🍕</div>
-    <p>No slices match your search. Try a different filter or neighborhood.</p>
-  </div>
-</div>
-
-<div id="panel-visits" style="display:none">
-  <div id="visits-summary-bar"></div>
-  <button class="visits-share-btn" onclick="shareVisits()">🔗 Share My Ratings</button>
-  <div class="visits-grid" id="visits-grid"></div>
-  <div id="visits-empty" class="visits-empty">
-    <div style="font-size:2.5rem;margin-bottom:0.75rem">⭐</div>
-    <p>No visits yet! Tap "Rate" on any pizza card to log a visit and add your star rating.</p>
-  </div>
-</div>
-```
-
+    <div class="filter-tags">
+      <button class="filter-tag" onclick="toggleFilter('veg',this)">🥦 Veggie</button>
+      <button class="filter-tag" onclick="toggleFilter('vegan',this)">🌱 Vegan</button>
+      <button class="filter-tag" onclick="toggleFilter('spicy',this)">🌶 Spicy</button>
+      <button class="filter-tag" onclick="toggleFilter('pork',this)">🐷 Pork</button>
+      <button class="filter-tag" onclick="toggleFilter('pie',this)">🥧 Whole Pie Available</button>
+    </div>
+    <div class="section-header">
+      <h2 id="section-title">All Portland</h2>
+      <span class="section-count" id="section-count"></span>
+    </div>
+    <div class="pizza-grid" id="pizza-grid"></div>
+    <div id="no-results" class="no-results" style="display:none">
+      <div class="emoji">🍕</div>
+      <p>No slices match your search. Try a different filter or neighborhood.</p>
+    </div>
   </main>
 </div>
 
@@ -270,7 +213,6 @@
 <div class="share-toast" id="share-toast">✓ Link copied!</div>
 
 <script>
-// ── STATE ──────────────────────────────────────────────
 const PIZZAS = [
   { id: 1,  name: "10 Barrel Brewing",        address: "1411 NW Flanders St.",          neighborhood: "Northwest",        subArea: "Pearl",         pieName: "Spuds Mackenzie",                         toppings: "Whipped potato base, shredded mozzarella and cheddar, smoked bacon, pickled jalapeños, green onions, garden herbs, parmesan, sour cream", tags: ["pork","spicy"], price: 4 },
   { id: 2,  name: "Brix Tavern",              address: "1338 NW Hoyt St.",              neighborhood: "Northwest",        subArea: "Pearl",         pieName: "Thai Chicken Pizza",                      toppings: "Peanut sauce, mozzarella, marinated chicken, roasted peppers, bean sprouts, Sriracha, cilantro, crushed peanuts", tags: ["spicy"], price: 4 },
@@ -343,56 +285,48 @@ const PIZZAS = [
   { id: 69, name: "Checkerboard Pizza",       address: "159 Buxton Rd.",                 neighborhood: "Southeast",        subArea: "Buxton",        pieName: "Snyder Weccacoe",                         toppings: "White pie (garlic + evoo), roasted pork, rapini, Calabrian chili and caciocavallo", tags: ["pork","spicy"], price: 4 },
   { id: 70, name: "Loowit Brewing – Ole's Outpost", address: "11202 NE Fourth Plain Blvd., Vancouver", neighborhood: "Vancouver / Outer", subArea: "Vancouver WA", pieName: "The Gravy Train", toppings: "Chorizo gravy base, mozzarella and white cheddar, pickled corn, a warm yolk drizzle, finished with fresh chives", tags: ["pork"], price: 4 },
 ];
-let crawl = [];
-let currentNeighborhood = 'all';
-let activeFilters = new Set();
-let visits = {};
+var crawl = [];
+var currentNeighborhood = 'all';
+var activeFilters = [];
+var routeStartIndex = {};
 
-// ── NEIGHBORHOOD / FILTER ──────────────────────────────
 function filterNeighborhood(nbhd, btn) {
   currentNeighborhood = nbhd;
-  document.querySelectorAll('.neighborhood-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.neighborhood-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
   document.getElementById('section-title').textContent = nbhd === 'all' ? 'All Portland' : nbhd;
   renderCards();
 }
 
 function toggleFilter(filter, btn) {
-  if (activeFilters.has(filter)) { activeFilters.delete(filter); btn.classList.remove('active'); }
-  else { activeFilters.add(filter); btn.classList.add('active'); }
+  var idx = activeFilters.indexOf(filter);
+  if (idx > -1) { activeFilters.splice(idx, 1); btn.classList.remove('active'); }
+  else { activeFilters.push(filter); btn.classList.add('active'); }
   renderCards();
 }
 
 function getFiltered() {
-  const q = document.getElementById('search-input').value.toLowerCase();
-  return PIZZAS.filter(p => {
-    const matchNbhd = currentNeighborhood === 'all' || p.neighborhood === currentNeighborhood;
-    const matchSearch = !q || p.name.toLowerCase().includes(q) || p.pieName.toLowerCase().includes(q) || p.toppings.toLowerCase().includes(q) || p.address.toLowerCase().includes(q);
-    const matchFilters = activeFilters.size === 0 || [...activeFilters].every(f => p.tags.includes(f));
+  var q = document.getElementById('search-input').value.toLowerCase();
+  return PIZZAS.filter(function(p) {
+    var matchNbhd = currentNeighborhood === 'all' || p.neighborhood === currentNeighborhood;
+    var matchSearch = !q || p.name.toLowerCase().indexOf(q) > -1 || p.pieName.toLowerCase().indexOf(q) > -1 || p.toppings.toLowerCase().indexOf(q) > -1 || p.address.toLowerCase().indexOf(q) > -1;
+    var matchFilters = activeFilters.length === 0 || activeFilters.every(function(f) { return p.tags.indexOf(f) > -1; });
     return matchNbhd && matchSearch && matchFilters;
   });
 }
 
-// ── TABS ───────────────────────────────────────────────
-function switchTab(tab) {
-  document.getElementById('tab-browse').classList.toggle('active', tab === 'browse');
-  document.getElementById('tab-visits').classList.toggle('active', tab === 'visits');
-  document.getElementById('panel-browse').style.display = tab === 'browse' ? 'block' : 'none';
-  document.getElementById('panel-visits').style.display = tab === 'visits' ? 'block' : 'none';
-  if (tab === 'visits') renderVisits();
-}
+function inCrawl(id) { return crawl.some(function(p) { return p.id === id; }); }
 
-// ── CRAWL ──────────────────────────────────────────────
-function inCrawl(id) { return crawl.some(p => p.id === id); }
-
-function toggleCrawl(pizza) {
-  if (inCrawl(pizza.id)) { crawl = crawl.filter(p => p.id !== pizza.id); }
+function toggleCrawl(id) {
+  var pizza = PIZZAS.find(function(p) { return p.id === id; });
+  if (!pizza) return;
+  if (inCrawl(id)) { crawl = crawl.filter(function(p) { return p.id !== id; }); }
   else { crawl.push(pizza); }
   renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel();
 }
 
 function removeFromCrawl(id) {
-  crawl = crawl.filter(p => p.id !== id);
+  crawl = crawl.filter(function(p) { return p.id !== id; });
   renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel();
 }
 
@@ -401,98 +335,100 @@ function clearCrawl() {
   renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel();
 }
 
-// ── RENDER CARDS ───────────────────────────────────────
 function renderCards() {
-  const filtered = getFiltered();
-  const grid = document.getElementById('pizza-grid');
-  const noResults = document.getElementById('no-results');
+  var filtered = getFiltered();
+  var grid = document.getElementById('pizza-grid');
+  var noResults = document.getElementById('no-results');
+  var tagLabels = { veg:'🥦 Veggie', vegan:'🌱 Vegan', spicy:'🌶 Spicy', pork:'🐷 Pork', pie:'🥧 Whole Pie' };
   document.getElementById('section-count').textContent = filtered.length + ' spot' + (filtered.length !== 1 ? 's' : '');
   if (filtered.length === 0) { grid.innerHTML = ''; noResults.style.display = 'block'; return; }
   noResults.style.display = 'none';
-  const tagLabels = { veg: '🥦 Veggie', vegan: '🌱 Vegan', spicy: '🌶 Spicy', pork: '🐷 Pork', pie: '🥧 Whole Pie' };
-  grid.innerHTML = filtered.map(function(p) {
+  var html = '';
+  for (var i = 0; i < filtered.length; i++) {
+    var p = filtered[i];
     var added = inCrawl(p.id);
-    var v = visits[p.id];
-    var isVisited = v && v.rating > 0;
-    var tagHtml = p.tags.map(function(t) { return '<span class="tag tag-' + t + '">' + tagLabels[t] + '</span>'; }).join('');
-    var visitedBadge = isVisited ? '<div class="card-visited-badge">⭐ ' + '★'.repeat(v.rating) + ' Visited</div>' : '';
-    var addedClass = added ? ' added' : '';
-    var addedLabel = added ? '✓ Added' : '+ Add';
-    var rateLabel = isVisited ? '⭐ Rated' : 'Rate';
-    var rateBtnClass = 'rate-btn' + (isVisited ? ' rated' : '');
-    return '<div class="pizza-card' + (added ? ' in-crawl' : '') + (isVisited ? ' visited' : '') + '" onclick="toggleCrawl(PIZZAS.find(function(x){return x.id===' + p.id + '}))">'
-      + visitedBadge
-      + '<div class="card-neighborhood">' + p.neighborhood + (p.subArea ? ' · ' + p.subArea : '') + '</div>'
-      + '<div class="card-name">' + p.name + '</div>'
-      + '<div class="card-address">📍 ' + p.address + '</div>'
-      + '<div class="card-pie-name">"' + p.pieName + '"</div>'
-      + '<div class="card-toppings">' + p.toppings + '</div>'
-      + '<div class="card-footer">'
-      + '<div class="card-price">$' + p.price + ' / slice</div>'
-      + '<div class="card-tags">' + tagHtml + '</div>'
-      + '<button class="add-btn' + addedClass + '">' + addedLabel + '</button>'
-      + '<button class="' + rateBtnClass + '" onclick="event.stopPropagation();rateFromCard(' + p.id + ')">' + rateLabel + '</button>'
-      + '</div></div>';
-  }).join('');
+    var tagHtml = '';
+    for (var t = 0; t < p.tags.length; t++) {
+      tagHtml += '<span class="tag tag-' + p.tags[t] + '">' + (tagLabels[p.tags[t]] || p.tags[t]) + '</span>';
+    }
+    html += '<div class="pizza-card' + (added ? ' in-crawl' : '') + '" onclick="toggleCrawl(' + p.id + ')">';
+    html += '<div class="card-neighborhood">' + p.neighborhood + (p.subArea ? ' · ' + p.subArea : '') + '</div>';
+    html += '<div class="card-name">' + p.name + '</div>';
+    html += '<div class="card-address">📍 ' + p.address + '</div>';
+    html += '<div class="card-pie-name">&ldquo;' + p.pieName + '&rdquo;</div>';
+    html += '<div class="card-toppings">' + p.toppings + '</div>';
+    html += '<div class="card-footer">';
+    html += '<div class="card-price">$' + p.price + ' / slice</div>';
+    html += '<div class="card-tags">' + tagHtml + '</div>';
+    html += '<button class="add-btn' + (added ? ' added' : '') + '">' + (added ? '✓ Added' : '+ Add') + '</button>';
+    html += '</div></div>';
+  }
+  grid.innerHTML = html;
   updateCounts();
 }
 
 function updateCounts() {
   var nbhds = ['Northwest','Southwest','Northeast','North','Southeast','Vancouver / Outer'];
   document.getElementById('count-all').textContent = PIZZAS.length;
-  nbhds.forEach(function(n) {
-    var el = document.getElementById('count-' + n);
-    if (el) el.textContent = PIZZAS.filter(function(p) { return p.neighborhood === n; }).length;
-  });
+  for (var i = 0; i < nbhds.length; i++) {
+    var el = document.getElementById('count-' + nbhds[i]);
+    if (el) el.textContent = PIZZAS.filter(function(p) { return p.neighborhood === nbhds[i]; }).length;
+  }
 }
 
-// ── SIDEBAR ────────────────────────────────────────────
 function renderCrawlSidebar() {
   var list = document.getElementById('crawl-list');
   if (crawl.length === 0) {
     list.innerHTML = '<li style="border:none;background:none;padding:0"><span class="empty-crawl">No stops yet.<br>Tap a pizza card to add!</span></li>';
     return;
   }
-  list.innerHTML = crawl.map(function(p, i) {
-    return '<li><div><div class="crawl-item-name">' + (i+1) + '. ' + p.name + '</div>'
-      + '<div class="crawl-item-nbhd">' + p.neighborhood + '</div>'
-      + '<div style="font-size:0.6rem;color:#888;font-style:italic;margin-top:0.1rem">' + p.pieName + '</div></div>'
-      + '<button class="remove-btn" onclick="event.stopPropagation();removeFromCrawl(' + p.id + ')">✕</button></li>';
-  }).join('');
+  var html = '';
+  for (var i = 0; i < crawl.length; i++) {
+    var p = crawl[i];
+    html += '<li><div>';
+    html += '<div class="crawl-item-name">' + (i+1) + '. ' + p.name + '</div>';
+    html += '<div class="crawl-item-nbhd">' + p.neighborhood + '</div>';
+    html += '<div style="font-size:0.6rem;color:#888;font-style:italic;margin-top:0.1rem">' + p.pieName + '</div>';
+    html += '</div><button class="remove-btn" onclick="event.stopPropagation();removeFromCrawl(' + p.id + ')">✕</button></li>';
+  }
+  list.innerHTML = html;
 }
 
 function updateCrawlBar() {
   document.getElementById('crawl-count').textContent = crawl.length;
-  document.getElementById('total-cost').textContent = '$' + crawl.reduce(function(s,p) { return s + p.price; }, 0);
+  var total = 0;
+  for (var i = 0; i < crawl.length; i++) total += crawl[i].price;
+  document.getElementById('total-cost').textContent = '$' + total;
 }
 
-// ── ROUTE PANEL ────────────────────────────────────────
 function updateRoutePanel() {
   var panel = document.getElementById('route-panel');
   if (crawl.length < 2) { panel.classList.remove('visible'); return; }
   panel.classList.add('visible');
-  document.getElementById('route-stops').innerHTML = crawl.map(function(p, i) {
-    return '<div class="route-stop"><div class="stop-num">Stop ' + (i+1) + '</div><div class="stop-name">' + p.name + '</div>'
-      + '<div style="font-size:0.58rem;color:#888;margin:0.1rem 0">' + p.address + '</div>'
-      + '<div class="stop-slice">"' + p.pieName + '"</div></div>';
-  }).join('');
-  var addresses = crawl.map(function(p) { return encodeURIComponent(p.address + ' Portland OR'); }).join('/');
-  document.getElementById('map-link').href = 'https://www.google.com/maps/dir/' + addresses;
+  var html = '';
+  for (var i = 0; i < crawl.length; i++) {
+    var p = crawl[i];
+    html += '<div class="route-stop">';
+    html += '<div class="stop-num">Stop ' + (i+1) + '</div>';
+    html += '<div class="stop-name">' + p.name + '</div>';
+    html += '<div style="font-size:0.58rem;color:#888;margin:0.1rem 0">' + p.address + '</div>';
+    html += '<div class="stop-slice">&ldquo;' + p.pieName + '&rdquo;</div>';
+    html += '</div>';
+  }
+  document.getElementById('route-stops').innerHTML = html;
+  var addresses = crawl.map(function(p) { return encodeURIComponent(p.address + ' Portland OR'); });
+  addresses.push(addresses[0]);
+  document.getElementById('map-link').href = 'https://www.google.com/maps/dir/' + addresses.join('/');
 }
 
-// ── SHARE CRAWL ────────────────────────────────────────
 function shareCrawl() {
   if (crawl.length === 0) return;
   var ids = crawl.map(function(p) { return p.id; }).join(',');
   var url = window.location.origin + window.location.pathname + '?crawl=' + ids;
-  doShare('Portland Pizza Week Crawl', 'Check out my pizza crawl! 🍕', url, '✓ Crawl link copied!');
-}
-
-function doShare(title, text, url, toastMsg) {
   if (navigator.share) {
-    navigator.share({ title: title, text: text, url: url });
+    navigator.share({ title: 'Portland Pizza Week Crawl', text: 'Check out my pizza crawl! 🍕', url: url });
   } else if (navigator.clipboard) {
-    navigator.clipboard.writeText(url).then(function() { showToast(toastMsg); });
+    navigator.clipboard.writeText(url).then(function() { showToast('✓ Crawl link copied!'); });
   } else {
     prompt('Copy this link:', url);
   }
@@ -500,203 +436,125 @@ function doShare(title, text, url, toastMsg) {
 
 function showToast(msg) {
   var t = document.getElementById('share-toast');
-  t.textContent = msg || '✓ Link copied!';
+  t.textContent = msg;
   t.classList.add('visible');
   setTimeout(function() { t.classList.remove('visible'); }, 3000);
 }
 
-// ── VISITS ─────────────────────────────────────────────
-function setRating(pizzaId, rating) {
-  if (!visits[pizzaId]) visits[pizzaId] = { rating: 0, note: '' };
-  visits[pizzaId].rating = rating;
-  saveVisitsToURL();
-  renderVisits();
-  renderCards();
-}
-
-function setNote(pizzaId, note) {
-  if (!visits[pizzaId]) visits[pizzaId] = { rating: 0, note: '' };
-  visits[pizzaId].note = note;
-  saveVisitsToURL();
-}
-
-function rateFromCard(pizzaId) {
-  if (!visits[pizzaId]) visits[pizzaId] = { rating: 1, note: '' };
-  else if (!visits[pizzaId].rating) visits[pizzaId].rating = 1;
-  saveVisitsToURL();
-  renderCards();
-  switchTab('visits');
-}
-
-function renderVisits() {
-  var grid = document.getElementById('visits-grid');
-  var empty = document.getElementById('visits-empty');
-  var summaryBar = document.getElementById('visits-summary-bar');
-  var visited = PIZZAS.filter(function(p) { return visits[p.id] && visits[p.id].rating > 0; });
-  if (visited.length === 0) {
-    grid.innerHTML = '';
-    empty.style.display = 'block';
-    summaryBar.innerHTML = '';
-    return;
-  }
-  empty.style.display = 'none';
-  var total = visited.reduce(function(s,p) { return s + visits[p.id].rating; }, 0);
-  var avg = (total / visited.length).toFixed(1);
-  var top = visited.slice().sort(function(a,b) { return visits[b.id].rating - visits[a.id].rating; })[0];
-  summaryBar.innerHTML = '<div class="visits-summary">'
-    + '<div class="summary-stat"><div class="summary-num">' + visited.length + '</div><div class="summary-label">Visited</div></div>'
-    + '<div class="summary-stat"><div class="summary-num">' + avg + ' ⭐</div><div class="summary-label">Avg Rating</div></div>'
-    + '<div class="summary-stat"><div class="summary-num" style="font-size:1rem;padding-top:0.5rem">' + top.name + '</div><div class="summary-label">Top Rated</div></div>'
-    + '</div>';
-  grid.innerHTML = visited.map(function(p) {
-    var v = visits[p.id];
-    var stars = [1,2,3,4,5].map(function(n) {
-      return '<button class="star-btn' + (n <= v.rating ? ' lit' : '') + '" onclick="setRating(' + p.id + ',' + n + ')">★</button>';
-    }).join('');
-    return '<div class="visit-card">'
-      + '<div class="visit-badge">✓ Visited</div>'
-      + '<div class="visit-card-nbhd">' + p.neighborhood + ' · ' + p.subArea + '</div>'
-      + '<div class="visit-card-name">' + p.name + '</div>'
-      + '<div class="visit-card-slice">"' + p.pieName + '"</div>'
-      + '<div class="star-row">' + stars + '</div>'
-      + '<textarea class="visit-note" placeholder="Add a note... (crust, vibe, would return?)" oninput="setNote(' + p.id + ',this.value)" onchange="setNote(' + p.id + ',this.value)">' + (v.note || '') + '</textarea>'
-
-```
-  + '</div>';
-```
-
-}).join(’’);
-}
-
-function saveVisitsToURL() {
-var parts = Object.keys(visits).filter(function(id) {
-return visits[id].rating > 0 || visits[id].note;
-}).map(function(id) {
-var v = visits[id];
-var noteEnc = v.note ? btoa(unescape(encodeURIComponent(v.note))) : ‘’;
-return id + ‘:’ + v.rating + ‘:’ + noteEnc;
-});
-var url = new URL(window.location.href);
-if (parts.length > 0) url.searchParams.set(‘visits’, parts.join(’,’));
-else url.searchParams.delete(‘visits’);
-window.history.replaceState({}, ‘’, url);
-}
-
-function shareVisits() {
-doShare(‘My Portland Pizza Week Ratings’, ‘Check out my pizza ratings! 🍕⭐’, window.location.href, ‘✓ Ratings link copied!’);
-}
-
 function loadCrawlFromURL() {
-var params = new URLSearchParams(window.location.search);
-var ids = params.get(‘crawl’);
-if (!ids) return;
-var parsed = ids.split(’,’).map(Number).filter(Boolean);
-crawl = parsed.map(function(id) { return PIZZAS.find(function(p) { return p.id === id; }); }).filter(Boolean);
-if (crawl.length > 0) { renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel(); }
+  var params = new URLSearchParams(window.location.search);
+  var ids = params.get('crawl');
+  if (!ids) return;
+  var parsed = ids.split(',');
+  for (var i = 0; i < parsed.length; i++) {
+    var id = parseInt(parsed[i]);
+    var pizza = PIZZAS.find(function(p) { return p.id === id; });
+    if (pizza) crawl.push(pizza);
+  }
+  if (crawl.length > 0) { renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel(); }
 }
 
-function loadVisitsFromURL() {
-var params = new URLSearchParams(window.location.search);
-var raw = params.get(‘visits’);
-if (!raw) return;
-raw.split(’,’).forEach(function(part) {
-var bits = part.split(’:’);
-var id = parseInt(bits[0]);
-var rating = parseInt(bits[1]) || 0;
-var note = bits[2] ? decodeURIComponent(escape(atob(bits[2]))) : ‘’;
-visits[id] = { rating: rating, note: note };
-});
-}
-
-// ── SUGGESTED ROUTES ───────────────────────────────────
 const ROUTES = [
-{ id: ‘pearl-nw’, name: ‘The Pearl & Nob Hill Loop’, neighborhood: ‘Northwest / Pearl’, distanceMi: 2.1, description: ‘Start in the Pearl, wind through NW 21st, and loop back. Flat, beautiful streets — classic Portland stroll.’, accentColor: ‘#E8A838’, stops: [{ pizzaId: 3, walkToNext: 2 },{ pizzaId: 8, walkToNext: 3 },{ pizzaId: 2, walkToNext: 2 },{ pizzaId: 5, walkToNext: 1 },{ pizzaId: 1, walkToNext: 8 },{ pizzaId: 7, walkToNext: 0 }] },
-{ id: ‘downtown-sw’, name: ‘Downtown Slice Sprint’, neighborhood: ‘Southwest / Downtown’, distanceMi: 1.4, description: ‘A tight, punchy loop through the heart of downtown. All within a few blocks — easy to squeeze in on a lunch break.’, accentColor: ‘#D9231B’, stops: [{ pizzaId: 16, walkToNext: 3 },{ pizzaId: 14, walkToNext: 2 },{ pizzaId: 10, walkToNext: 2 },{ pizzaId: 15, walkToNext: 3 },{ pizzaId: 13, walkToNext: 4 },{ pizzaId: 11, walkToNext: 0 }] },
-{ id: ‘alberta-concordia’, name: ‘Alberta Arts & Concordia’, neighborhood: ‘Northeast’, distanceMi: 2.4, description: “Walk NE Alberta’s famous arts corridor then dip into Concordia. Murals, vibes, and great slices every few blocks.”, accentColor: ‘#F26522’, stops: [{ pizzaId: 37, walkToNext: 5 },{ pizzaId: 36, walkToNext: 8 },{ pizzaId: 32, walkToNext: 6 },{ pizzaId: 26, walkToNext: 7 },{ pizzaId: 37, walkToNext: 0 }] },
-{ id: ‘ne-broadway-glisan’, name: ‘Broadway to Glisan’, neighborhood: ‘Northeast’, distanceMi: 2.8, description: “From NE Broadway’s lively corridor east along Glisan — passes through Irvington, Sullivan’s Gulch, and Rose City Park.”, accentColor: ‘#2C6B3F’, stops: [{ pizzaId: 27, walkToNext: 6 },{ pizzaId: 31, walkToNext: 8 },{ pizzaId: 30, walkToNext: 5 },{ pizzaId: 29, walkToNext: 7 },{ pizzaId: 27, walkToNext: 0 }] },
-{ id: ‘north-mississippi’, name: ‘Mississippi Ave & Overlook’, neighborhood: ‘North’, distanceMi: 2.2, description: “Two of North Portland’s best streets combined. Mississippi’s indie scene meets the Overlook neighborhood — great views included.”, accentColor: ‘#7B68C8’, stops: [{ pizzaId: 42, walkToNext: 5 },{ pizzaId: 41, walkToNext: 7 },{ pizzaId: 43, walkToNext: 8 },{ pizzaId: 39, walkToNext: 6 },{ pizzaId: 38, walkToNext: 0 }] },
-{ id: ‘north-kenton’, name: ‘Kenton & St. Johns’, neighborhood: ‘North’, distanceMi: 2.6, description: “Head up N Denver Ave through Kenton’s quirky strip to St. Johns. Portland’s most underrated neighborhoods with a stunning bridge view at the end.”, accentColor: ‘#4A9EC1’, stops: [{ pizzaId: 40, walkToNext: 14 },{ pizzaId: 44, walkToNext: 14 },{ pizzaId: 40, walkToNext: 0 }] },
-{ id: ‘se-buckman-kerns’, name: ‘Buckman & Kerns’, neighborhood: ‘Southeast’, distanceMi: 1.6, description: ‘East Burnside and Stark form the spine of this crawl. Dense, walkable, and loaded with great spots within a few blocks of each other.’, accentColor: ‘#C87B40’, stops: [{ pizzaId: 50, walkToNext: 2 },{ pizzaId: 51, walkToNext: 2 },{ pizzaId: 45, walkToNext: 4 },{ pizzaId: 59, walkToNext: 5 },{ pizzaId: 61, walkToNext: 4 },{ pizzaId: 68, walkToNext: 0 }] },
-{ id: ‘se-division’, name: ‘Division Street Classic’, neighborhood: ‘Southeast’, distanceMi: 2.3, description: “One of Portland’s most celebrated food streets. Walk SE Division from the Central Eastside out to Richmond — a true pizza crawl corridor.”, accentColor: ‘#D9231B’, stops: [{ pizzaId: 49, walkToNext: 8 },{ pizzaId: 35, walkToNext: 4 },{ pizzaId: 58, walkToNext: 2 },{ pizzaId: 46, walkToNext: 5 },{ pizzaId: 63, walkToNext: 8 },{ pizzaId: 54, walkToNext: 0 }] },
-{ id: ‘se-hawthorne-belmont’, name: ‘Hawthorne & Belmont’, neighborhood: ‘Southeast’, distanceMi: 2.0, description: “Two of SE Portland’s iconic corridors make one great crawl. Vintage shops, bookstores, and $4 slices at every turn.”, accentColor: ‘#E8A838’, stops: [{ pizzaId: 57, walkToNext: 5 },{ pizzaId: 64, walkToNext: 4 },{ pizzaId: 48, walkToNext: 5 },{ pizzaId: 65, walkToNext: 5 },{ pizzaId: 57, walkToNext: 0 }] },
-{ id: ‘se-sellwood-woodstock’, name: ‘Sellwood & Woodstock’, neighborhood: ‘Southeast’, distanceMi: 2.7, description: “Portland’s leafy south side. Sellwood’s antique row meets Woodstock’s neighborhood charm — a mellower, residential crawl.”, accentColor: ‘#4A9E6A’, stops: [{ pizzaId: 52, walkToNext: 10 },{ pizzaId: 56, walkToNext: 8 },{ pizzaId: 53, walkToNext: 8 },{ pizzaId: 60, walkToNext: 0 }] },
+  { id: 'pearl-nw', name: 'The Pearl & Nob Hill Loop', neighborhood: 'Northwest / Pearl', distanceMi: 2.1, description: 'Start in the Pearl, wind through NW 21st, and loop back. Flat, beautiful streets — classic Portland stroll.', accentColor: '#E8A838', stops: [{ pizzaId: 3, walkToNext: 2 },{ pizzaId: 8, walkToNext: 3 },{ pizzaId: 2, walkToNext: 2 },{ pizzaId: 5, walkToNext: 1 },{ pizzaId: 1, walkToNext: 8 },{ pizzaId: 7, walkToNext: 0 }] },
+  { id: 'downtown-sw', name: 'Downtown Slice Sprint', neighborhood: 'Southwest / Downtown', distanceMi: 1.4, description: 'A tight, punchy loop through the heart of downtown. All within a few blocks — easy to squeeze in on a lunch break.', accentColor: '#D9231B', stops: [{ pizzaId: 16, walkToNext: 3 },{ pizzaId: 14, walkToNext: 2 },{ pizzaId: 10, walkToNext: 2 },{ pizzaId: 15, walkToNext: 3 },{ pizzaId: 13, walkToNext: 4 },{ pizzaId: 11, walkToNext: 0 }] },
+  { id: 'alberta-concordia', name: 'Alberta Arts & Concordia', neighborhood: 'Northeast', distanceMi: 2.4, description: "Walk NE Alberta's famous arts corridor then dip into Concordia. Murals, vibes, and great slices every few blocks.", accentColor: '#F26522', stops: [{ pizzaId: 37, walkToNext: 5 },{ pizzaId: 36, walkToNext: 8 },{ pizzaId: 32, walkToNext: 6 },{ pizzaId: 26, walkToNext: 7 },{ pizzaId: 37, walkToNext: 0 }] },
+  { id: 'ne-broadway-glisan', name: 'Broadway to Glisan', neighborhood: 'Northeast', distanceMi: 2.8, description: "From NE Broadway's lively corridor east along Glisan — passes through Irvington, Sullivan's Gulch, and Rose City Park.", accentColor: '#2C6B3F', stops: [{ pizzaId: 27, walkToNext: 6 },{ pizzaId: 31, walkToNext: 8 },{ pizzaId: 30, walkToNext: 5 },{ pizzaId: 29, walkToNext: 7 },{ pizzaId: 27, walkToNext: 0 }] },
+  { id: 'north-mississippi', name: 'Mississippi Ave & Overlook', neighborhood: 'North', distanceMi: 2.2, description: "Two of North Portland's best streets combined. Mississippi's indie scene meets the Overlook neighborhood — great views included.", accentColor: '#7B68C8', stops: [{ pizzaId: 42, walkToNext: 5 },{ pizzaId: 41, walkToNext: 7 },{ pizzaId: 43, walkToNext: 8 },{ pizzaId: 39, walkToNext: 6 },{ pizzaId: 38, walkToNext: 0 }] },
+  { id: 'north-kenton', name: 'Kenton & St. Johns', neighborhood: 'North', distanceMi: 2.6, description: "Head up N Denver Ave through Kenton's quirky strip to St. Johns. Portland's most underrated neighborhoods with a stunning bridge view at the end.", accentColor: '#4A9EC1', stops: [{ pizzaId: 40, walkToNext: 14 },{ pizzaId: 44, walkToNext: 14 },{ pizzaId: 40, walkToNext: 0 }] },
+  { id: 'se-buckman-kerns', name: 'Buckman & Kerns', neighborhood: 'Southeast', distanceMi: 1.6, description: 'East Burnside and Stark form the spine of this crawl. Dense, walkable, and loaded with great spots within a few blocks of each other.', accentColor: '#C87B40', stops: [{ pizzaId: 50, walkToNext: 2 },{ pizzaId: 51, walkToNext: 2 },{ pizzaId: 45, walkToNext: 4 },{ pizzaId: 59, walkToNext: 5 },{ pizzaId: 61, walkToNext: 4 },{ pizzaId: 68, walkToNext: 0 }] },
+  { id: 'se-division', name: 'Division Street Classic', neighborhood: 'Southeast', distanceMi: 2.3, description: "One of Portland's most celebrated food streets. Walk SE Division from the Central Eastside out to Richmond — a true pizza crawl corridor.", accentColor: '#D9231B', stops: [{ pizzaId: 49, walkToNext: 8 },{ pizzaId: 35, walkToNext: 4 },{ pizzaId: 58, walkToNext: 2 },{ pizzaId: 46, walkToNext: 5 },{ pizzaId: 63, walkToNext: 8 },{ pizzaId: 54, walkToNext: 0 }] },
+  { id: 'se-hawthorne-belmont', name: 'Hawthorne & Belmont', neighborhood: 'Southeast', distanceMi: 2.0, description: "Two of SE Portland's iconic corridors make one great crawl. Vintage shops, bookstores, and $4 slices at every turn.", accentColor: '#E8A838', stops: [{ pizzaId: 57, walkToNext: 5 },{ pizzaId: 64, walkToNext: 4 },{ pizzaId: 48, walkToNext: 5 },{ pizzaId: 65, walkToNext: 5 },{ pizzaId: 57, walkToNext: 0 }] },
+  { id: 'se-sellwood-woodstock', name: 'Sellwood & Woodstock', neighborhood: 'Southeast', distanceMi: 2.7, description: "Portland's leafy south side. Sellwood's antique row meets Woodstock's neighborhood charm — a mellower, residential crawl.", accentColor: '#4A9E6A', stops: [{ pizzaId: 52, walkToNext: 10 },{ pizzaId: 56, walkToNext: 8 },{ pizzaId: 53, walkToNext: 8 },{ pizzaId: 60, walkToNext: 0 }] },
 ];
-var routeStartIndex = {};
-
 function getRotatedStops(route) {
-var uniqueIds = [];
-route.stops.forEach(function(s) { if (uniqueIds.indexOf(s.pizzaId) === -1) uniqueIds.push(s.pizzaId); });
-var startIdx = routeStartIndex[route.id] || 0;
-return uniqueIds.slice(startIdx).concat(uniqueIds.slice(0, startIdx));
+  var uniqueIds = [];
+  for (var i = 0; i < route.stops.length; i++) {
+    if (uniqueIds.indexOf(route.stops[i].pizzaId) === -1) uniqueIds.push(route.stops[i].pizzaId);
+  }
+  var startIdx = routeStartIndex[route.id] || 0;
+  return uniqueIds.slice(startIdx).concat(uniqueIds.slice(0, startIdx));
 }
 
 function setRouteStart(routeId, idx) {
-routeStartIndex[routeId] = idx;
-renderRoutes();
+  routeStartIndex[routeId] = idx;
+  renderRoutes();
 }
 
 function loadSuggestedRoute(routeId) {
-var route = ROUTES.find(function(r) { return r.id === routeId; });
-if (!route) return;
-var orderedIds = getRotatedStops(route);
-crawl = orderedIds.map(function(id) { return PIZZAS.find(function(p) { return p.id === id; }); }).filter(Boolean);
-renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel();
-window.scrollTo({ top: 0, behavior: ‘smooth’ });
+  var route = null;
+  for (var i = 0; i < ROUTES.length; i++) { if (ROUTES[i].id === routeId) { route = ROUTES[i]; break; } }
+  if (!route) return;
+  var orderedIds = getRotatedStops(route);
+  crawl = [];
+  for (var j = 0; j < orderedIds.length; j++) {
+    var pizza = PIZZAS.find(function(p) { return p.id === orderedIds[j]; });
+    if (pizza) crawl.push(pizza);
+  }
+  renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function buildMapUrl(route) {
-var orderedIds = getRotatedStops(route);
-var pizzas = orderedIds.map(function(id) { return PIZZAS.find(function(p) { return p.id === id; }); }).filter(Boolean);
-var addresses = pizzas.map(function(p) { return encodeURIComponent(p.address + ’ Portland OR’); });
-addresses.push(addresses[0]);
-return ‘https://www.google.com/maps/dir/’ + addresses.join(’/’);
+  var orderedIds = getRotatedStops(route);
+  var addresses = [];
+  for (var i = 0; i < orderedIds.length; i++) {
+    var pizza = PIZZAS.find(function(p) { return p.id === orderedIds[i]; });
+    if (pizza) addresses.push(encodeURIComponent(pizza.address + ' Portland OR'));
+  }
+  if (addresses.length > 0) addresses.push(addresses[0]);
+  return 'https://www.google.com/maps/dir/' + addresses.join('/');
 }
 
 function renderRoutes() {
-var grid = document.getElementById(‘routes-grid’);
-grid.innerHTML = ROUTES.map(function(route) {
-var uniqueIds = [];
-route.stops.forEach(function(s) { if (uniqueIds.indexOf(s.pizzaId) === -1) uniqueIds.push(s.pizzaId); });
-var totalCost = uniqueIds.length * 4;
-var startIdx = routeStartIndex[route.id] || 0;
-var stopsHtml = uniqueIds.map(function(pid, i) {
-var p = PIZZAS.find(function(x) { return x.id === pid; });
-if (!p) return ‘’;
-var isStart = i === startIdx;
-var displayNum = ((i - startIdx + uniqueIds.length) % uniqueIds.length) + 1;
-var dotStyle = isStart ? ’ style=“background:#E8A838;color:#0F0F0F”’ : ‘’;
-var dotLabel = isStart ? ‘★’ : displayNum;
-var hintHtml = isStart
-? ‘<span class="start-hint" style="color:#E8A838;font-weight:700">START</span>’
-: ‘<span class="start-hint" style="color:#555">tap to start</span>’;
-return ‘<li class="' + (isStart ? 'is-start' : '') + '" onclick="setRouteStart(\'' + route.id + '\',' + i + ')">’
-+ ‘<div class=“stop-num-dot”’ + dotStyle + ‘>’ + dotLabel + ‘</div>’
-+ ‘<div class="stop-info"><div class="stop-info-name">’ + p.name + ‘</div><div class="stop-info-slice">”’ + p.pieName + ‘”</div></div>’
-+ hintHtml + ‘</li>’;
-}).join(’’);
-return ‘<div class="route-card" style="border-top-color:' + route.accentColor + '">’
-+ ‘<div class="route-card-nbhd">’ + route.neighborhood + ‘</div>’
-+ ‘<div class="route-card-name">’ + route.name + ‘</div>’
-+ ‘<div class="route-meta">’
-+ ‘<span class="route-badge badge-dist">🚶 ’ + route.distanceMi + ’ mi roundtrip</span>’
-+ ‘<span class="route-badge badge-cost">💰 $’ + totalCost + ’ total</span>’
-+ ‘<span class="route-badge">’ + uniqueIds.length + ’ stops</span>’
-+ ‘</div>’
-+ ‘<div class="route-desc">’ + route.description + ‘</div>’
-+ ‘<ul class="route-stops-list">’ + stopsHtml + ‘</ul>’
-+ ‘<div class="route-actions">’
-+ ‘<button class="route-load-btn" onclick="loadSuggestedRoute(\'' + route.id + '\')">🍕 Load This Crawl</button>’
-+ ‘<a class="route-map-btn" href="' + buildMapUrl(route) + '" target="_blank">Map →</a>’
-+ ‘</div></div>’;
-}).join(’’);
+  var grid = document.getElementById('routes-grid');
+  var html = '';
+  for (var r = 0; r < ROUTES.length; r++) {
+    var route = ROUTES[r];
+    var uniqueIds = [];
+    for (var i = 0; i < route.stops.length; i++) {
+      if (uniqueIds.indexOf(route.stops[i].pizzaId) === -1) uniqueIds.push(route.stops[i].pizzaId);
+    }
+    var startIdx = routeStartIndex[route.id] || 0;
+    var totalCost = uniqueIds.length * 4;
+    var stopsHtml = '';
+    for (var s = 0; s < uniqueIds.length; s++) {
+      var pid = uniqueIds[s];
+      var p = PIZZAS.find(function(x) { return x.id === pid; });
+      if (!p) continue;
+      var isStart = s === startIdx;
+      var displayNum = ((s - startIdx + uniqueIds.length) % uniqueIds.length) + 1;
+      var dotBg = isStart ? 'background:#E8A838;color:#0F0F0F' : '';
+      var dotLabel = isStart ? '★' : displayNum;
+      var hintColor = isStart ? '#E8A838' : '#555';
+      var hintText = isStart ? 'START' : 'tap to start';
+      stopsHtml += '<li class="' + (isStart ? 'is-start' : '') + '" onclick="setRouteStart(\'' + route.id + '\',' + s + ')">';
+      stopsHtml += '<div class="stop-num-dot" style="' + dotBg + '">' + dotLabel + '</div>';
+      stopsHtml += '<div class="stop-info"><div class="stop-info-name">' + p.name + '</div><div class="stop-info-slice">&ldquo;' + p.pieName + '&rdquo;</div></div>';
+      stopsHtml += '<span class="start-hint" style="color:' + hintColor + '">' + hintText + '</span>';
+      stopsHtml += '</li>';
+    }
+    html += '<div class="route-card" style="border-top-color:' + route.accentColor + '">';
+    html += '<div class="route-card-nbhd">' + route.neighborhood + '</div>';
+    html += '<div class="route-card-name">' + route.name + '</div>';
+    html += '<div class="route-meta">';
+    html += '<span class="route-badge badge-dist">🚶 ' + route.distanceMi + ' mi roundtrip</span>';
+    html += '<span class="route-badge badge-cost">💰 $' + totalCost + ' total</span>';
+    html += '<span class="route-badge">' + uniqueIds.length + ' stops</span>';
+    html += '</div>';
+    html += '<div class="route-desc">' + route.description + '</div>';
+    html += '<ul class="route-stops-list">' + stopsHtml + '</ul>';
+    html += '<div class="route-actions">';
+    html += '<button class="route-load-btn" onclick="loadSuggestedRoute(\'' + route.id + '\')">🍕 Load This Crawl</button>';
+    html += '<a class="route-map-btn" href="' + buildMapUrl(route) + '" target="_blank">Map →</a>';
+    html += '</div></div>';
+  }
+  grid.innerHTML = html;
 }
 
-// ── INIT ───────────────────────────────────────────────
 updateCounts();
 renderCards();
 renderRoutes();
 loadCrawlFromURL();
-loadVisitsFromURL();
 </script>
 
 </body>
