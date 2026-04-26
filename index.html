@@ -911,9 +911,14 @@ function renderCards() {
       const labels = { veg: '🥦 Veggie', vegan: '🌱 Vegan', spicy: '🌶 Spicy', pork: '🐷 Pork', pie: '🥧 Whole Pie' };
       return `<span class="tag tag-${t}">${labels[t]}</span>`;
     }).join('');
+    const isVisited = visits[p.id] && visits[p.id].rating > 0;
+    const visitedBadge = isVisited ? '<div class="card-visited-badge">⭐ ' + '★'.repeat(visits[p.id].rating) + ' Visited</div>' : '';
+    const rateBtn = isVisited
+      ? '<button class="add-btn" style="background:#b07d00" onclick="event.stopPropagation();switchTab('visits')">⭐ Rated</button>'
+      : '<button class="add-btn" style="background:#555" onclick="event.stopPropagation();rateFromCard(' + p.id + ')">Rate</button>';
     return `
-      <div class="pizza-card ${added ? 'in-crawl' : ''} ${visits[p.id] && visits[p.id].rating > 0 ? 'visited' : ''}" onclick="toggleCrawl(PIZZAS.find(x=>x.id===${p.id}))">
-        ${visits[p.id] && visits[p.id].rating > 0 ? `<div class="card-visited-badge">⭐ ${'★'.repeat(visits[p.id].rating)} Visited</div>` : ''}
+      <div class="pizza-card ${added ? 'in-crawl' : ''} ${isVisited ? 'visited' : ''}" onclick="toggleCrawl(PIZZAS.find(x=>x.id===${p.id}))">
+        ` + visitedBadge + `
         <div class="card-neighborhood">${p.neighborhood} ${p.subArea ? '· ' + p.subArea : ''}</div>
         <div class="card-name">${p.name}</div>
         <div class="card-address">📍 ${p.address}</div>
@@ -923,9 +928,7 @@ function renderCards() {
           <div class="card-price">$${p.price} / slice</div>
           <div class="card-tags">${tagHtml}</div>
           <button class="add-btn ${added ? 'added' : ''}">${added ? '✓ Added' : '+ Add'}</button>
-          ${visits[p.id] && visits[p.id].rating > 0
-            ? `<button class="add-btn" style="background:#b07d00" onclick="event.stopPropagation();switchTab('visits')">⭐ Rated</button>`
-            : `<button class="add-btn" style="background:#555" onclick="event.stopPropagation();rateFromCard(${p.id})">Rate</button>`}
+          ` + rateBtn + `
         </div>
       </div>`;
   }).join('');
