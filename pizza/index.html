@@ -12,6 +12,34 @@
   body { background:var(--cream); color:var(--black); font-family:'Space Mono',monospace; min-height:100vh; overflow-x:hidden; }
   body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1000; opacity:0.5; }
   header { background:#0F0F0F; color:#FAF3E8; }
+  .home-nav {
+    background: #0a0a0a;
+    border-bottom: 1px solid #1f1f1f;
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .home-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250,243,232,0.45);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .home-nav-link:hover { color: #F26522; }
+  .home-nav-arrow { font-size: 0.75rem; }
+  .home-nav-right {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(250,243,232,0.2);
+  }
   /* ── HEADER ── */
   .header-stripe { background:var(--red); height:6px; }
   .header-inner {
@@ -270,6 +298,12 @@
 <body>
 
 <header>
+  <div class="home-nav">
+    <a href="../" class="home-nav-link">
+      <span class="home-nav-arrow">←</span> PDX Crawl
+    </a>
+    <span class="home-nav-right">pdxcrawl.com</span>
+  </div>
   <div class="header-stripe"></div>
   <div class="header-inner">
     <div class="header-top-row">
@@ -279,7 +313,7 @@
         <div class="header-tagline">Your crew. Your crawl. Your Portland.</div>
       </div>
       <div class="header-right">
-        <img src="../logo.png" alt="PDX Crawl" class="header-logo">
+        <img src="logo.png" alt="PDX Crawl" class="header-logo">
       </div>
     </div>
     <div class="header-divider"></div>
@@ -912,7 +946,7 @@ loadVisitsFromURL(); // URL params override local storage (for shared links)
 </script>
 <footer style="background:#0F0F0F;color:#FAF3E8;padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;border-top:4px solid #F26522;">
   <div style="display:flex;align-items:center;gap:1rem;">
-    <img src="../logo.png" alt="PDX Crawl" style="width:56px;height:56px;object-fit:contain;">
+    <img src="logo.png" alt="PDX Crawl" style="width:56px;height:56px;object-fit:contain;">
     <div>
       <div style="font-family:'Bebas Neue',Impact,sans-serif;font-size:1.5rem;letter-spacing:0.05em;color:#E8A838;line-height:1;">PDX Crawl</div>
       <div style="font-size:0.62rem;color:#7A6F62;font-style:italic;font-family:'Instrument Serif',serif;margin-top:0.1rem;">Your crew. Your crawl. Your Portland.</div>
