@@ -719,6 +719,9 @@ function updateRoutePanel() {
   var panel = document.getElementById('route-panel');
   if (crawl.length < 2) { panel.classList.remove('visible'); return; }
   panel.classList.add('visible');
+  // Scroll to crawl bar so route is visible near top
+  var crawlBar = document.querySelector('.crawl-bar');
+  if (crawlBar) crawlBar.scrollIntoView({ behavior: 'smooth', block: 'start' });
   var html = '';
   for (var i = 0; i < crawl.length; i++) {
     var b = crawl[i];
