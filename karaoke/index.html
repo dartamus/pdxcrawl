@@ -203,6 +203,60 @@
   .visit-note-display { font-size: 0.62rem; color: var(--muted); font-style: italic; line-height: 1.5; margin-bottom: 0.5rem; }
   .visit-edit-btn { background: none; border: 1px solid #ddd; color: var(--muted); font-family: 'Space Mono', monospace; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.2rem 0.5rem; cursor: pointer; transition: all 0.12s; }
   .visit-edit-btn:hover { border-color: var(--purple); color: var(--purple); }
+
+
+  /* POPULAR BADGE */
+  .popular-badge { display: inline-flex; align-items: center; gap: 0.25rem; background: #fff3cd; border: 1px solid #E8A838; color: #856404; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.45rem; margin-bottom: 0.35rem; }
+
+  /* DISTANCE BADGE */
+  .card-distance { font-size: 0.58rem; color: #7B2D8B; font-weight: 700; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.3rem; }
+
+  /* OPEN NOW BADGE */
+  .card-open-now { display: inline-flex; align-items: center; gap: 0.25rem; background: #d4edda; border: 1px solid #2C6B3F; color: #2C6B3F; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.15rem 0.45rem; margin-bottom: 0.35rem; }
+  .card-closed-now { display: inline-flex; align-items: center; gap: 0.25rem; background: #f8d7da; border: 1px solid #D9231B; color: #D9231B; font-size: 0.52rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.15rem 0.45rem; margin-bottom: 0.35rem; }
+
+  /* CRAWL READY BANNER */
+  .crawl-ready-banner { background: #7B2D8B; color: white; padding: 1rem 2rem; display: none; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; animation: slideDown 0.3s ease; }
+  .crawl-ready-banner.visible { display: flex; }
+  @keyframes slideDown { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+  .crawl-ready-text { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.3rem; letter-spacing: 0.05em; }
+  .crawl-ready-sub { font-size: 0.6rem; opacity: 0.85; letter-spacing: 0.06em; }
+  .crawl-ready-map-btn { background: white; color: #7B2D8B; font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 1rem; text-decoration: none; border: none; cursor: pointer; white-space: nowrap; min-height: 40px; display: inline-flex; align-items: center; transition: opacity 0.15s; }
+  .crawl-ready-map-btn:hover { opacity: 0.85; }
+  .crawl-ready-dismiss { background: none; border: none; color: white; font-size: 1rem; cursor: pointer; opacity: 0.7; padding: 0; }
+  .crawl-ready-dismiss:hover { opacity: 1; }
+
+  /* NEAR ME / FILTER BAR */
+  .filter-action-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+  .near-me-btn { display: inline-flex; align-items: center; gap: 0.35rem; background: #7B2D8B; color: white; border: none; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.45rem 0.85rem; cursor: pointer; transition: opacity 0.15s; min-height: 40px; }
+  .near-me-btn:hover { opacity: 0.85; }
+  .near-me-btn.active { background: #2C6B3F; }
+  .open-now-btn { display: inline-flex; align-items: center; gap: 0.35rem; background: white; color: #2C6B3F; border: 1.5px solid #2C6B3F; font-family: 'Space Mono', monospace; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.45rem 0.85rem; cursor: pointer; transition: all 0.15s; min-height: 40px; }
+  .open-now-btn.active { background: #2C6B3F; color: white; }
+  .distance-filter-wrap { display: none; align-items: center; gap: 0.5rem; font-size: 0.6rem; color: var(--muted); }
+  .distance-filter-wrap.visible { display: flex; }
+  .distance-select { font-family: 'Space Mono', monospace; font-size: 0.6rem; border: 1.5px solid #ccc; padding: 0.3rem 0.5rem; background: white; cursor: pointer; }
+
+  /* START HERE IMPROVEMENTS */
+  .start-tagline { font-size: 0.75rem; background: #7B2D8B; color: white; padding: 0.6rem 1rem; letter-spacing: 0.06em; margin-bottom: 1.5rem; font-family: 'Space Mono', monospace; }
+  .show-more-btn { display: block; width: 100%; background: transparent; border: 1.5px solid #ccc; color: var(--muted); font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.6rem; cursor: pointer; margin-top: 0.75rem; transition: all 0.15s; }
+  .show-more-btn:hover { border-color: #7B2D8B; color: #7B2D8B; }
+  /* START HERE TAB */
+  .start-here-intro { margin-bottom: 1.5rem; }
+  .start-here-heading { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 2.2rem; letter-spacing: 0.03em; color: var(--black); line-height: 1; margin-bottom: 0.35rem; }
+  .start-here-sub { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.95rem; color: var(--muted); }
+  .start-routes-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  .start-route-card { background: white; border: 2px solid #eee; border-bottom: 4px solid var(--black); border-left: 5px solid #7B2D8B; padding: 1.25rem; cursor: pointer; transition: all 0.15s ease; }
+  .start-route-card:hover { border-color: #7B2D8B; transform: translateY(-2px); box-shadow: 4px 4px 0 #7B2D8B; }
+  .start-route-nbhd { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: #7B2D8B; font-weight: 700; margin-bottom: 0.2rem; }
+  .start-route-name { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.6rem; letter-spacing: 0.03em; line-height: 1; color: var(--black); margin-bottom: 0.35rem; }
+  .start-route-desc { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.85rem; color: var(--muted); line-height: 1.4; margin-bottom: 0.75rem; }
+  .start-route-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
+  .start-route-badge { font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.5rem; border: 1px solid #7B2D8B; color: #7B2D8B; }
+  .start-stop-pill { font-size: 0.58rem; background: #f5f0ea; border: 1px solid #e5ddd0; padding: 0.25rem 0.6rem; color: var(--charcoal); letter-spacing: 0.04em; }
+  .start-route-stops { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+  .start-go-btn { display: block; width: 100%; background: #7B2D8B; color: white; border: none; font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.75rem; cursor: pointer; transition: opacity 0.15s; min-height: 48px; }
+  .start-go-btn:hover { opacity: 0.85; }
   .visits-empty { text-align: center; padding: 3rem 1rem; color: var(--muted); font-style: italic; font-size: 0.8rem; }
 
   /* SUGGESTED ROUTES */
@@ -339,6 +393,17 @@
   </div>
 </div>
 
+<div class="crawl-ready-banner" id="crawl-ready-banner">
+  <div>
+    <div class="crawl-ready-text">🎤 Your crawl is ready!</div>
+    <div class="crawl-ready-sub">All stops loaded · Open in Maps to start walking</div>
+  </div>
+  <div style="display:flex;gap:0.5rem;align-items:center">
+    <a class="crawl-ready-map-btn" id="crawl-ready-map" href="#" target="_blank">Open in Maps →</a>
+    <button class="crawl-ready-dismiss" onclick="document.getElementById('crawl-ready-banner').classList.remove('visible')">✕</button>
+  </div>
+</div>
+
 <div class="app-shell">
   <aside class="sidebar" style="background:#1C1C1C;color:#FAF3E8;">
     <div class="sidebar-title">Neighborhoods</div>
@@ -370,11 +435,19 @@
 
   <main class="main-content">
     <div class="tab-nav">
-      <button class="tab-btn active" id="tab-browse" onclick="switchTab('browse')">🎤 Browse</button>
+      <button class="tab-btn active" id="tab-start" onclick="switchTab('start')">🗺 Start Here</button>
+      <button class="tab-btn" id="tab-browse" onclick="switchTab('browse')">🎤 Browse</button>
       <button class="tab-btn" id="tab-visits" onclick="switchTab('visits')">⭐ My Visits</button>
     </div>
 
-    <div id="panel-browse"><div class="search-bar">
+    <div id="panel-start">
+      <div class="start-here-intro">
+        <div class="start-here-heading">Pick a crawl and go.</div>
+        <div class="start-tagline">Don't overthink it. Pick a crawl. Start walking.</div>
+      </div>
+      <div class="start-routes-grid" id="start-routes-grid"></div>
+    </div>
+    <div id="panel-browse" style="display:none"><div class="search-bar">
         <input type="text" class="search-input" id="search-input" placeholder="Search venues or vibes..." oninput="renderCards()">
       </div>
       <div class="filter-tags">
@@ -450,42 +523,46 @@
 <script>
 const VENUES = [
   // ── DEDICATED KARAOKE ──────────────────────────────
-  { id: 1,  name: "Baby Ketten Klub",        address: "2433 SE Powell Blvd.",        neighborhood: "Southeast", subArea: "Richmond",         type: "dedicated",    vibe: "Portland's greatest karaoke — public + private rooms", desc: "Once dubbed 'America's greatest karaoke night' by the New York Times. Owner John Brophy personally records rare tracks not found anywhere else. 50,000-song catalog, smoke machines, private themed rooms, all-vegan menu. The gold standard.", tags: ["private-room","food","late-night"], karaokeNights: "Nightly · Public floor + private rooms by reservation", hours: "Daily 5pm–2:30am", price: "$$", website: "https://babyketten.com", reservationRequired: false },
-  { id: 2,  name: "Voicebox Karaoke (SE)",   address: "734 SE 6th Ave.",             neighborhood: "Southeast", subArea: "Central Eastside", type: "private-room",  vibe: "Asian-style private rooms, sake shots and cheesy tots", desc: "Portland's premier private room karaoke experience. Book a suite for your crew, grab sake Jell-O shots and tofu wimpies, and sing Whitney Houston hits without judgment. 20,000+ songs, state-of-the-art sound.", tags: ["private-room","food"], karaokeNights: "Nightly · Private rooms by reservation or walk-in", hours: "Mon–Thu 4pm–12am · Fri 4pm–2am · Sat 2pm–2am · Sun 2pm–12am", price: "$$", website: "https://voiceboxkaraoke.com", reservationRequired: true },
-  { id: 3,  name: "Voicebox Karaoke (NW)",   address: "2112 NW Hoyt St.",            neighborhood: "Northwest", subArea: "Pearl",            type: "private-room",  vibe: "Private rooms in the Pearl District", desc: "The NW Pearl location of Portland's beloved Voicebox. Same great private room experience with sake shots and cheesy snacks — ideal for groups and parties. Drag-aoke Sundays are a Portland institution.", tags: ["private-room","food","drag"], karaokeNights: "Nightly · Drag-aoke Sundays", hours: "Tue–Thu 4pm–12am · Fri 4pm–2am · Sat 2pm–2am · Sun 2pm–10pm · Closed Mon", price: "$$", website: "https://voiceboxkaraoke.com", reservationRequired: true },
-  { id: 4,  name: "HallwayPDX",              address: "120 SW Harvey Milk St.",      neighborhood: "Southwest", subArea: "Old Town",         type: "themed",        vibe: "The Shining-inspired karaoke bar in Old Town", desc: "Modeled after the hotel from Stanley Kubrick's The Shining — narrow bar, themed craft cocktails, hot dogs, and an extensive songbook for up to 49 patrons. Rent the whole bar for a private event. No cover with one drink minimum.", tags: ["food","late-night","themed"], karaokeNights: "Nightly · Sun–Wed from 9pm · Thu–Sat from 8pm", hours: "Sun–Wed 9pm–2:30am · Thu–Sat 8pm–2:30am", price: "$", website: "https://hallwaypdx.com", reservationRequired: false },
-  { id: 5,  name: "The Alibi Tiki Lounge",   address: "4024 N Interstate Ave.",      neighborhood: "North",     subArea: "Overlook",         type: "themed",        vibe: "Nightly karaoke in Portland's oldest tiki bar, est. 1947", desc: "Established in 1947, one of the oldest tiki bars in the country. Island-themed murals, tropical cocktails in pineapple vessels, and nightly high-energy karaoke at 8pm every single night. One of Portland's most beloved institutions.", tags: ["food","outdoor","themed"], karaokeNights: "Nightly from 8pm", hours: "Daily 11:30am–2:30am", price: "$$", website: "https://alibitikilounge.com", reservationRequired: false },
-  { id: 6,  name: "Suki's Bar (Westside)",   address: "2401 SW 4th Ave.",            neighborhood: "Southwest", subArea: "Downtown",         type: "dedicated",     vibe: "7 nights a week karaoke + Sunday drag-aoke", desc: "Suki's has been Portland's go-to karaoke destination for nearly 20 years. Korean-inspired food, craft beers, massive patio, and karaoke 7 nights a week. Drag-aoke Sundays are legendary. One of the most reliable karaoke experiences in the city.", tags: ["food","drag","outdoor","late-night"], karaokeNights: "Mon–Sat 9pm · Sun Drag-aoke 9pm", hours: "Daily from 4pm to close", price: "$$", website: "https://sukisbar.com", reservationRequired: false },
-  { id: 7,  name: "Suki's II (Eastside)",    address: "3006 SE Hawthorne Blvd.",     neighborhood: "Southeast", subArea: "Hawthorne",        type: "dedicated",     vibe: "Eastside Suki's — karaoke 7 nights a week", desc: "The eastside sister to the beloved Suki's Bar. Same great formula — Korean-inspired menu, craft beers, and karaoke seven nights a week. A staple of SE Portland's nightlife for two decades.", tags: ["food","late-night"], karaokeNights: "Nightly from 9pm", hours: "Daily from 4pm to close", price: "$$", website: "https://sukisbar.com", reservationRequired: false },
-  { id: 8,  name: "Chopsticks II",           address: "3390 NE Sandy Blvd.",         neighborhood: "Northeast", subArea: "Hollywood",        type: "dedicated",     vibe: "Portland karaoke institution with Chinese-American food", desc: "The surviving outpost of Portland's beloved Chopsticks empire. Late-night Chinese-American fast food, pool tables, a patio, and nightly karaoke. Celebratory not show-offy — Portland's most fun neighborhood karaoke bar.", tags: ["food","outdoor","late-night"], karaokeNights: "Nightly", hours: "Daily 4pm–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 1,  name: "Baby Ketten Klub", lat: 45.4967, lng: -122.6432, popular: true,        address: "2433 SE Powell Blvd.",        neighborhood: "Southeast", subArea: "Richmond",         type: "dedicated",    vibe: "Portland's greatest karaoke — public + private rooms", desc: "Once dubbed 'America's greatest karaoke night' by the New York Times. Owner John Brophy personally records rare tracks not found anywhere else. 50,000-song catalog, smoke machines, private themed rooms, all-vegan menu. The gold standard.", tags: ["private-room","food","late-night"], karaokeNights: "Nightly · Public floor + private rooms by reservation", hours: "Daily 5pm–2:30am", price: "$$", website: "https://babyketten.com", reservationRequired: false },
+  { id: 2,  name: "Voicebox Karaoke (SE)", lat: 45.5177, lng: -122.6568, popular: true,   address: "734 SE 6th Ave.",             neighborhood: "Southeast", subArea: "Central Eastside", type: "private-room",  vibe: "Asian-style private rooms, sake shots and cheesy tots", desc: "Portland's premier private room karaoke experience. Book a suite for your crew, grab sake Jell-O shots and tofu wimpies, and sing Whitney Houston hits without judgment. 20,000+ songs, state-of-the-art sound.", tags: ["private-room","food"], karaokeNights: "Nightly · Private rooms by reservation or walk-in", hours: "Mon–Thu 4pm–12am · Fri 4pm–2am · Sat 2pm–2am · Sun 2pm–12am", price: "$$", website: "https://voiceboxkaraoke.com", reservationRequired: true },
+  { id: 3,  name: "Voicebox Karaoke (NW)", lat: 45.5241, lng: -122.688,   address: "2112 NW Hoyt St.",            neighborhood: "Northwest", subArea: "Pearl",            type: "private-room",  vibe: "Private rooms in the Pearl District", desc: "The NW Pearl location of Portland's beloved Voicebox. Same great private room experience with sake shots and cheesy snacks — ideal for groups and parties. Drag-aoke Sundays are a Portland institution.", tags: ["private-room","food","drag"], karaokeNights: "Nightly · Drag-aoke Sundays", hours: "Tue–Thu 4pm–12am · Fri 4pm–2am · Sat 2pm–2am · Sun 2pm–10pm · Closed Mon", price: "$$", website: "https://voiceboxkaraoke.com", reservationRequired: true },
+  { id: 4,  name: "HallwayPDX", lat: 45.5226, lng: -122.6741,              address: "120 SW Harvey Milk St.",      neighborhood: "Southwest", subArea: "Old Town",         type: "themed",        vibe: "The Shining-inspired karaoke bar in Old Town", desc: "Modeled after the hotel from Stanley Kubrick's The Shining — narrow bar, themed craft cocktails, hot dogs, and an extensive songbook for up to 49 patrons. Rent the whole bar for a private event. No cover with one drink minimum.", tags: ["food","late-night","themed"], karaokeNights: "Nightly · Sun–Wed from 9pm · Thu–Sat from 8pm", hours: "Sun–Wed 9pm–2:30am · Thu–Sat 8pm–2:30am", price: "$", website: "https://hallwaypdx.com", reservationRequired: false },
+  { id: 5,  name: "The Alibi Tiki Lounge", lat: 45.56, lng: -122.674, popular: true,   address: "4024 N Interstate Ave.",      neighborhood: "North",     subArea: "Overlook",         type: "themed",        vibe: "Nightly karaoke in Portland's oldest tiki bar, est. 1947", desc: "Established in 1947, one of the oldest tiki bars in the country. Island-themed murals, tropical cocktails in pineapple vessels, and nightly high-energy karaoke at 8pm every single night. One of Portland's most beloved institutions.", tags: ["food","outdoor","themed"], karaokeNights: "Nightly from 8pm", hours: "Daily 11:30am–2:30am", price: "$$", website: "https://alibitikilounge.com", reservationRequired: false },
+  { id: 6,  name: "Suki's Bar (Westside)", lat: 45.5196, lng: -122.6822, popular: true,   address: "2401 SW 4th Ave.",            neighborhood: "Southwest", subArea: "Downtown",         type: "dedicated",     vibe: "7 nights a week karaoke + Sunday drag-aoke", desc: "Suki's has been Portland's go-to karaoke destination for nearly 20 years. Korean-inspired food, craft beers, massive patio, and karaoke 7 nights a week. Drag-aoke Sundays are legendary. One of the most reliable karaoke experiences in the city.", tags: ["food","drag","outdoor","late-night"], karaokeNights: "Mon–Sat 9pm · Sun Drag-aoke 9pm", hours: "Daily from 4pm to close", price: "$$", website: "https://sukisbar.com", reservationRequired: false },
+  { id: 7,  name: "Suki's II (Eastside)", lat: 45.5119, lng: -122.6291,    address: "3006 SE Hawthorne Blvd.",     neighborhood: "Southeast", subArea: "Hawthorne",        type: "dedicated",     vibe: "Eastside Suki's — karaoke 7 nights a week", desc: "The eastside sister to the beloved Suki's Bar. Same great formula — Korean-inspired menu, craft beers, and karaoke seven nights a week. A staple of SE Portland's nightlife for two decades.", tags: ["food","late-night"], karaokeNights: "Nightly from 9pm", hours: "Daily from 4pm to close", price: "$$", website: "https://sukisbar.com", reservationRequired: false },
+  { id: 8,  name: "Chopsticks II", lat: 45.5396, lng: -122.6222,           address: "3390 NE Sandy Blvd.",         neighborhood: "Northeast", subArea: "Hollywood",        type: "dedicated",     vibe: "Portland karaoke institution with Chinese-American food", desc: "The surviving outpost of Portland's beloved Chopsticks empire. Late-night Chinese-American fast food, pool tables, a patio, and nightly karaoke. Celebratory not show-offy — Portland's most fun neighborhood karaoke bar.", tags: ["food","outdoor","late-night"], karaokeNights: "Nightly", hours: "Daily 4pm–2:30am", price: "$", website: null, reservationRequired: false },
 
   // ── LIVE BAND KARAOKE ──────────────────────────────
-  { id: 9,  name: "Dante's (Mon Nights)",    address: "350 W Burnside St.",          neighborhood: "Southwest", subArea: "Old Town",         type: "live-band",     vibe: "Live band karaoke at Portland's legendary rock club", desc: "Live band karaoke every Monday night at Dante's, Portland's iconic rock venue. The Sinfonia band has been backing Portland singers since 1992 — 700+ songs from A-ha to ZZ Top. Front a real band. Feel like a rock star.", tags: ["live-band","late-night"], karaokeNights: "Mondays · Live band from 9pm", hours: "Mon 9pm–2am (karaoke nights)", price: "$", website: "https://danteslive.com", reservationRequired: false },
-  { id: 10, name: "The Spare Room (Thu)",    address: "4830 NE 42nd Ave.",           neighborhood: "Northeast", subArea: "Rose City Park",   type: "live-band",     vibe: "Live band karaoke Thursdays at Portland's most fun bar", desc: "The Sinfonia live band sets up at The Spare Room every Thursday night. Same epic 700-song catalog, same live band experience — but now at one of Portland's best all-around bars with pool, pinball, and movie nights.", tags: ["live-band","food","late-night"], karaokeNights: "Thursdays · Live band from 9pm", hours: "Mon–Thu 4pm–2am · Fri–Sun 2pm–2am", price: "$", website: null, reservationRequired: false },
+  { id: 9,  name: "Dante's (Mon Nights)", lat: 45.5226, lng: -122.6741, popular: true,    address: "350 W Burnside St.",          neighborhood: "Southwest", subArea: "Old Town",         type: "live-band",     vibe: "Live band karaoke at Portland's legendary rock club", desc: "Live band karaoke every Monday night at Dante's, Portland's iconic rock venue. The Sinfonia band has been backing Portland singers since 1992 — 700+ songs from A-ha to ZZ Top. Front a real band. Feel like a rock star.", tags: ["live-band","late-night"], karaokeNights: "Mondays · Live band from 9pm", hours: "Mon 9pm–2am (karaoke nights)", price: "$", website: "https://danteslive.com", reservationRequired: false },
+  { id: 10, name: "The Spare Room (Thu)", lat: 45.5396, lng: -122.6222,    address: "4830 NE 42nd Ave.",           neighborhood: "Northeast", subArea: "Rose City Park",   type: "live-band",     vibe: "Live band karaoke Thursdays at Portland's most fun bar", desc: "The Sinfonia live band sets up at The Spare Room every Thursday night. Same epic 700-song catalog, same live band experience — but now at one of Portland's best all-around bars with pool, pinball, and movie nights.", tags: ["live-band","food","late-night"], karaokeNights: "Thursdays · Live band from 9pm", hours: "Mon–Thu 4pm–2am · Fri–Sun 2pm–2am", price: "$", website: null, reservationRequired: false },
 
   // ── THEMED / UNIQUE ────────────────────────────────
-  { id: 11, name: "Devil's Point (Stripparaoke)", address: "5305 SE Foster Rd.",    neighborhood: "Southeast", subArea: "Foster-Powell",    type: "themed",        vibe: "Karaoke while dancers perform — Portland's most unique night", desc: "Twice-weekly Stripparaoke: sexy dancers perform while you try to sing karaoke. Flub the chorus? Nobody cares — the audience has other things to focus on. Portland Monthly calls it 'one of the gentlest public karaoke experiences in town.' Fri & Sun.", tags: ["late-night","themed"], karaokeNights: "Fri & Sun from 9:30pm", hours: "Daily 2pm–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 11, name: "Devil's Point (Stripparaoke)", lat: 45.4748, lng: -122.6232, address: "5305 SE Foster Rd.",    neighborhood: "Southeast", subArea: "Foster-Powell",    type: "themed",        vibe: "Karaoke while dancers perform — Portland's most unique night", desc: "Twice-weekly Stripparaoke: sexy dancers perform while you try to sing karaoke. Flub the chorus? Nobody cares — the audience has other things to focus on. Portland Monthly calls it 'one of the gentlest public karaoke experiences in town.' Fri & Sun.", tags: ["late-night","themed"], karaokeNights: "Fri & Sun from 9:30pm", hours: "Daily 2pm–2:30am", price: "$", website: null, reservationRequired: false },
 
   // ── DIVE BAR KARAOKE ───────────────────────────────
-  { id: 12, name: "Bear Paw Inn",            address: "3237 SE Milwaukie Ave.",      neighborhood: "Southeast", subArea: "Sellwood",         type: "dive-karaoke",  vibe: "Nightly karaoke at a no-frills SE dive", desc: "No-frills, cheap booze, nightly karaoke, and video lottery. About as Portland as it gets. Regulars know the drill — show up, grab a drink, wait for your song. A quintessential SE dive bar karaoke experience.", tags: ["late-night"], karaokeNights: "Nightly", hours: "Daily 10am–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 13, name: "The Coffin Club",         address: "853 SE Morrison St.",         neighborhood: "Southeast", subArea: "Buckman",          type: "dive-karaoke",  vibe: "Gothic dive bar with karaoke nights", desc: "Portland's beloved gothic dive bar with regular karaoke nights. Dark atmosphere, Halloween decorations year-round, cheap drinks, and a crowd that brings serious theatrical energy to every song. A SE Portland treasure.", tags: ["late-night","themed"], karaokeNights: "Select nights — check social media", hours: "Daily 3pm–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 14, name: "Barrel Room",             address: "120 NW Couch St.",            neighborhood: "Northwest", subArea: "Pearl",            type: "dive-karaoke",  vibe: "Pearl District karaoke nights", desc: "A Pearl District neighborhood bar that hosts regular karaoke nights. Good drinks, accessible location, and a laid-back crowd that makes first-timers feel welcome. Great stop on a NW bar crawl.", tags: ["food","late-night"], karaokeNights: "Select nights — check social media", hours: "Daily 3pm–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 15, name: "Firkin Tavern",           address: "1937 SE 11th Ave.",           neighborhood: "Southeast", subArea: "Buckman",          type: "dive-karaoke",  vibe: "Cozy SE dive with regular karaoke", desc: "A cozy neighborhood tavern in SE Buckman with regular karaoke nights. Friendly staff, cheap drinks, and a relaxed atmosphere where everyone's welcome whether they can carry a tune or not.", tags: ["late-night","food"], karaokeNights: "Select nights — check social media", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 16, name: "The Ambassador",          address: "4744 NE Sandy Blvd.",         neighborhood: "Northeast", subArea: "Rose City Park",   type: "dive-karaoke",  vibe: "Chinese-American karaoke lounge on NE Sandy", desc: "A classic Chinese-American restaurant and karaoke lounge on NE Sandy. Booths, Chinese food, and a loyal crowd of regulars who take their songs seriously. A neighborhood institution.", tags: ["food","late-night"], karaokeNights: "Nightly", hours: "Daily 4pm–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 17, name: "The Station at Springwater", address: "4925 SE Powell Blvd.",    neighborhood: "Southeast", subArea: "Foster-Powell",    type: "dive-karaoke",  vibe: "SE dive with popular karaoke nights", desc: "A beloved SE Portland dive bar along Powell with popular karaoke nights. Consistently praised on Yelp for its fun atmosphere and welcoming vibe. A neighborhood staple for karaoke fans.", tags: ["late-night","outdoor"], karaokeNights: "Select nights — verify before visiting", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 18, name: "Eagle Eye Tavern",        address: "2400 SE 58th Ave.",           neighborhood: "Southeast", subArea: "Woodstock",        type: "dive-karaoke",  vibe: "Neighborhood dive with karaoke nights in Woodstock", desc: "A neighborhood dive in the Woodstock area with regular karaoke nights. Good vibes, cheap drinks, and the kind of low-pressure atmosphere that's perfect for first-time karaoke singers.", tags: ["late-night"], karaokeNights: "Select nights — verify before visiting", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 12, name: "Bear Paw Inn", lat: 45.4748, lng: -122.6356,            address: "3237 SE Milwaukie Ave.",      neighborhood: "Southeast", subArea: "Sellwood",         type: "dive-karaoke",  vibe: "Nightly karaoke at a no-frills SE dive", desc: "No-frills, cheap booze, nightly karaoke, and video lottery. About as Portland as it gets. Regulars know the drill — show up, grab a drink, wait for your song. A quintessential SE dive bar karaoke experience.", tags: ["late-night"], karaokeNights: "Nightly", hours: "Daily 10am–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 13, name: "The Coffin Club", lat: 45.5177, lng: -122.6568,         address: "853 SE Morrison St.",         neighborhood: "Southeast", subArea: "Buckman",          type: "dive-karaoke",  vibe: "Gothic dive bar with karaoke nights", desc: "Portland's beloved gothic dive bar with regular karaoke nights. Dark atmosphere, Halloween decorations year-round, cheap drinks, and a crowd that brings serious theatrical energy to every song. A SE Portland treasure.", tags: ["late-night","themed"], karaokeNights: "Select nights — check social media", hours: "Daily 3pm–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 14, name: "Barrel Room", lat: 45.5241, lng: -122.6845,             address: "120 NW Couch St.",            neighborhood: "Northwest", subArea: "Pearl",            type: "dive-karaoke",  vibe: "Pearl District karaoke nights", desc: "A Pearl District neighborhood bar that hosts regular karaoke nights. Good drinks, accessible location, and a laid-back crowd that makes first-timers feel welcome. Great stop on a NW bar crawl.", tags: ["food","late-night"], karaokeNights: "Select nights — check social media", hours: "Daily 3pm–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 15, name: "Firkin Tavern", lat: 45.5177, lng: -122.6568,           address: "1937 SE 11th Ave.",           neighborhood: "Southeast", subArea: "Buckman",          type: "dive-karaoke",  vibe: "Cozy SE dive with regular karaoke", desc: "A cozy neighborhood tavern in SE Buckman with regular karaoke nights. Friendly staff, cheap drinks, and a relaxed atmosphere where everyone's welcome whether they can carry a tune or not.", tags: ["late-night","food"], karaokeNights: "Select nights — check social media", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 16, name: "The Ambassador", lat: 45.5396, lng: -122.6222,          address: "4744 NE Sandy Blvd.",         neighborhood: "Northeast", subArea: "Rose City Park",   type: "dive-karaoke",  vibe: "Chinese-American karaoke lounge on NE Sandy", desc: "A classic Chinese-American restaurant and karaoke lounge on NE Sandy. Booths, Chinese food, and a loyal crowd of regulars who take their songs seriously. A neighborhood institution.", tags: ["food","late-night"], karaokeNights: "Nightly", hours: "Daily 4pm–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 17, name: "The Station at Springwater", lat: 45.4748, lng: -122.6232, address: "4925 SE Powell Blvd.",    neighborhood: "Southeast", subArea: "Foster-Powell",    type: "dive-karaoke",  vibe: "SE dive with popular karaoke nights", desc: "A beloved SE Portland dive bar along Powell with popular karaoke nights. Consistently praised on Yelp for its fun atmosphere and welcoming vibe. A neighborhood staple for karaoke fans.", tags: ["late-night","outdoor"], karaokeNights: "Select nights — verify before visiting", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 18, name: "Eagle Eye Tavern", lat: 45.4748, lng: -122.6356,        address: "2400 SE 58th Ave.",           neighborhood: "Southeast", subArea: "Woodstock",        type: "dive-karaoke",  vibe: "Neighborhood dive with karaoke nights in Woodstock", desc: "A neighborhood dive in the Woodstock area with regular karaoke nights. Good vibes, cheap drinks, and the kind of low-pressure atmosphere that's perfect for first-time karaoke singers.", tags: ["late-night"], karaokeNights: "Select nights — verify before visiting", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
 
   // ── BARS WITH KARAOKE NIGHTS ───────────────────────
-  { id: 19, name: "Twenty First Ave Kitchen & Bar", address: "555 NW 21st Ave.",   neighborhood: "Northwest", subArea: "Nob Hill",         type: "dive-karaoke",  vibe: "NW 21st neighborhood bar with karaoke nights", desc: "An elevated Nob Hill neighborhood bar with a solid cocktail program and regular karaoke nights. Craft drinks and vegetarian bites in colorful surrounds. A fun mix of polished bar and dive bar karaoke energy.", tags: ["food","outdoor"], karaokeNights: "Select nights — check social media", hours: "Mon–Fri 4pm–12am · Sat–Sun 11am–12am", price: "$$", website: null, reservationRequired: false },
-  { id: 20, name: "Duffys Irish Pub",        address: "4550 SE Woodstock Blvd.",    neighborhood: "Southeast", subArea: "Woodstock",        type: "dive-karaoke",  vibe: "Woodstock Irish pub with karaoke nights", desc: "A welcoming Woodstock Irish pub with regular karaoke nights. Good pints, pub grub, and the kind of warm, inclusive atmosphere that makes Irish pubs the best karaoke venues — everyone sings along.", tags: ["food","late-night"], karaokeNights: "Select nights — check social media", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 21, name: "Heritage Pub",            address: "6034 SE Foster Rd.",         neighborhood: "Southeast", subArea: "Foster-Powell",    type: "dive-karaoke",  vibe: "Foster-Powell neighborhood pub with karaoke", desc: "A solid Foster-Powell neighborhood pub with regular karaoke nights. Unpretentious, welcoming, and reliably fun. The kind of bar where the locals are regulars and strangers become friends over shared songs.", tags: ["food","late-night"], karaokeNights: "Select nights — verify before visiting", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 22, name: "The Lutz Tavern",         address: "4639 SE Woodstock Blvd.",    neighborhood: "Southeast", subArea: "Woodstock",        type: "dive-karaoke",  vibe: "Woodstock dive with a secret garden patio", desc: "A Woodstock institution with a beloved secret garden patio. Regular karaoke nights draw a mix of neighborhood regulars and adventurous newcomers. Cheap drinks, great outdoor space, and a genuinely fun crowd.", tags: ["outdoor","late-night"], karaokeNights: "Select nights — check social media", hours: "Daily 3pm–2:30am", price: "$", website: null, reservationRequired: false },
-  { id: 23, name: "Kelly's Olympian",        address: "426 SW Washington St.",      neighborhood: "Southwest", subArea: "Downtown",         type: "dive-karaoke",  vibe: "Portland's oldest bar hosts occasional karaoke", desc: "Portland's oldest bar (est. 1902) occasionally hosts karaoke nights alongside its regular live music lineup. A bucket-list Portland experience — motorcycle-themed, loud, and legendary.", tags: ["live-band","late-night"], karaokeNights: "Select nights — check social media", hours: "Daily 11am–2:30am", price: "$", website: "https://kellysolympian.com", reservationRequired: false },
-  { id: 24, name: "O'Dear Bar & Grill",      address: "2839 NE Sandy Blvd.",        neighborhood: "Northeast", subArea: "Kerns",            type: "live-band",     vibe: "Friday night live band karaoke with Sinfonia", desc: "Every Friday night, the Sinfonia live band sets up at O'Dear for their famous live band karaoke night. Front a real band on a proper stage — one of the best Friday night activities in Portland.", tags: ["live-band","food","late-night"], karaokeNights: "Fridays · Live band karaoke", hours: "Daily 11am–2:30am", price: "$$", website: null, reservationRequired: false },
-  { id: 25, name: "Slammer Tavern",          address: "2045 SE Belmont St.",        neighborhood: "Southeast", subArea: "Buckman",          type: "dive-karaoke",  vibe: "Christmas lights year-round + karaoke nights", desc: "Someone put up Christmas lights and never took them down. Skee-Ball, Big Buck Hunter, and regular karaoke nights in one of SE Portland's most beloved dives. The crowd is always good and the energy is always fun.", tags: ["late-night","food"], karaokeNights: "Select nights — check social media", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 19, name: "Twenty First Ave Kitchen & Bar", lat: 45.5264, lng: -122.6845, address: "555 NW 21st Ave.",   neighborhood: "Northwest", subArea: "Nob Hill",         type: "dive-karaoke",  vibe: "NW 21st neighborhood bar with karaoke nights", desc: "An elevated Nob Hill neighborhood bar with a solid cocktail program and regular karaoke nights. Craft drinks and vegetarian bites in colorful surrounds. A fun mix of polished bar and dive bar karaoke energy.", tags: ["food","outdoor"], karaokeNights: "Select nights — check social media", hours: "Mon–Fri 4pm–12am · Sat–Sun 11am–12am", price: "$$", website: null, reservationRequired: false },
+  { id: 20, name: "Duffys Irish Pub", lat: 45.4748, lng: -122.6356,        address: "4550 SE Woodstock Blvd.",    neighborhood: "Southeast", subArea: "Woodstock",        type: "dive-karaoke",  vibe: "Woodstock Irish pub with karaoke nights", desc: "A welcoming Woodstock Irish pub with regular karaoke nights. Good pints, pub grub, and the kind of warm, inclusive atmosphere that makes Irish pubs the best karaoke venues — everyone sings along.", tags: ["food","late-night"], karaokeNights: "Select nights — check social media", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 21, name: "Heritage Pub", lat: 45.4748, lng: -122.6232,            address: "6034 SE Foster Rd.",         neighborhood: "Southeast", subArea: "Foster-Powell",    type: "dive-karaoke",  vibe: "Foster-Powell neighborhood pub with karaoke", desc: "A solid Foster-Powell neighborhood pub with regular karaoke nights. Unpretentious, welcoming, and reliably fun. The kind of bar where the locals are regulars and strangers become friends over shared songs.", tags: ["food","late-night"], karaokeNights: "Select nights — verify before visiting", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 22, name: "The Lutz Tavern", lat: 45.4748, lng: -122.6356,         address: "4639 SE Woodstock Blvd.",    neighborhood: "Southeast", subArea: "Woodstock",        type: "dive-karaoke",  vibe: "Woodstock dive with a secret garden patio", desc: "A Woodstock institution with a beloved secret garden patio. Regular karaoke nights draw a mix of neighborhood regulars and adventurous newcomers. Cheap drinks, great outdoor space, and a genuinely fun crowd.", tags: ["outdoor","late-night"], karaokeNights: "Select nights — check social media", hours: "Daily 3pm–2:30am", price: "$", website: null, reservationRequired: false },
+  { id: 23, name: "Kelly's Olympian", lat: 45.5226, lng: -122.6741,        address: "426 SW Washington St.",      neighborhood: "Southwest", subArea: "Downtown",         type: "dive-karaoke",  vibe: "Portland's oldest bar hosts occasional karaoke", desc: "Portland's oldest bar (est. 1902) occasionally hosts karaoke nights alongside its regular live music lineup. A bucket-list Portland experience — motorcycle-themed, loud, and legendary.", tags: ["live-band","late-night"], karaokeNights: "Select nights — check social media", hours: "Daily 11am–2:30am", price: "$", website: "https://kellysolympian.com", reservationRequired: false },
+  { id: 24, name: "O'Dear Bar & Grill", lat: 45.5359, lng: -122.6484,      address: "2839 NE Sandy Blvd.",        neighborhood: "Northeast", subArea: "Kerns",            type: "live-band",     vibe: "Friday night live band karaoke with Sinfonia", desc: "Every Friday night, the Sinfonia live band sets up at O'Dear for their famous live band karaoke night. Front a real band on a proper stage — one of the best Friday night activities in Portland.", tags: ["live-band","food","late-night"], karaokeNights: "Fridays · Live band karaoke", hours: "Daily 11am–2:30am", price: "$$", website: null, reservationRequired: false },
+  { id: 25, name: "Slammer Tavern", lat: 45.5147, lng: -122.6479,          address: "2045 SE Belmont St.",        neighborhood: "Southeast", subArea: "Buckman",          type: "dive-karaoke",  vibe: "Christmas lights year-round + karaoke nights", desc: "Someone put up Christmas lights and never took them down. Skee-Ball, Big Buck Hunter, and regular karaoke nights in one of SE Portland's most beloved dives. The crowd is always good and the energy is always fun.", tags: ["late-night","food"], karaokeNights: "Select nights — check social media", hours: "Daily 11am–2:30am", price: "$", website: null, reservationRequired: false },
 ];
 
 var crawl = [];
+var userLat = null;
+var userLng = null;
+var nearMeActive = false;
+var openNowActive = false;
 var currentNeighborhood = 'all';
 var currentType = 'all';
 var activeFilters = [];
@@ -494,8 +571,10 @@ var visits = {};
 var popupVenueId = null;
 
 function switchTab(tab) {
+  document.getElementById('tab-start').classList.toggle('active', tab === 'start');
   document.getElementById('tab-browse').classList.toggle('active', tab === 'browse');
   document.getElementById('tab-visits').classList.toggle('active', tab === 'visits');
+  document.getElementById('panel-start').style.display = tab === 'start' ? 'block' : 'none';
   document.getElementById('panel-browse').style.display = tab === 'browse' ? 'block' : 'none';
   document.getElementById('panel-visits').style.display = tab === 'visits' ? 'block' : 'none';
   if (tab === 'visits') renderVisits();
@@ -523,15 +602,110 @@ function toggleFilter(filter, btn) {
   renderCards();
 }
 
+function toggleNearMe() {
+  if (!nearMeActive) {
+    if (!navigator.geolocation) { alert('Geolocation is not supported by your browser.'); return; }
+    navigator.geolocation.getCurrentPosition(function(pos) {
+      userLat = pos.coords.latitude;
+      userLng = pos.coords.longitude;
+      nearMeActive = true;
+      document.getElementById('near-me-btn').classList.add('active');
+      document.getElementById('near-me-btn').textContent = '📍 Near Me ✓';
+      document.getElementById('distance-wrap').classList.add('visible');
+      renderCards();
+    }, function() {
+      alert('Unable to get your location. Please enable location access in your browser settings.');
+    });
+  } else {
+    nearMeActive = false;
+    userLat = null; userLng = null;
+    document.getElementById('near-me-btn').classList.remove('active');
+    document.getElementById('near-me-btn').textContent = '📍 Near Me';
+    document.getElementById('distance-wrap').classList.remove('visible');
+    renderCards();
+  }
+}
+
+function toggleOpenNow() {
+  openNowActive = !openNowActive;
+  document.getElementById('open-now-btn').classList.toggle('active', openNowActive);
+  document.getElementById('open-now-btn').innerHTML = openNowActive ? '🟢 Open Now ✓' : '🟢 Open Now';
+  renderCards();
+}
+
+function isOpenNow(hours) {
+  if (!hours) return null;
+  var now = new Date();
+  var day = now.getDay(); // 0=Sun, 1=Mon...6=Sat
+  var hour = now.getHours();
+  var min = now.getMinutes();
+  var currentMins = hour * 60 + min;
+  var dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var todayStr = dayNames[day];
+  // Check if hours string contains "Daily"
+  if (hours.indexOf('Daily') > -1) {
+    var match = hours.match(/Daily\s+(\d+(?::\d+)?(?:am|pm))[-–](\d+(?::\d+)?(?:am|pm))/i);
+    if (match) return checkTimeRange(match[1], match[2], currentMins);
+    return true;
+  }
+  // Look for today's day
+  var segments = hours.split('·');
+  for (var i = 0; i < segments.length; i++) {
+    var seg = segments[i].trim();
+    if (seg.indexOf(todayStr) > -1 || (day >= 1 && day <= 5 && seg.indexOf('Mon–Fri') > -1) || (day >= 1 && day <= 4 && seg.indexOf('Mon–Thu') > -1) || (day >= 4 && day <= 6 && seg.indexOf('Thu–Sat') > -1) || (day >= 5 && day <= 6 && seg.indexOf('Fri–Sat') > -1) || ((day === 0 || day === 6) && seg.indexOf('Sat–Sun') > -1)) {
+      var tMatch = seg.match(/(\d+(?::\d+)?(?:am|pm))[-–](\d+(?::\d+)?(?:am|pm))/i);
+      if (tMatch) return checkTimeRange(tMatch[1], tMatch[2], currentMins);
+    }
+  }
+  return null;
+}
+
+function parseTime(str) {
+  str = str.trim().toLowerCase();
+  var match = str.match(/(\d+)(?::(\d+))?(am|pm)/);
+  if (!match) return 0;
+  var h = parseInt(match[1]);
+  var m = match[2] ? parseInt(match[2]) : 0;
+  if (match[3] === 'pm' && h !== 12) h += 12;
+  if (match[3] === 'am' && h === 12) h = 0;
+  return h * 60 + m;
+}
+
+function checkTimeRange(openStr, closeStr, currentMins) {
+  var openMins = parseTime(openStr);
+  var closeMins = parseTime(closeStr);
+  if (closeMins < openMins) closeMins += 24 * 60; // past midnight
+  if (currentMins < openMins) currentMins += 24 * 60;
+  return currentMins >= openMins && currentMins <= closeMins;
+}
+
+function getDistance(lat1, lng1, lat2, lng2) {
+  var R = 3959; // miles
+  var dLat = (lat2 - lat1) * Math.PI / 180;
+  var dLng = (lng2 - lng1) * Math.PI / 180;
+  var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLng/2) * Math.sin(dLng/2);
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
 function getFiltered() {
   var q = document.getElementById('search-input').value.toLowerCase();
-  return VENUES.filter(function(v) {
+  var maxDist = parseFloat((document.getElementById('distance-select') || {value:'1'}).value) || 1;
+  var results = VENUES.filter(function(v) {
     var matchNbhd = currentNeighborhood === 'all' || v.neighborhood === currentNeighborhood;
     var matchType = currentType === 'all' || v.type === currentType;
     var matchSearch = !q || v.name.toLowerCase().indexOf(q) > -1 || v.vibe.toLowerCase().indexOf(q) > -1 || v.desc.toLowerCase().indexOf(q) > -1 || v.address.toLowerCase().indexOf(q) > -1;
     var matchFilters = activeFilters.length === 0 || activeFilters.every(function(f) { return v.tags.indexOf(f) > -1; });
-    return matchNbhd && matchType && matchSearch && matchFilters;
+    var matchOpen = !openNowActive || isOpenNow(v.hours) === true;
+    if (!matchNbhd || !matchType || !matchSearch || !matchFilters || !matchOpen) return false;
+    if (nearMeActive && userLat && v.lat) {
+      var dist = getDistance(userLat, userLng, v.lat, v.lng);
+      v._dist = dist;
+      return dist <= maxDist;
+    }
+    return true;
   });
+  if (nearMeActive && userLat) results.sort(function(a, b) { return (a._dist || 999) - (b._dist || 999); });
+  return results;
 }
 
 function inCrawl(id) { return crawl.some(function(v) { return v.id === id; }); }
@@ -576,6 +750,11 @@ function renderCards() {
     var rateBtnLabel = hasScore ? ('⭐ ' + vis.score + '/10') : 'Rate It';
     html += '<div class="venue-card' + (added ? ' in-crawl' : '') + (hasScore ? ' is-rated' : '') + '" onclick="toggleCrawl(' + v.id + ')">';
     html += scoreBadge;
+    var popularBadge = v.popular ? '<div class="popular-badge">🔥 Popular</div>' : '';
+    var distBadge = (nearMeActive && v._dist) ? '<div class="card-distance">📍 ' + v._dist.toFixed(1) + ' mi away</div>' : '';
+    var openStatus = openNowActive || true ? isOpenNow(v.hours) : null;
+    var openBadge = openStatus === true ? '<div class="card-open-now">● Open Now</div>' : (openStatus === false ? '<div class="card-closed-now">● Closed</div>' : '');
+    html += popularBadge + distBadge + openBadge;
     html += '<div class="card-neighborhood">' + v.neighborhood + (v.subArea ? ' · ' + v.subArea : '') + '</div>';
     html += '<div class="card-name">' + v.name + '</div>';
     html += '<div class="card-address">📍 ' + v.address + '</div>';
@@ -897,6 +1076,50 @@ function buildMapUrl(route) {
   return 'https://www.google.com/maps/dir/' + addresses.join('/') + '?travelmode=walking';
 }
 
+function renderStartTab() {
+  var grid = document.getElementById('start-routes-grid');
+  if (!grid) return;
+  var showAll = grid.dataset.showAll === 'true';
+  var limit = showAll ? ROUTES.length : 3;
+  var html = '';
+  for (var r = 0; r < Math.min(limit, ROUTES.length); r++) {
+    var route = ROUTES[r];
+    var stopIds = [];
+    route.stops.forEach(function(s) { var sid = s.venueId; if (stopIds.indexOf(sid) === -1) stopIds.push(sid); });
+    var venues = stopIds.map(function(id) { return VENUES.find(function(v) { return v.id === id; }); }).filter(Boolean);
+    var pillsHtml = venues.map(function(v) { return '<span class="start-stop-pill">' + v.name + '</span>'; }).join('');
+    html += '<div class="start-route-card" onclick="loadAndGo(\'' + route.id + '\')">';
+    html += '<div class="start-route-nbhd">' + route.neighborhood + '</div>';
+    html += '<div class="start-route-name">' + route.name + '</div>';
+    html += '<div class="start-route-desc">' + route.description + '</div>';
+    html += '<div class="start-route-meta">';
+    html += '<span class="start-route-badge">🚶 ' + route.distanceMi + ' mi</span>';
+    html += '<span class="start-route-badge">📍 ' + venues.length + ' stops</span>';
+    html += '</div>';
+    html += '<div class="start-route-stops">' + pillsHtml + '</div>';
+    html += '<button class="start-go-btn">Let\'s Go →</button>';
+    html += '</div>';
+  }
+  if (!showAll && ROUTES.length > 3) {
+    html += '<button class="show-more-btn" onclick="document.getElementById(\'start-routes-grid\').dataset.showAll=\'true\';renderStartTab()">Show All ' + ROUTES.length + ' Crawls ↓</button>';
+  }
+  grid.innerHTML = html;
+}
+
+function loadAndGo(routeId) {
+  loadSuggestedRoute(routeId);
+  switchTab('browse');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Show ready banner
+  var banner = document.getElementById('crawl-ready-banner');
+  var mapLink = document.getElementById('crawl-ready-map');
+  if (banner) {
+    banner.classList.add('visible');
+    if (mapLink) mapLink.href = document.getElementById('map-link').href;
+    setTimeout(function() { banner.classList.remove('visible'); }, 8000);
+  }
+}
+
 function renderRoutes() {
   var grid = document.getElementById('routes-grid');
   var html = '';
@@ -933,6 +1156,7 @@ function renderRoutes() {
 updateCounts();
 renderCards();
 renderRoutes();
+renderStartTab();
 loadCrawlFromURL();
 loadVisitsFromStorage();
 loadVisitsFromURL();
