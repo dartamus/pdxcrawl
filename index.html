@@ -3,8 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary Meta -->
 <title>PDX Crawl — Portland's Guide to Food & Bar Crawls</title>
+<meta name="description" content="PDX Crawl is Portland's go-to guide for food weeks and bar crawls. Plan your perfect crawl across Portland neighborhoods — Pizza Week, Bar Crawl, and more. Build your route, rate your stops, share with your crew.">
+<meta name="keywords" content="Portland food crawl, Portland bar crawl, Portland pizza week, PDX crawl, Portland restaurants, Portland bars, Portland food week, Portland nightlife, Portland Oregon food guide">
+<meta name="author" content="PDX Crawl">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://pdxcrawl.com/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pdxcrawl.com/">
+<meta property="og:title" content="PDX Crawl — Portland's Guide to Food & Bar Crawls">
+<meta property="og:description" content="Portland's go-to guide for food weeks and bar crawls. Plan your route, rate your stops, share with your crew.">
+<meta property="og:image" content="https://pdxcrawl.com/logo.png">
+<meta property="og:site_name" content="PDX Crawl">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://pdxcrawl.com/">
+<meta name="twitter:title" content="PDX Crawl — Portland's Guide to Food & Bar Crawls">
+<meta name="twitter:description" content="Portland's go-to guide for food weeks and bar crawls. Plan your route, rate your stops, share with your crew.">
+<meta name="twitter:image" content="https://pdxcrawl.com/logo.png">
+
+<!-- Geo -->
+<meta name="geo.region" content="US-OR">
+<meta name="geo.placename" content="Portland, Oregon">
+
+<!-- Favicon -->
 <link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PDX Crawl",
+  "url": "https://pdxcrawl.com",
+  "description": "Portland's go-to guide for food weeks and bar crawls",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://pdxcrawl.com/pizza/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "PDX Crawl",
+  "url": "https://pdxcrawl.com",
+  "logo": "https://pdxcrawl.com/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "pdxcrawl@gmail.com",
+    "contactType": "customer service"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Portland",
+    "addressRegion": "OR",
+    "addressCountry": "US"
+  }
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -449,13 +515,16 @@
 
 <section class="hero">
   <div class="hero-eyebrow">Portland's Crawl Guide</div>
-  <h1>Eat. Drink.<br><em>Explore.</em></h1>
+  <!-- SEO H1 — visually hidden but indexable -->
+  <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">PDX Crawl — Portland Food Weeks &amp; Bar Crawls</h1>
+  <!-- Visual headline -->
+  <div class="hero-display" aria-hidden="true">Eat. Drink.<br><em>Explore.</em></div>
   <p class="hero-sub">Curated food and bar crawls across Portland neighborhoods. Plan your route, track your visits, and share with your crew.</p>
 </section>
 
 
 <!-- ── ACTIVE CRAWLS ─────────────────────────────────── -->
-<div class="crawl-section">
+<section class="crawl-section">
   <div class="section-header">
     <div class="section-header-label label-live">
       <div class="section-dot dot-live"></div>
@@ -485,11 +554,11 @@
     </a>
 
   </div>
-</div>
+</section>
 
 
 <!-- ── COMING SOON ───────────────────────────────────── -->
-<div class="crawl-section">
+<section class="crawl-section">
   <div class="section-header">
     <div class="section-header-label label-soon">
       <div class="section-dot dot-soon"></div>
@@ -591,11 +660,11 @@
     </div>
 
   </div>
-</div>
+</section>
 
 
 <!-- ── PAST CRAWLS ────────────────────────────────────── -->
-<div class="crawl-section">
+<section class="crawl-section">
   <div class="section-header">
     <div class="section-header-label label-past">
       <div class="section-dot dot-past"></div>
@@ -626,7 +695,7 @@
     </a>
 
   </div>
-</div>
+</section>
 
 
 <!-- ── STATS ─────────────────────────────────────────── -->
