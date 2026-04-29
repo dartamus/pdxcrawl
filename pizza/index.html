@@ -4,399 +4,327 @@
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="rnaZCotZt_ZN85ZUtD0aaXcqoJ0MdouNCd8fKrt0sAI">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PDX Crawl — Portland Pizza Week 2026</title>
+<title>PDX Bar Crawl — Portland's Best Bars</title>
 <link rel="icon" type="image/png" href="../logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root { --red:#D9231B; --orange:#F26522; --cream:#FAF3E8; --black:#0F0F0F; --charcoal:#1C1C1C; --gold:#E8A838; --muted:#7A6F62; --green:#2C6B3F; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { background:var(--cream); color:var(--black); font-family:'Space Mono',monospace; min-height:100vh; overflow-x:hidden; }
-  body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1000; opacity:0.5; }
-  header { background:#0F0F0F; color:#FAF3E8; }
-  .home-nav {
-    background: #0a0a0a;
-    border-bottom: 1px solid #1f1f1f;
-    padding: 0.5rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  :root {
+    --red: #D9231B; --orange: #F26522; --cream: #FAF3E8;
+    --black: #0F0F0F; --charcoal: #1C1C1C; --gold: #E8A838;
+    --muted: #7A6F62; --green: #2C6B3F; --blue: #1E6FA8;
   }
-  .home-nav-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(250,243,232,0.45);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); color: var(--black); font-family: 'Space Mono', monospace; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.5; }
+
+  /* HOME NAV */
+  .home-nav { background: #0a0a0a; border-bottom: 1px solid #1f1f1f; padding: 0.5rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+  .home-nav-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,243,232,0.45); text-decoration: none; transition: color 0.15s; }
   .home-nav-link:hover { color: #F26522; }
-  .home-nav-arrow { font-size: 0.75rem; }
-  .home-nav-right {
-    font-size: 0.55rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(250,243,232,0.2);
-  }
-  /* ── HEADER ── */
-  .header-stripe { background:var(--red); height:6px; }
-  .header-inner {
-    padding: 2.5rem 2.5rem 0;
-    display: flex;
-    flex-direction: column;
-  }
-  .header-top-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 0;
-  }
-  .header-left { display:flex; flex-direction:column; justify-content:center; }
-  .header-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    color: var(--orange);
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    opacity: 0.85;
-  }
-  h1 {
-    font-family: 'Bebas Neue', 'Arial Narrow', sans-serif;
-    font-size: clamp(4rem, 11vw, 8rem);
-    line-height: 0.88;
-    color: #FAF3E8;
-    letter-spacing: 0.01em;
-    margin-bottom: 0;
-  }
+  .home-nav-right { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(250,243,232,0.2); }
+
+  /* HEADER */
+  header { background: #0F0F0F; color: #FAF3E8; }
+  .header-stripe { background: var(--blue); height: 6px; }
+  .header-inner { padding: 2.5rem 2.5rem 0; display: flex; flex-direction: column; }
+  .header-top-row { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 0; justify-content: space-between; }
+  .header-left { display: flex; flex-direction: column; justify-content: center; }
+  .header-eyebrow { font-size: 0.6rem; letter-spacing: 0.3em; color: #F26522; text-transform: uppercase; margin-bottom: 0.6rem; opacity: 0.85; }
+  h1 { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: clamp(4rem, 11vw, 8rem); line-height: 0.88; color: #FAF3E8; letter-spacing: 0.01em; }
   h1 span { color: #F26522; }
-  .header-tagline {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: 1.1rem;
-    color: rgba(250,243,232,0.55);
-    margin-top: 0.85rem;
-    letter-spacing: 0.01em;
-  }
-  .header-right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    flex-shrink: 0;
-    padding-top: 0;
-    align-self: center;
-  }
-  .header-logo {
-    width: 160px;
-    height: 160px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 20px rgba(242,101,34,0.2));
-    display: block;
-  }
+  .header-tagline { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.1rem; color: rgba(250,243,232,0.55); margin-top: 0.85rem; }
+  .header-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: center; flex-shrink: 0; align-self: center; }
+  .header-logo { width: 160px; height: 160px; object-fit: contain; filter: drop-shadow(0 0 20px rgba(242,101,34,0.2)); display: block; }
+  .header-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(30,111,168,0.4), transparent); margin: 1.75rem 0 0; }
+  .header-meta-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 2.5rem; background: #0a0a0a; flex-wrap: wrap; gap: 0.5rem; }
+  .meta-pills { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .meta-pill { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(232,168,56,0.8); display: flex; align-items: center; gap: 0.4rem; }
+  .meta-pill::before, .meta-pill::after { display: none !important; content: none !important; }
+  .header-event-badge { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,243,232,0.35); }
 
+  /* SAFETY BANNER */
+  .safety-banner { background: var(--blue); padding: 0.65rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+  .safety-text { font-size: 0.62rem; letter-spacing: 0.06em; color: white; display: flex; align-items: center; gap: 0.6rem; }
+  .safety-icon { font-size: 0.9rem; flex-shrink: 0; }
+  .ride-buttons { display: flex; gap: 0.5rem; }
+  .ride-btn { display: inline-flex; align-items: center; gap: 0.35rem; background: white; color: var(--black); font-family: 'Space Mono', monospace; font-size: 0.55rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.3rem 0.7rem; text-decoration: none; border-radius: 2px; transition: opacity 0.15s; white-space: nowrap; }
+  .ride-btn:hover { opacity: 0.85; }
 
-  .header-divider {
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(242,101,34,0.4), transparent);
-    margin: 1.75rem 0 0;
-  }
-  .header-meta-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.9rem 2.5rem;
-    background: #0a0a0a;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .meta-pills { display:flex; gap:1rem; flex-wrap:wrap; overflow:hidden; }
-  .meta-pill {
-    font-size: 0.58rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: rgba(232,168,56,0.8);
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .meta-pill::before, .meta-pill::after { display:none !important; content:none !important; }
+  /* CRAWL BAR */
+  .crawl-bar { background: #D9231B !important; padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; position: relative; z-index: 10; }
+  .crawl-bar-text { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.2rem; color: #FAF3E8 !important; letter-spacing: 0.05em; }
+  .stat-chip { background: rgba(0,0,0,0.3); color: #FAF3E8 !important; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.25rem 0.6rem; }
+  #total-cost { color: var(--gold); font-weight: 700; }
 
-  .header-event-badge {
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(250,243,232,0.35);
-  }
-  .crawl-bar { background:#D9231B !important; padding:0.75rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; position:relative; z-index:10; }
-  .crawl-bar-text { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.2rem; color:#FAF3E8 !important; letter-spacing:0.05em; }
-  .stat-chip { background:rgba(0,0,0,0.3); color:#FAF3E8 !important; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.25rem 0.6rem; }
-  #total-cost { color:var(--gold); font-weight:700; }
-  .app-shell { display:grid; grid-template-columns:260px 1fr; min-height:calc(100vh - 180px); }
-  .sidebar { background:#1C1C1C !important; color:#FAF3E8 !important; padding:1.5rem 1rem; border-right:3px solid #D9231B; position:sticky; top:0; height:calc(100vh - 130px); overflow-y:auto; }
-  .sidebar-title { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.4rem; letter-spacing:0.05em; color:#F26522 !important; margin-bottom:1rem; border-bottom:1px solid #555; padding-bottom:0.5rem; }
-  .neighborhood-btn { display:flex; width:100%; background:#2a2a2a; border:1px solid #555; color:#FAF3E8 !important; font-family:'Space Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; padding:0.6rem 0.75rem; text-align:left; cursor:pointer; margin-bottom:0.35rem; transition:all 0.15s; justify-content:space-between; align-items:center; }
-  .neighborhood-btn:hover { background:#333; border-color:#F26522; color:#F26522 !important; }
-  .neighborhood-btn.active { background:#D9231B !important; border-color:#D9231B; color:#FAF3E8 !important; }
-  .nbhd-count { background:rgba(255,255,255,0.15); color:#FAF3E8 !important; padding:0.1rem 0.4rem; font-size:0.6rem; border-radius:999px; }
-  .neighborhood-btn.active .nbhd-count { background:rgba(255,255,255,0.2); }
-  .your-crawl { margin-top:1.5rem; border-top:1px solid #333; padding-top:1rem; }
-  .crawl-list { list-style:none; max-height:280px; overflow-y:auto; }
-  .crawl-list li { background:#252525; border-left:3px solid var(--orange); padding:0.5rem 0.6rem; margin-bottom:0.4rem; font-size:0.65rem; display:flex; justify-content:space-between; align-items:flex-start; gap:0.5rem; }
-  .crawl-item-name { font-weight:700; color:#FAF3E8 !important; line-height:1.3; flex:1; }
-  .crawl-item-nbhd { color:#9a8f82 !important; font-size:0.58rem; letter-spacing:0.05em; text-transform:uppercase; }
-  .remove-btn { background:none; border:none; color:var(--red); cursor:pointer; font-size:0.9rem; padding:0; flex-shrink:0; line-height:1; }
-  .empty-crawl { color:#9a8f82 !important; font-size:0.65rem; font-style:italic; text-align:center; padding:1rem 0; }
-  .clear-crawl-btn { display:block; width:100%; background:transparent; border:1px solid #444; color:var(--muted); font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.4rem; cursor:pointer; margin-top:0.5rem; transition:all 0.15s; }
-  .clear-crawl-btn:hover { border-color:var(--red); color:var(--red); }
+  /* APP SHELL */
+  .app-shell { display: grid; grid-template-columns: 260px 1fr; min-height: calc(100vh - 180px); }
+
+  /* SIDEBAR */
+  .sidebar { background: #1C1C1C !important; color: #FAF3E8 !important; padding: 1.5rem 1rem; border-right: 3px solid #D9231B; position: sticky; top: 0; height: calc(100vh - 130px); overflow-y: auto; }
+  .sidebar-title { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; color: #F26522 !important; margin-bottom: 1rem; border-bottom: 1px solid #555; padding-bottom: 0.5rem; }
+  .neighborhood-btn { display: flex; width: 100%; background: #2a2a2a; border: 1px solid #555; color: #FAF3E8 !important; font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.6rem 0.75rem; text-align: left; cursor: pointer; margin-bottom: 0.35rem; transition: all 0.15s; justify-content: space-between; align-items: center; min-height: 44px; }
+  .neighborhood-btn:hover { background: #333; border-color: #F26522; color: #F26522 !important; }
+  .neighborhood-btn.active { background: #D9231B !important; border-color: #D9231B; color: #FAF3E8 !important; }
+  .nbhd-count { background: rgba(255,255,255,0.15); color: #FAF3E8 !important; padding: 0.1rem 0.4rem; font-size: 0.6rem; border-radius: 999px; }
+  .neighborhood-btn.active .nbhd-count { background: rgba(255,255,255,0.2); }
+
+  /* TYPE FILTER */
+  .type-filter-section { margin-top: 1.25rem; border-top: 1px solid #333; padding-top: 1rem; }
+  .type-btn { display: flex; width: 100%; background: #2a2a2a; border: 1px solid #555; color: #FAF3E8 !important; font-family: 'Space Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.5rem 0.75rem; text-align: left; cursor: pointer; margin-bottom: 0.3rem; transition: all 0.15s; justify-content: space-between; align-items: center; min-height: 40px; }
+  .type-btn:hover { background: #333; border-color: #F26522; color: #F26522 !important; }
+  .type-btn.active { background: var(--blue) !important; border-color: var(--blue); color: #FAF3E8 !important; }
+
+  /* YOUR CRAWL */
+  .your-crawl { margin-top: 1.5rem; border-top: 1px solid #333; padding-top: 1rem; }
+  .crawl-list { list-style: none; max-height: 200px; overflow-y: auto; }
+  .crawl-list li { background: #252525; border-left: 3px solid #F26522; padding: 0.5rem 0.6rem; margin-bottom: 0.4rem; font-size: 0.65rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+  .crawl-item-name { font-weight: 700; color: #FAF3E8 !important; line-height: 1.3; flex: 1; }
+  .crawl-item-nbhd { color: #9a8f82 !important; font-size: 0.58rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .remove-btn { background: none; border: none; color: #D9231B; cursor: pointer; font-size: 0.9rem; padding: 0; flex-shrink: 0; line-height: 1; }
+  .empty-crawl { color: #9a8f82 !important; font-size: 0.65rem; font-style: italic; text-align: center; padding: 1rem 0; }
+  .clear-crawl-btn { display: block; width: 100%; background: transparent; border: 1px solid #444; color: var(--muted); font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem; cursor: pointer; margin-top: 0.5rem; transition: all 0.15s; }
+  .clear-crawl-btn:hover { border-color: #D9231B; color: #D9231B; }
+
+  /* MAIN CONTENT */
+  .main-content { padding: 1.5rem 2rem; overflow-y: auto; font-size: 0; }
+  .main-content > * { font-size: 1rem; }
+
   /* TABS */
-  .tab-nav { display:flex; gap:0.5rem; margin-bottom:1.5rem; }
-  .tab-btn { background:#e8e0d4; border:none; font-family:'Space Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); padding:0.55rem 1.2rem; cursor:pointer; transition:all 0.15s; border-radius:2px; }
-  .tab-btn:hover { background:#ddd5c8; color:var(--black); }
-  .tab-btn.active { background:var(--red); color:white; font-weight:700; }
-  .main-content { padding:1.5rem 2rem; overflow-y:auto; font-size:0; }
-  .main-content > * { font-size:1rem; }
+  .tab-nav { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .tab-btn { background: #e8e0d4; border: none; font-family: 'Space Mono', monospace; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); padding: 0.55rem 1.2rem; cursor: pointer; transition: all 0.15s; border-radius: 2px; min-height: 44px; }
+  .tab-btn:hover { background: #ddd5c8; color: var(--black); }
+  .tab-btn.active { background: #D9231B; color: white; font-weight: 700; }
 
-  .search-bar { display:flex; gap:0.75rem; margin-bottom:1.5rem; }
-  .search-input { flex:1; background:white; border:2px solid var(--black); font-family:'Space Mono',monospace; font-size:0.8rem; padding:0.6rem 0.9rem; outline:none; transition:border-color 0.15s; }
-  .search-input:focus { border-color:var(--red); }
-  .search-input::placeholder { color:#aaa; }
-  .filter-tags { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:1.5rem; }
-  .filter-tag { background:white; border:1.5px solid #ccc; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.08em; padding:0.3rem 0.6rem; cursor:pointer; transition:all 0.15s; color:var(--black); }
-  .filter-tag:hover,.filter-tag.active { background:var(--black); border-color:var(--black); color:var(--cream); }
-  .section-header { display:flex; align-items:baseline; gap:0.75rem; margin-bottom:1rem; }
-  .section-header h2 { font-family:'Bebas Neue',Impact,sans-serif; font-size:2rem; letter-spacing:0.03em; line-height:1; }
-  .section-count { font-size:0.65rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase; }
-  .pizza-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
-  /* CARDS */
-  .pizza-card { background:white; border:2px solid transparent; border-bottom:4px solid var(--black); padding:1rem; cursor:pointer; transition:all 0.15s; position:relative; overflow:hidden; }
-  .pizza-card:hover { border-color:var(--red); transform:translateY(-2px); box-shadow:4px 4px 0 var(--red); }
-  .pizza-card.in-crawl { border-color:var(--green); box-shadow:4px 4px 0 var(--green); background:#f5fdf7; }
-  .pizza-card.in-crawl::after { content:'✓ IN CRAWL'; position:absolute; top:0.6rem; right:0.75rem; background:var(--green); color:white; font-size:0.55rem; letter-spacing:0.1em; padding:0.2rem 0.4rem; font-family:'Space Mono',monospace; font-weight:700; }
-  .pizza-card.is-rated { border-left:4px solid var(--gold); }
-  .card-score-badge { display:inline-block; background:var(--gold); color:var(--black); font-size:0.6rem; font-weight:700; letter-spacing:0.08em; padding:0.15rem 0.5rem; font-family:'Space Mono',monospace; text-transform:uppercase; margin-bottom:0.4rem; }
-  .card-neighborhood { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:0.25rem; }
-  .card-name { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.3rem; letter-spacing:0.03em; line-height:1.1; margin-bottom:0.2rem; color:var(--black); }
-  .card-address { font-size:0.6rem; color:var(--muted); margin-bottom:0.65rem; }
-  .card-pie-name { font-family:'Instrument Serif',serif; font-style:italic; font-size:0.95rem; color:var(--charcoal); margin-bottom:0.4rem; line-height:1.3; }
-  .card-toppings { font-size:0.62rem; color:var(--muted); line-height:1.5; margin-bottom:0.75rem; }
-  .card-footer { display:flex; justify-content:space-between; align-items:center; border-top:1px solid #eee; padding-top:0.6rem; flex-wrap:wrap; gap:0.3rem; }
-  .card-price { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.1rem; color:var(--green); letter-spacing:0.05em; }
-  .card-tags { display:flex; gap:0.3rem; flex-wrap:wrap; }
-  .tag { font-size:0.55rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.15rem 0.4rem; border:1px solid; }
-  .tag-veg { border-color:var(--green); color:var(--green); }
-  .tag-vegan { border-color:#6aab6a; color:#6aab6a; background:#f0fff0; }
-  .tag-spicy { border-color:var(--red); color:var(--red); }
-  .tag-pork { border-color:#b06030; color:#b06030; }
-  .add-btn { background:var(--black); color:var(--cream); border:none; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; padding:0.35rem 0.65rem; cursor:pointer; transition:background 0.15s; }
-  .add-btn:hover { background:var(--red); }
-  .add-btn.added { background:var(--green); }
-  .rate-btn { background:var(--charcoal); color:var(--cream); border:none; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; padding:0.35rem 0.65rem; cursor:pointer; transition:background 0.15s; }
-  .rate-btn:hover { background:var(--gold); color:var(--black); }
-  .rate-btn.has-score { background:var(--gold); color:var(--black); font-weight:700; }
-  .no-results { text-align:center; padding:3rem 1rem; color:var(--muted); }
-  .no-results .emoji { font-size:3rem; margin-bottom:1rem; }
-  .no-results p { font-size:0.8rem; font-style:italic; }
+  /* SEARCH & FILTERS */
+  .search-bar { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .search-input { flex: 1; background: white; border: 2px solid var(--black); font-family: 'Space Mono', monospace; font-size: 0.8rem; padding: 0.6rem 0.9rem; outline: none; transition: border-color 0.15s; min-height: 44px; }
+  .search-input:focus { border-color: #D9231B; }
+  .search-input::placeholder { color: #aaa; }
+  .filter-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .filter-tag { background: white; border: 1.5px solid #ccc; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.3rem 0.6rem; cursor: pointer; transition: all 0.15s; color: var(--black); min-height: 40px; display: flex; align-items: center; }
+  .filter-tag:hover, .filter-tag.active { background: var(--black); border-color: var(--black); color: var(--cream); }
+
+  /* SECTION HEADER */
+  .section-header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1rem; }
+  .section-header h2 { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 2rem; letter-spacing: 0.03em; line-height: 1; }
+  .section-count { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* BAR CARDS */
+  .bar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+  .bar-card { background: white; border: 2px solid transparent; border-bottom: 4px solid var(--black); padding: 1rem; cursor: pointer; transition: all 0.15s ease; position: relative; overflow: hidden; }
+  .bar-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 4px 4px 0 var(--blue); }
+  .bar-card.in-crawl { border-color: var(--green); box-shadow: 4px 4px 0 var(--green); background: #f5fdf7; }
+  .bar-card.in-crawl::after { content: '✓ IN CRAWL'; position: absolute; top: 0.6rem; right: 0.75rem; background: var(--green); color: white; font-size: 0.55rem; letter-spacing: 0.1em; padding: 0.2rem 0.4rem; font-family: 'Space Mono', monospace; font-weight: 700; }
+  .bar-card.is-rated { border-left: 4px solid var(--gold); }
+  .card-score-badge { display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; padding: 0.15rem 0.5rem; font-family: 'Space Mono', monospace; text-transform: uppercase; margin-bottom: 0.4rem; color: white; }
+  .card-neighborhood { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: #D9231B; font-weight: 700; margin-bottom: 0.25rem; }
+  .card-name { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.3rem; letter-spacing: 0.03em; line-height: 1.1; margin-bottom: 0.2rem; color: var(--black); }
+  .card-address { font-size: 0.6rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .card-vibe { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.95rem; color: var(--charcoal); margin-bottom: 0.4rem; line-height: 1.3; }
+  .card-desc { font-size: 0.62rem; color: var(--muted); line-height: 1.5; margin-bottom: 0.75rem; }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #eee; padding-top: 0.6rem; flex-wrap: wrap; gap: 0.3rem; }
+  .card-type-badge { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.5rem; border: 1px solid; }
+  .type-dive { border-color: #8B4513; color: #8B4513; }
+  .type-cocktail { border-color: var(--blue); color: var(--blue); }
+  .type-brewery { border-color: var(--green); color: var(--green); }
+  .type-whiskey { border-color: #8B6914; color: #8B6914; }
+  .type-sports { border-color: var(--muted); color: var(--muted); }
+  .type-speakeasy { border-color: #7b2d8b; color: #7b2d8b; }
+  .card-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+  .tag { font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.15rem 0.4rem; border: 1px solid; }
+  .tag-happy-hour { border-color: var(--orange); color: var(--orange); }
+  .tag-outdoor { border-color: var(--green); color: var(--green); }
+  .tag-live-music { border-color: #9b59b6; color: #9b59b6; }
+  .tag-late-night { border-color: #333; color: #555; }
+  .tag-food { border-color: var(--muted); color: var(--muted); }
+  .add-btn { background: var(--black); color: var(--cream); border: none; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.35rem 0.65rem; cursor: pointer; transition: background 0.15s; min-height: 40px; }
+  .add-btn:hover { background: var(--blue); }
+  .add-btn.added { background: var(--green); }
+  .rate-btn { background: #555; color: var(--cream); border: none; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.35rem 0.65rem; cursor: pointer; transition: background 0.15s; min-height: 40px; }
+  .rate-btn:hover { background: var(--gold); color: var(--black); }
+  .rate-btn.rated { background: var(--gold); color: var(--black); font-weight: 700; }
+
+  /* CARD META INFO */
+  .card-hours { font-size: 0.58rem; color: var(--muted); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.35rem; }
+  .card-happy-hour { font-size: 0.55rem; color: #2C6B3F; font-weight: 700; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.35rem; }
+  .card-price { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.1rem; color: #2C6B3F; letter-spacing: 0.05em; }
+  .card-reservation { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.55rem; background: #fff3cd; color: #856404; border: 1px solid #ffc107; padding: 0.15rem 0.45rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .card-website { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.55rem; color: var(--blue); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .card-website:hover { border-bottom-color: var(--blue); }
+
+  /* PACE YOURSELF COUNTER */
+  .pace-counter { background: var(--black); color: var(--cream); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-top: 2px solid var(--blue); display: none; }
+  .pace-counter.visible { display: flex; }
+  .pace-text { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; }
+  .pace-tip { font-size: 0.58rem; color: rgba(250,243,232,0.5); font-style: italic; }
+  .pace-drinks { color: var(--gold); font-weight: 700; }
+
+  /* 21+ BANNER */
+  .age-banner { background: #1a1a1a; border-bottom: 1px solid #333; padding: 0.4rem 2rem; text-align: center; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(250,243,232,0.35); }
+
+  /* NO RESULTS */
+  .no-results { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+  .no-results .emoji { font-size: 3rem; margin-bottom: 1rem; }
+  .no-results p { font-size: 0.8rem; font-style: italic; }
+
   /* RATING POPUP */
-  .popup-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center; }
-  .popup-overlay.visible { display:flex; }
-  .popup { background:var(--cream); padding:1.5rem; width:90%; max-width:420px; border-bottom:4px solid var(--black); position:relative; }
-  .popup-close { position:absolute; top:0.75rem; right:0.75rem; background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--muted); }
-  .popup-close:hover { color:var(--red); }
-  .popup-restaurant { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.5rem; color:var(--black); line-height:1.1; margin-bottom:0.2rem; }
-  .popup-slice { font-family:'Instrument Serif',serif; font-style:italic; font-size:0.9rem; color:var(--muted); margin-bottom:1.25rem; }
-  .popup-label { font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--muted); margin-bottom:0.5rem; }
-  .score-buttons { display:flex; gap:0.3rem; flex-wrap:wrap; margin-bottom:1.25rem; }
-  .score-btn { width:2.4rem; height:2.4rem; background:white; border:2px solid #ddd; font-family:'Space Mono',monospace; font-size:0.75rem; font-weight:700; cursor:pointer; transition:all 0.12s; color:var(--black); }
-  .score-btn:hover { border-color:var(--orange); background:var(--orange); color:white; }
-  .score-btn.selected { background:var(--red); border-color:var(--red); color:white; }
-  .popup-note { width:100%; background:white; border:2px solid #ddd; font-family:'Space Mono',monospace; font-size:0.65rem; padding:0.5rem; resize:vertical; min-height:64px; outline:none; transition:border-color 0.15s; color:var(--black); margin-bottom:1rem; }
-  .popup-note:focus { border-color:var(--red); }
-  .popup-note::placeholder { color:#bbb; }
-  .popup-save { width:100%; background:var(--red); color:white; border:none; font-family:'Space Mono',monospace; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; padding:0.65rem; cursor:pointer; transition:background 0.15s; }
-  .popup-save:hover { background:#b01a14; }
-  /* ROUTE PANEL */
-  .route-panel { background:var(--black); color:var(--cream); padding:1.5rem 2rem; display:none; }
-  .route-panel.visible { display:block; }
-  .route-panel h2 { font-family:'Bebas Neue',Impact,sans-serif; font-size:2rem; color:var(--orange); margin-bottom:0.5rem; }
-  .route-stops { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem; }
-  .route-stop { background:#252525; border-left:3px solid var(--orange); padding:0.5rem 0.75rem; font-size:0.65rem; }
-  .route-stop .stop-num { color:var(--orange); font-weight:700; margin-bottom:0.15rem; font-size:0.55rem; letter-spacing:0.1em; text-transform:uppercase; }
-  .route-stop .stop-name { font-weight:700; margin-bottom:0.1rem; }
-  .route-stop .stop-slice { color:var(--muted); font-style:italic; }
-  .route-panel-btns { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1rem; }
-  .map-link-btn { display:inline-block; background:var(--orange); color:var(--black); font-family:'Space Mono',monospace; font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.5rem 1rem; text-decoration:none; border:2px solid transparent; cursor:pointer; transition:all 0.15s; }
-  .map-link-btn:hover { background:transparent; border-color:var(--orange); color:var(--orange); }
-  .share-btn { display:inline-flex; align-items:center; gap:0.4rem; background:transparent; border:1.5px solid var(--gold); color:var(--gold); font-family:'Space Mono',monospace; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; padding:0.5rem 1rem; cursor:pointer; transition:all 0.15s; }
-  .share-btn:hover { background:var(--gold); color:var(--black); }
-  /* VISITS TAB */
-  .visits-summary { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem; padding:1rem 1.25rem; background:var(--black); color:var(--cream); }
-  .summary-stat { text-align:center; }
-  .summary-num { font-family:'Bebas Neue',Impact,sans-serif; font-size:2rem; color:var(--orange); line-height:1; }
-  .summary-label { font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); }
-  .visits-share-btn { display:inline-flex; align-items:center; gap:0.4rem; background:transparent; border:1.5px solid var(--gold); color:var(--gold); font-family:'Space Mono',monospace; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; padding:0.5rem 1rem; cursor:pointer; transition:all 0.15s; margin-bottom:1.5rem; }
-  .visits-share-btn:hover { background:var(--gold); color:var(--black); }
-  .visits-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1rem; margin-bottom:1.5rem; }
-  .visit-card { background:white; border:2px solid #eee; border-bottom:4px solid var(--black); padding:1rem; position:relative; }
-  .visit-score-badge { position:absolute; top:0.75rem; right:0.75rem; background:var(--gold); color:var(--black); font-family:'Bebas Neue',Impact,sans-serif; font-size:1.4rem; width:2.2rem; height:2.2rem; display:flex; align-items:center; justify-content:center; }
-  .visit-card-nbhd { font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--red); font-weight:700; margin-bottom:0.2rem; }
-  .visit-card-name { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.2rem; color:var(--black); line-height:1.1; margin-bottom:0.1rem; padding-right:2.5rem; }
-  .visit-card-slice { font-family:'Instrument Serif',serif; font-style:italic; font-size:0.85rem; color:var(--muted); margin-bottom:0.6rem; }
-  .visit-score-bar { display:flex; gap:0.2rem; margin-bottom:0.6rem; }
-  .score-pip { height:6px; flex:1; background:#eee; transition:background 0.1s; cursor:pointer; }
-  .score-pip.filled { background:#E8A838 !important; }
-  .score-pip:hover { background:#F26522 !important; }
-  .visit-note-display { font-size:0.62rem; color:var(--muted); font-style:italic; line-height:1.5; margin-bottom:0.5rem; }
-  .visit-edit-btn { background:none; border:1px solid #ddd; color:var(--muted); font-family:'Space Mono',monospace; font-size:0.55rem; text-transform:uppercase; letter-spacing:0.08em; padding:0.2rem 0.5rem; cursor:pointer; transition:all 0.12s; }
-  .visit-edit-btn:hover { border-color:var(--orange); color:var(--orange); }
-  .visits-empty { text-align:center; padding:3rem 1rem; color:var(--muted); font-style:italic; font-size:0.8rem; }
-  /* SUGGESTED ROUTES */
-  .routes-section { background:#111111 !important; padding:1.5rem 2rem; border-top:4px solid #F26522; }
-  .routes-top { display:flex; align-items:baseline; gap:1rem; margin-bottom:1.25rem; flex-wrap:wrap; }
-  .routes-top h2 { font-family:'Bebas Neue',Impact,sans-serif; font-size:2rem; color:#F26522 !important; letter-spacing:0.03em; }
-  .routes-top p { font-size:0.65rem; color:#AAA; font-style:italic; }
-  .routes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1rem; }
-  .route-card { background:#2a2a2a !important; border:1.5px solid #444; border-top:3px solid var(--red); padding:1rem; transition:border-color 0.15s; }
-  .route-card:hover { border-color:#555; border-top-color:var(--orange); }
-  .route-card-nbhd { font-size:0.58rem; color:var(--orange); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:0.15rem; font-weight:700; }
-  .route-card-name { font-family:'Bebas Neue',Impact,sans-serif; font-size:1.3rem; color:var(--cream); letter-spacing:0.03em; line-height:1.1; margin-bottom:0.5rem; }
-  .route-meta { display:flex; gap:0.4rem; flex-wrap:wrap; margin-bottom:0.65rem; }
-  .route-badge { font-size:0.58rem; letter-spacing:0.08em; text-transform:uppercase; padding:0.2rem 0.45rem; border:1px solid #555; color:#CCC; }
-  .route-badge.badge-dist { border-color:var(--gold); color:var(--gold); }
-  .route-badge.badge-cost { border-color:#6dbb8a; color:#6dbb8a; }
-  .route-desc { font-family:'Instrument Serif',serif; font-style:italic; font-size:0.85rem; color:#BBB; margin-bottom:0.75rem; line-height:1.5; }
-  .route-stops-list { list-style:none; margin-bottom:0.75rem; }
-  .route-stops-list li { display:flex; gap:0.5rem; align-items:flex-start; padding:0.4rem 0; border-bottom:1px solid #333; font-size:0.62rem; cursor:pointer; transition:background 0.12s; }
-  .route-stops-list li:last-child { border-bottom:none; }
-  .route-stops-list li:hover { background:#333; }
-  .route-stops-list li.is-start { background:#1e1a0e; }
-  .stop-num-dot { background:var(--red); color:white; font-size:0.55rem; font-weight:700; min-width:1.2rem; height:1.2rem; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:0.1rem; }
-  .stop-info { flex:1; }
-  .stop-info-name { color:var(--cream); font-weight:700; line-height:1.3; }
-  .stop-info-slice { color:#888; font-style:italic; font-size:0.58rem; }
-  .start-hint { flex-shrink:0; margin-top:0.15rem; font-size:0.55rem; text-transform:uppercase; letter-spacing:0.06em; }
-  .route-actions { display:flex; gap:0.5rem; margin-top:0.5rem; }
-  .route-load-btn { flex:1; background:var(--red); color:var(--cream); border:none; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.1em; padding:0.5rem; cursor:pointer; transition:background 0.15s; font-weight:700; }
-  .route-load-btn:hover { background:#b01a14; }
-  .route-map-btn { background:transparent; border:1px solid #555; color:#AAA; font-family:'Space Mono',monospace; font-size:0.6rem; text-transform:uppercase; letter-spacing:0.08em; padding:0.5rem 0.75rem; cursor:pointer; text-decoration:none; transition:all 0.15s; display:inline-flex; align-items:center; }
-  .route-map-btn:hover { border-color:var(--orange); color:var(--orange); }
-  /* TOAST */
-  .share-toast { display:none; position:fixed; bottom:2rem; left:50%; transform:translateX(-50%); background:var(--green); color:white; font-family:'Space Mono',monospace; font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; padding:0.75rem 1.5rem; z-index:9999; box-shadow:0 4px 12px rgba(0,0,0,0.3); white-space:nowrap; }
-  .share-toast.visible { display:block; }
+  .popup-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 2000; align-items: center; justify-content: center; }
+  .popup-overlay.visible { display: flex; }
+  .popup { background: var(--cream); padding: 1.5rem; width: 90%; max-width: 420px; border-bottom: 4px solid var(--black); position: relative; }
+  .popup-close { position: absolute; top: 0.75rem; right: 0.75rem; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--muted); }
+  .popup-close:hover { color: var(--red); }
+  .popup-bar-name { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.5rem; color: var(--black); line-height: 1.1; margin-bottom: 0.2rem; }
+  .popup-vibe { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.9rem; color: var(--muted); margin-bottom: 1.25rem; }
+  .popup-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
+  .score-buttons { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .score-btn { width: 2.4rem; height: 2.4rem; background: white; border: 2px solid #ddd; font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: all 0.12s; color: var(--black); }
+  .score-btn:hover { border-color: var(--orange); background: var(--orange); color: white; }
+  .score-btn.selected { background: var(--blue); border-color: var(--blue); color: white; }
+  .popup-note { width: 100%; background: white; border: 2px solid #ddd; font-family: 'Space Mono', monospace; font-size: 0.65rem; padding: 0.5rem; resize: vertical; min-height: 64px; outline: none; transition: border-color 0.15s; color: var(--black); margin-bottom: 1rem; }
+  .popup-note:focus { border-color: var(--blue); }
+  .popup-note::placeholder { color: #bbb; }
+  .popup-save { width: 100%; background: var(--blue); color: white; border: none; font-family: 'Space Mono', monospace; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.65rem; cursor: pointer; transition: background 0.15s; }
+  .popup-save:hover { background: #185d8e; }
 
-  /* ── MOBILE FIRST: 480px and below (phones) ── */
+  /* ROUTE PANEL */
+  .route-panel { background: var(--black); color: var(--cream); padding: 1.5rem 2rem; display: none; }
+  .route-panel.visible { display: block; }
+  .route-panel h2 { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 2rem; color: var(--orange); margin-bottom: 0.5rem; }
+  .route-stops { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+  .route-stop { background: #252525; border-left: 3px solid var(--blue); padding: 0.5rem 0.75rem; font-size: 0.65rem; }
+  .route-stop .stop-num { color: var(--blue); font-weight: 700; margin-bottom: 0.15rem; font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .route-stop .stop-name { font-weight: 700; margin-bottom: 0.1rem; }
+  .route-stop .stop-vibe { color: var(--muted); font-style: italic; }
+  .route-panel-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; align-items: center; }
+  .map-link-btn { display: inline-block; background: var(--orange); color: var(--black); font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.5rem 1rem; text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: all 0.15s; min-height: 44px; display: inline-flex; align-items: center; }
+  .map-link-btn:hover { background: transparent; border-color: var(--orange); color: var(--orange); }
+  .share-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: transparent; border: 1.5px solid var(--gold); color: var(--gold); font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.15s; min-height: 44px; }
+  .share-btn:hover { background: var(--gold); color: var(--black); }
+  .safety-reminder { background: rgba(30,111,168,0.15); border-left: 3px solid var(--blue); padding: 0.6rem 0.75rem; font-size: 0.62rem; color: rgba(250,243,232,0.7); margin-top: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+
+  /* VISITS TAB */
+  .visits-summary { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; padding: 1rem 1.25rem; background: var(--black); color: var(--cream); }
+  .summary-stat { text-align: center; }
+  .summary-num { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 2rem; color: var(--orange); line-height: 1; }
+  .summary-label { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .visits-share-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: transparent; border: 1.5px solid var(--gold); color: var(--gold); font-family: 'Space Mono', monospace; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem 1rem; cursor: pointer; transition: all 0.15s; margin-bottom: 1.5rem; }
+  .visits-share-btn:hover { background: var(--gold); color: var(--black); }
+  .visits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .visit-card { background: white; border: 2px solid #eee; border-bottom: 4px solid var(--black); padding: 1rem; position: relative; }
+  .visit-score-badge { position: absolute; top: 0.75rem; right: 0.75rem; color: white; font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.4rem; width: 2.2rem; height: 2.2rem; display: flex; align-items: center; justify-content: center; }
+  .visit-card-nbhd { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 0.2rem; }
+  .visit-card-name { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.2rem; color: var(--black); line-height: 1.1; margin-bottom: 0.1rem; padding-right: 2.5rem; }
+  .visit-card-vibe { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.6rem; }
+  .visit-score-bar { display: flex; gap: 0.2rem; margin-bottom: 0.6rem; }
+  .score-pip { height: 6px; flex: 1; background: #eee; transition: background 0.1s; cursor: pointer; }
+  .visit-note-display { font-size: 0.62rem; color: var(--muted); font-style: italic; line-height: 1.5; margin-bottom: 0.5rem; }
+  .visit-edit-btn { background: none; border: 1px solid #ddd; color: var(--muted); font-family: 'Space Mono', monospace; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.2rem 0.5rem; cursor: pointer; transition: all 0.12s; }
+  .visit-edit-btn:hover { border-color: var(--blue); color: var(--blue); }
+  .visits-empty { text-align: center; padding: 3rem 1rem; color: var(--muted); font-style: italic; font-size: 0.8rem; }
+
+  /* SUGGESTED ROUTES */
+  .routes-section { background: #111111 !important; padding: 1.5rem 2rem; border-top: 4px solid var(--blue); }
+  .routes-top { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .routes-top h2 { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 2rem; color: var(--blue); letter-spacing: 0.03em; }
+  .routes-top p { font-size: 0.65rem; color: #AAA; font-style: italic; }
+  .routes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+  .route-card { background: #2a2a2a !important; border: 1.5px solid #444; border-top: 3px solid var(--red); padding: 1rem; transition: border-color 0.15s; }
+  .route-card:hover { border-color: #555; border-top-color: var(--blue); }
+  .route-card-nbhd { font-size: 0.58rem; color: var(--blue); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.15rem; font-weight: 700; }
+  .route-card-name { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.3rem; color: var(--cream); letter-spacing: 0.03em; line-height: 1.1; margin-bottom: 0.5rem; }
+  .route-meta { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.65rem; }
+  .route-badge { font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.45rem; border: 1px solid #555; color: #CCC; }
+  .route-badge.badge-dist { border-color: var(--gold); color: var(--gold); }
+  .route-badge.badge-bars { border-color: var(--blue); color: var(--blue); }
+  .route-desc { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.85rem; color: #BBB; margin-bottom: 0.75rem; line-height: 1.5; }
+  .route-stops-list { list-style: none; margin-bottom: 0.75rem; }
+  .route-stops-list li { display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.4rem 0; border-bottom: 1px solid #333; font-size: 0.62rem; cursor: pointer; transition: background 0.12s; }
+  .route-stops-list li:last-child { border-bottom: none; }
+  .route-stops-list li:hover { background: #333; }
+  .route-stops-list li.is-start { background: #1e1a0e; }
+  .stop-num-dot { background: var(--blue); color: white; font-size: 0.55rem; font-weight: 700; min-width: 1.2rem; height: 1.2rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 0.1rem; }
+  .stop-info { flex: 1; }
+  .stop-info-name { color: var(--cream); font-weight: 700; line-height: 1.3; }
+  .stop-info-vibe { color: #888; font-style: italic; font-size: 0.58rem; }
+  .start-hint { flex-shrink: 0; margin-top: 0.15rem; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .route-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+  .route-load-btn { flex: 1; background: var(--blue); color: var(--cream); border: none; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.5rem; cursor: pointer; transition: background 0.15s; font-weight: 700; min-height: 44px; }
+  .route-load-btn:hover { background: #185d8e; }
+  .route-map-btn { background: transparent; border: 1px solid #555; color: #AAA; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.5rem 0.75rem; cursor: pointer; text-decoration: none; transition: all 0.15s; display: inline-flex; align-items: center; }
+  .route-map-btn:hover { border-color: var(--blue); color: var(--blue); }
+
+  /* TOAST */
+  .share-toast { display: none; position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: var(--green); color: white; font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.5rem; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.3); white-space: nowrap; }
+  .share-toast.visible { display: block; }
+
+  /* FOOTER */
+  footer { background: #0F0F0F; color: #FAF3E8; padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; border-top: 4px solid var(--blue); }
+  .footer-left { display: flex; align-items: center; gap: 1rem; }
+  .footer-left img { width: 56px; height: 56px; object-fit: contain; }
+  .footer-brand { font-family: 'Bebas Neue', 'Arial Narrow', sans-serif; font-size: 1.5rem; letter-spacing: 0.05em; color: #E8A838; line-height: 1; }
+  .footer-tagline { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 0.75rem; color: rgba(250,243,232,0.4); margin-top: 0.1rem; }
+  .footer-right { font-size: 0.6rem; color: #555; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; line-height: 1.8; }
+
+  /* RESPONSIVE */
   @media (max-width: 480px) {
     .app-shell { grid-template-columns: 1fr; }
     .sidebar { position: static; height: auto; max-height: none; border-right: none; border-bottom: 3px solid #D9231B; padding: 1rem; }
-    .main-content { padding: 0.75rem; font-size: 0; }
-    .main-content > * { font-size: 1rem; }
+    .main-content { padding: 0.75rem; }
     h1 { font-size: 2.8rem; }
     .header-inner { padding: 1.25rem 1rem 1rem; }
-    .header-top-row { gap: 0.75rem; }
     .header-logo { width: 80px; height: 80px; }
-    .header-tagline { font-size: 0.9rem; margin-top: 0.5rem; }
     .header-meta-bar { padding: 0.7rem 1rem; }
-    .meta-pills { gap: 0.6rem; }
-    .meta-pill { font-size: 0.55rem; }
+    .safety-banner { padding: 0.6rem 1rem; flex-direction: column; align-items: flex-start; }
     .crawl-bar { padding: 0.6rem 1rem; }
-    .crawl-bar-text { font-size: 1rem; }
     .stat-chip { display: none; }
-    .neighborhood-btn { font-size: 0.65rem; padding: 0.7rem 0.75rem; min-height: 44px; }
-    .your-crawl { margin-top: 1rem; }
-    .crawl-list { max-height: 200px; }
-    .tab-btn { padding: 0.65rem 0.9rem; font-size: 0.65rem; min-height: 44px; }
-    .search-input { font-size: 0.85rem; padding: 0.75rem 0.9rem; min-height: 44px; }
-    .filter-tags { gap: 0.35rem; }
-    .filter-tag { padding: 0.45rem 0.6rem; font-size: 0.58rem; min-height: 40px; }
-    .section-header h2 { font-size: 1.6rem; }
-    .pizza-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-    .pizza-card { padding: 0.9rem; }
-    .card-name { font-size: 1.2rem; }
-    .card-toppings { font-size: 0.6rem; }
-    .card-footer { gap: 0.4rem; }
-    .add-btn, .rate-btn { padding: 0.5rem 0.75rem; min-height: 40px; font-size: 0.58rem; }
+    .bar-grid { grid-template-columns: 1fr; gap: 0.75rem; }
     .route-panel { padding: 1rem; }
-    .route-panel h2 { font-size: 1.5rem; }
-    .route-stops { gap: 0.4rem; }
-    .route-stop { padding: 0.5rem 0.6rem; }
     .route-panel-btns { flex-direction: column; }
-    .map-link-btn, .share-btn { width: 100%; justify-content: center; text-align: center; min-height: 44px; padding: 0.65rem 1rem; }
+    .map-link-btn, .share-btn { width: 100%; justify-content: center; }
     .routes-section { padding: 1rem; }
     .routes-grid { grid-template-columns: 1fr; }
-    .route-load-btn { min-height: 44px; font-size: 0.65rem; }
     .popup { width: 95vw; padding: 1.25rem; }
-    .score-buttons { gap: 0.25rem; }
-    .score-btn { width: 2.2rem; height: 2.2rem; font-size: 0.7rem; }
-    .home-nav { padding: 0.5rem 1rem; }
+    .score-btn { width: 2.2rem; height: 2.2rem; }
     .visits-grid { grid-template-columns: 1fr; }
-    .visits-summary { gap: 1rem; padding: 0.75rem 1rem; }
-    .summary-num { font-size: 1.6rem; }
     footer { padding: 1.25rem 1rem; flex-direction: column; align-items: flex-start; }
+    .home-nav { padding: 0.5rem 1rem; }
   }
-
-  /* ── TABLET: 481px – 768px ── */
   @media (min-width: 481px) and (max-width: 768px) {
     .app-shell { grid-template-columns: 1fr; }
-    .sidebar { position: static; height: auto; max-height: none; border-right: none; border-bottom: 3px solid #D9231B; padding: 1.25rem 1.25rem; }
-    .main-content { padding: 1.25rem; font-size: 0; }
-    .main-content > * { font-size: 1rem; }
-    h1 { font-size: 3.5rem; }
-    .header-inner { padding: 1.5rem 1.5rem 1.25rem; }
-    .header-logo { width: 90px; height: 90px; }
-    .header-meta-bar { padding: 0.8rem 1.5rem; }
-    .crawl-bar { padding: 0.7rem 1.25rem; }
-    .stat-chip { font-size: 0.58rem; }
-    .neighborhood-btn { min-height: 44px; }
-    .tab-btn { min-height: 44px; padding: 0.65rem 1rem; }
-    .search-input { min-height: 44px; }
-    .filter-tag { min-height: 40px; padding: 0.45rem 0.65rem; }
-    .pizza-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0.85rem; }
-    .add-btn, .rate-btn { min-height: 40px; }
+    .sidebar { position: static; height: auto; border-right: none; border-bottom: 3px solid #D9231B; }
+    .main-content { padding: 1.25rem; }
+    .bar-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
     .route-panel-btns { flex-direction: column; }
-    .map-link-btn, .share-btn { width: 100%; justify-content: center; min-height: 44px; }
-    .routes-section { padding: 1.25rem; }
+    .map-link-btn, .share-btn { width: 100%; justify-content: center; }
     .routes-grid { grid-template-columns: 1fr; }
     .popup { width: 88vw; }
     .visits-grid { grid-template-columns: 1fr; }
-    footer { padding: 1.5rem 1.25rem; }
   }
-
-  /* ── SMALL DESKTOP: 769px – 1024px ── */
   @media (min-width: 769px) and (max-width: 1024px) {
     .app-shell { grid-template-columns: 220px 1fr; }
     .sidebar { height: calc(100vh - 140px); }
     .main-content { padding: 1.25rem 1.5rem; }
-    .pizza-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .bar-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
     .routes-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
     .header-logo { width: 120px; height: 120px; }
-  }
-
-  /* ── LARGE DESKTOP: 1025px+ ── */
-  @media (min-width: 1025px) {
-    .pizza-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
-    .routes-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
   }
 </style>
 </head>
 <body>
 
+<div class="home-nav">
+  <a href="../" class="home-nav-link"><span>←</span> PDX Crawl</a>
+  <span class="home-nav-right">pdxcrawl.com</span>
+</div>
+
 <header>
-  <div class="home-nav">
-    <a href="../" class="home-nav-link">
-      <span class="home-nav-arrow">←</span> PDX Crawl
-    </a>
-    <span class="home-nav-right">pdxcrawl.com</span>
-  </div>
   <div class="header-stripe"></div>
   <div class="header-inner">
     <div class="header-top-row">
       <div class="header-left">
-        <div class="header-eyebrow">Portland Mercury Presents</div>
-        <h1>Portland<br><span>Pizza</span><br>Week</h1>
-        <div class="header-tagline">Your crew. Your crawl. Your Portland.</div>
+        <div class="header-eyebrow">PDX Crawl Presents · Year Round</div>
+        <h1>PDX<br><span>Bar</span><br>Crawl</h1>
+        <div class="header-tagline">Portland's best bars. Your crew. No agenda.</div>
       </div>
       <div class="header-right">
         <img src="../logo.png" alt="PDX Crawl" class="header-logo">
@@ -406,28 +334,45 @@
   </div>
   <div class="header-meta-bar">
     <div class="meta-pills">
-      <div class="meta-pill">🍕 70 Locations</div>
-      <div class="meta-pill">💰 $4 Per Slice</div>
-      <div class="meta-pill">🗺 Walk Your Neighborhood</div>
+      <div class="meta-pill">🍺 51 Bars</div>
+      <div class="meta-pill">🍸 Dive · Cocktail · Brewery · Whiskey</div>
+      <div class="meta-pill">🗺 6 Neighborhoods</div>
     </div>
-    <div class="header-event-badge">April 20–26, 2026</div>
+    <div class="header-event-badge">Year Round · Always On</div>
   </div>
 </header>
 
+<div class="safety-banner">
+  <div class="safety-text">
+    <span class="safety-icon">🚗</span>
+    <span>Drink responsibly — plan your ride home <strong>before</strong> your first drink, not after your last.</span>
+  </div>
+  <div class="ride-buttons">
+    <a class="ride-btn" href="https://m.uber.com/looking" target="_blank">🚖 Uber</a>
+    <a class="ride-btn" href="https://www.lyft.com/ride" target="_blank">🚗 Lyft</a>
+  </div>
+</div>
+
+<div class="age-banner">🔞 Must be 21+ to participate · Please drink responsibly · Know your limits</div>
 <div class="crawl-bar">
-  <div class="crawl-bar-text">Your Crawl: <span id="crawl-count">0</span> stops · <span id="total-cost">$0</span></div>
+  <div class="crawl-bar-text">Your Crawl: <span id="crawl-count">0</span> stops</div>
   <div><span class="stat-chip">Tap a card to add · Tap again to remove</span></div>
 </div>
 
 <div class="route-panel" id="route-panel">
-  <h2>Your Crawl Route</h2>
+  <h2>Your Bar Crawl Route</h2>
   <div class="route-stops" id="route-stops"></div>
   <div class="route-panel-btns">
     <a class="map-link-btn" id="map-link" href="#" target="_blank">Open Route in Google Maps →</a>
     <button class="share-btn" onclick="shareCrawl()">🔗 Share This Crawl</button>
   </div>
+  <div class="safety-reminder">🚗 Remember to arrange a ride home before you start. Uber and Lyft are one tap away.</div>
 </div>
 
+<div class="pace-counter" id="pace-counter">
+  <div class="pace-text">Pace Yourself: <span class="pace-drinks" id="pace-drinks">0</span> estimated drinks · <span id="pace-time">0h 0m</span> minimum crawl time</div>
+  <div class="pace-tip">We suggest 60–90 min per stop · Water between drinks 💧</div>
+</div>
 <div class="app-shell">
   <aside class="sidebar" style="background:#1C1C1C;color:#FAF3E8;">
     <div class="sidebar-title">Neighborhoods</div>
@@ -437,11 +382,22 @@
     <button class="neighborhood-btn" onclick="filterNeighborhood('Northeast',this)">Northeast (NE) <span class="nbhd-count" id="count-Northeast">0</span></button>
     <button class="neighborhood-btn" onclick="filterNeighborhood('North',this)">North Portland <span class="nbhd-count" id="count-North">0</span></button>
     <button class="neighborhood-btn" onclick="filterNeighborhood('Southeast',this)">Southeast (SE) <span class="nbhd-count" id="count-Southeast">0</span></button>
-    <button class="neighborhood-btn" onclick="filterNeighborhood('Vancouver / Outer',this)">Vancouver / Outer <span class="nbhd-count" id="count-Vancouver / Outer">0</span></button>
+
+    <div class="type-filter-section">
+      <div class="sidebar-title" style="font-size:1.1rem;">Bar Type</div>
+      <button class="type-btn active" onclick="filterType('all',this)">All Types <span class="nbhd-count" id="type-count-all">0</span></button>
+      <button class="type-btn" onclick="filterType('dive',this)">🍺 Dive Bar <span class="nbhd-count" id="type-count-dive">0</span></button>
+      <button class="type-btn" onclick="filterType('cocktail',this)">🍸 Cocktail Bar <span class="nbhd-count" id="type-count-cocktail">0</span></button>
+      <button class="type-btn" onclick="filterType('brewery',this)">🍻 Brewery <span class="nbhd-count" id="type-count-brewery">0</span></button>
+      <button class="type-btn" onclick="filterType('whiskey',this)">🥃 Whiskey Bar <span class="nbhd-count" id="type-count-whiskey">0</span></button>
+      <button class="type-btn" onclick="filterType('sports',this)">📺 Sports Bar <span class="nbhd-count" id="type-count-sports">0</span></button>
+      <button class="type-btn" onclick="filterType('speakeasy',this)">🕯 Speakeasy <span class="nbhd-count" id="type-count-speakeasy">0</span></button>
+    </div>
+
     <div class="your-crawl">
-      <div class="sidebar-title" style="color:var(--gold)">Your Crawl 🍕</div>
+      <div class="sidebar-title" style="color:var(--gold)">Your Crawl 🍺</div>
       <ul class="crawl-list" id="crawl-list">
-        <li style="border:none;background:none;padding:0"><span class="empty-crawl">No stops yet.<br>Tap a pizza card to add!</span></li>
+        <li style="border:none;background:none;padding:0"><span class="empty-crawl">No stops yet.<br>Tap a bar card to add!</span></li>
       </ul>
       <button class="clear-crawl-btn" onclick="clearCrawl()">Clear All Stops</button>
     </div>
@@ -449,27 +405,28 @@
 
   <main class="main-content">
     <div class="tab-nav">
-      <button class="tab-btn active" id="tab-browse" onclick="switchTab('browse')">🍕 Browse</button>
+      <button class="tab-btn active" id="tab-browse" onclick="switchTab('browse')">🍺 Browse</button>
       <button class="tab-btn" id="tab-visits" onclick="switchTab('visits')">⭐ My Visits</button>
-    </div><div id="panel-browse">
-      <div class="search-bar">
-        <input type="text" class="search-input" id="search-input" placeholder="Search restaurants or toppings..." oninput="renderCards()">
+    </div>
+
+    <div id="panel-browse"><div class="search-bar">
+        <input type="text" class="search-input" id="search-input" placeholder="Search bars or vibes..." oninput="renderCards()">
       </div>
       <div class="filter-tags">
-        <button class="filter-tag" onclick="toggleFilter('veg',this)">🥦 Veggie</button>
-        <button class="filter-tag" onclick="toggleFilter('vegan',this)">🌱 Vegan</button>
-        <button class="filter-tag" onclick="toggleFilter('spicy',this)">🌶 Spicy</button>
-        <button class="filter-tag" onclick="toggleFilter('pork',this)">🐷 Pork</button>
-        <button class="filter-tag" onclick="toggleFilter('pie',this)">🥧 Whole Pie Available</button>
+        <button class="filter-tag" onclick="toggleFilter('happy-hour',this)">🕐 Happy Hour</button>
+        <button class="filter-tag" onclick="toggleFilter('outdoor',this)">🌿 Outdoor</button>
+        <button class="filter-tag" onclick="toggleFilter('live-music',this)">🎵 Live Music</button>
+        <button class="filter-tag" onclick="toggleFilter('late-night',this)">🌙 Late Night</button>
+        <button class="filter-tag" onclick="toggleFilter('food',this)">🍔 Food</button>
       </div>
       <div class="section-header">
         <h2 id="section-title">All Portland</h2>
         <span class="section-count" id="section-count"></span>
       </div>
-      <div class="pizza-grid" id="pizza-grid"></div>
+      <div class="bar-grid" id="bar-grid"></div>
       <div id="no-results" class="no-results" style="display:none">
-        <div class="emoji">🍕</div>
-        <p>No slices match your search. Try a different filter or neighborhood.</p>
+        <div class="emoji">🍺</div>
+        <p>No bars match your search. Try a different filter or neighborhood.</p>
       </div>
     </div>
 
@@ -479,7 +436,7 @@
       <div class="visits-grid" id="visits-grid"></div>
       <div id="visits-empty" class="visits-empty">
         <div style="font-size:2.5rem;margin-bottom:0.75rem">⭐</div>
-        <p>No visits yet! Tap <strong>Rate</strong> on any pizza card to log your score.</p>
+        <p>No visits yet! Tap <strong>Rate</strong> on any bar card to log your visit.</p>
       </div>
     </div>
   </main>
@@ -489,107 +446,114 @@
 <div class="popup-overlay" id="popup-overlay" onclick="closePopup(event)">
   <div class="popup">
     <button class="popup-close" onclick="closePopupDirect()">✕</button>
-    <div class="popup-restaurant" id="popup-name"></div>
-    <div class="popup-slice" id="popup-slice"></div>
+    <div class="popup-bar-name" id="popup-name"></div>
+    <div class="popup-vibe" id="popup-vibe"></div>
     <div class="popup-label">Your Score (1–10)</div>
     <div class="score-buttons" id="score-buttons"></div>
     <div class="popup-label">Notes</div>
-    <textarea class="popup-note" id="popup-note" placeholder="Crust, sauce, vibe, would you return?"></textarea>
+    <textarea class="popup-note" id="popup-note" placeholder="Vibe, drinks, crowd, would you return?"></textarea>
     <button class="popup-save" onclick="saveRating()">Save Rating</button>
   </div>
 </div>
 
 
 
-<div class="routes-section" style="background:#111111 !important;color:#FAF3E8;">
+<div class="routes-section" style="background:#111111;">
   <div class="routes-top">
     <h2>🗺 Suggested Crawls</h2>
-    <p>Curated roundtrip walking routes · all under 3 miles · tap "Load Crawl" to add stops</p>
+    <p>Curated walkable bar crawls by neighborhood · tap "Load Crawl" to add stops</p>
   </div>
   <div class="routes-grid" id="routes-grid"></div>
 </div>
 
+<footer>
+  <div class="footer-left">
+    <img src="../logo.png" alt="PDX Crawl">
+    <div>
+      <div class="footer-brand">PDX Crawl</div>
+      <div class="footer-tagline">Your crew. Your crawl. Your Portland.</div>
+    </div>
+  </div>
+  <div class="footer-right">
+    <div>© 2026 PDX Crawl. All rights reserved.</div>
+    <div>Please drink responsibly.</div>
+    <div>Built with 🍺 in Portland, Oregon</div>
+  </div>
+</footer>
+
 <div class="share-toast" id="share-toast">✓ Link copied!</div>
 
 <script>
-const PIZZAS = [
-  { id: 1,  name: "10 Barrel Brewing",        address: "1411 NW Flanders St.",          neighborhood: "Northwest",        subArea: "Pearl",         pieName: "Spuds Mackenzie",                         toppings: "Whipped potato base, shredded mozzarella and cheddar, smoked bacon, pickled jalapeños, green onions, garden herbs, parmesan, sour cream", tags: ["pork","spicy"], price: 4 },
-  { id: 2,  name: "Brix Tavern",              address: "1338 NW Hoyt St.",              neighborhood: "Northwest",        subArea: "Pearl",         pieName: "Thai Chicken Pizza",                      toppings: "Peanut sauce, mozzarella, marinated chicken, roasted peppers, bean sprouts, Sriracha, cilantro, crushed peanuts", tags: ["spicy"], price: 4 },
-  { id: 3,  name: "Oven & Shaker",            address: "1134 NW Everett St.",           neighborhood: "Northwest",        subArea: "Pearl",         pieName: "Bend and Snap!",                          toppings: "Rhubarb and strawberry base, goat cheese, fresh snap peas, Pecorino and kaiware", tags: ["veg"], price: 4 },
-  { id: 4,  name: "Ruse Brewing",             address: "1505 NW 21st Ave.",             neighborhood: "Northwest",        subArea: "Nob Hill",      pieName: "One Hit Wonder",                          toppings: "Mozzarella, brick cheddar, sweet corn, green chili, crema Mexicana, Flaming Hot Cheetos, lime pickled onion and cilantro", tags: ["veg","spicy"], price: 4 },
-  { id: 5,  name: "The Star",                 address: "1309 NW Hoyt St.",              neighborhood: "Northwest",        subArea: "Pearl",         pieName: "Country Reuben Pizza",                    toppings: "Homemade thousand island dressing, classic mozzarella, corned beef, sauerkraut, red onions and Swiss cheese", tags: ["pork"], price: 4 },
-  { id: 6,  name: "Pizza Thief (NW)",         address: "2444 NW 28th Ave.",             neighborhood: "Northwest",        subArea: "Nob Hill",      pieName: "Rossa Pizza Caesar",                      toppings: "Tomato sauce, Pecorino, garlic bread crumbs, oregano and chile flakes topped with kale caesar salad", tags: ["veg"], price: 4 },
-  { id: 7,  name: "Scottie's Pizza (Nob Hill)", address: "685 NW 21st Ave.",            neighborhood: "Northwest",        subArea: "Nob Hill",      pieName: "Bada Bing!",                              toppings: "Cherry pizza with brie, lemon zesty pistachio pesto and balsamic drizzle", tags: ["veg"], price: 4 },
-  { id: 8,  name: "World Foods",              address: "830 NW Everett St.",            neighborhood: "Northwest",        subArea: "Pearl",         pieName: "The Garden Father",                       toppings: "Red pepper, feta, eggplant, artichokes, sausage, mint, dough and olive oil", tags: ["veg","pork"], price: 4 },
-  { id: 9,  name: "21st Century Pizza",       address: "1221 SW Jefferson St.",         neighborhood: "Southwest",        subArea: "Downtown",      pieName: "The Farm Feast",                          toppings: "House marinara red sauce, spinach, sun-dried tomatoes and chicken topped with Italian seasoning", tags: ["veg"], price: 4 },
-  { id: 10, name: "Dante's PizzaSlut",        address: "1 SW Third Ave.",               neighborhood: "Southwest",        subArea: "Downtown",      pieName: "Pepperoni Pony!",                         toppings: "Double pepperoni. That's it. That's the whole thing.", tags: ["pork"], price: 4 },
-  { id: 11, name: "Edan Pizza",               address: "204 SW Yamhill St.",            neighborhood: "Southwest",        subArea: "Downtown",      pieName: "Smoky 4/2026",                            toppings: "Fennel sausage, garlic confit, fresh tomato, smoked peppers, smoked mozzarella and hot honey. Vegetarian sausage available.", tags: ["veg","pork"], price: 4 },
-  { id: 12, name: "Mucca Pizzeria",           address: "1026 SW Morrison St.",          neighborhood: "Southwest",        subArea: "Downtown",      pieName: "Primavera",                               toppings: "Pesto, mozzarella, roasted cherry tomatoes, burrata and basil", tags: ["veg"], price: 4 },
-  { id: 13, name: "PLS on Sixth",             address: "515 SW Clay St.",               neighborhood: "Southwest",        subArea: "Downtown",      pieName: "Peace, Love, 'n Chicken",                 toppings: "Grilled chicken, tangy BBQ, red onion, fresh basil, crispy bacon, mozzarella and garlic oil", tags: ["pork"], price: 4 },
-  { id: 14, name: "Rialto",                   address: "529 SW 4th Ave.",               neighborhood: "Southwest",        subArea: "Downtown",      pieName: "Artichoke Garlic Pizza",                  toppings: "Garlic parmesan base, artichoke hearts, spinach, and green onion finished with a garlic herb crust", tags: ["veg"], price: 4 },
-  { id: 15, name: "Taylor Street Tavern",     address: "808 SW Taylor St.",             neighborhood: "Southwest",        subArea: "Downtown",      pieName: "Chicken Breast and Artichoke Pizza",      toppings: "Roasted chicken breast, garlic oil, mozzarella, artichoke hearts, pickled peppers and pesto sauce", tags: [], price: 4 },
-  { id: 16, name: "The Social Spoon",         address: "550 SW Oak St.",                neighborhood: "Southwest",        subArea: "Downtown",      pieName: "Cash Rules Everything Guanciale",         toppings: "Olympia Provisions Soppressata, Mama Lil's Peppers, pickled fennel, creme fraiche, parsley, mozzarella, provolone, Asiago and a guanciale-Calabrian chile marinara", tags: ["pork","spicy"], price: 4 },
-  { id: 17, name: "Barbur World Foods",       address: "9845 SW Barbur Blvd.",          neighborhood: "Southwest",        subArea: "Barbur",        pieName: "Triple (Mac &) Cheese Pizza",             toppings: "Monterey Jack, cheddar, cream cheese, chiles, cream, poblano, dough, butter, flour and milk", tags: ["veg","spicy"], price: 4 },
-  { id: 18, name: "Hapa Pizza",               address: "12755 SW Broadway St.",         neighborhood: "Southwest",        subArea: "Beaverton",     pieName: "Miso Apple Pizza",                        toppings: "Apple butter, apple compote, mint, shiso, miso vinaigrette, whipped lemon ricotta and house taro chips", tags: ["veg"], price: 4 },
-  { id: 19, name: "48 North Pizzeria & Pub",  address: "6500 S Virginia Ave.",          neighborhood: "Southwest",        subArea: "South Portland",pieName: "Crema My Pork",                           toppings: "Carolina Gold BBQ base, pulled pork, pickled red onions, jalapeños and whole milk mozzarella finished with a lime-cilantro crema drizzle", tags: ["pork","spicy"], price: 4 },
-  { id: 20, name: "Von Ebert Brewing (Beaverton)", address: "1800 NW Cedar Falls Dr., Beaverton", neighborhood: "Southwest", subArea: "Beaverton", pieName: "Flaming Mac N' Cheeto",               toppings: "Creamy buffalo béchamel base, mac n' cheese layered between cheddar and mozzarella, topped with crushed Flaming Hots and fresh jalapeño", tags: ["veg","spicy"], price: 4 },
-  { id: 21, name: "Lazy Days Brewing (Beaverton)", address: "4505 SW Watson Ave., Beaverton", neighborhood: "Southwest",  subArea: "Beaverton",    pieName: "Taco The Town",                           toppings: "Crispy-edged Detroit slab with refried beans, molten brick cheese, taco-spiced beef, lettuce, tomatoes, lime crema, tortilla chips, smoky salsa and lime", tags: ["pork","spicy"], price: 4 },
-  { id: 22, name: "Boxcar Pizza",             address: "2701 NE Sandy Blvd.",           neighborhood: "Northeast",        subArea: "Hollywood",     pieName: "Banh To Be Wild",                         toppings: "Mozzarella-cheddar blend, yellow curry chicken, jalapeño, pickled carrot and daikon, cilantro and sweet chili mayo", tags: ["spicy"], price: 4 },
-  { id: 23, name: "Baby Doll Pizza NE",       address: "5201 NE MLK Jr Blvd.",          neighborhood: "Northeast",        subArea: "King",          pieName: "Belly of the Beast",                      toppings: "Slow-roasted pork belly, caramelized onions, arugula tossed in lemon vinaigrette and topped with herb aioli", tags: ["pork"], price: 4 },
-  { id: 24, name: "East Glisan Pizza Lounge", address: "8001 NE Glisan St.",            neighborhood: "Northeast",        subArea: "East Glisan",   pieName: "Heated Rivalry",                          toppings: "3 cheese blend, roasted pepper cream cheese, house-pickled jalapeño, berry drizzle, jalapeño hot honey, Frito crumbs, with or without bacon", tags: ["spicy","veg"], price: 4 },
-  { id: 25, name: "Fire on the Mountain",     address: "3443 NE 57th",                  neighborhood: "Northeast",        subArea: "Beaumont",      pieName: "The GOAT Father",                         toppings: "Capicola ham, hot cherry bomb peppers, chèvre and hot honey", tags: ["spicy","pork"], price: 4 },
-  { id: 26, name: "Gabby's Next Door",        address: "5425 NE 30th Ave.",             neighborhood: "Northeast",        subArea: "Concordia",     pieName: "Haters Gonna Hate",                       toppings: "Housemade focaccia, red sauce, mortadella, pineapple, jalapeño, fontina, parmesan and Italian chile crisp", tags: ["spicy","pork"], price: 4 },
-  { id: 27, name: "Blind Onion Pizza Pub",    address: "3345 NE Broadway",              neighborhood: "Northeast",        subArea: "Broadway",      pieName: "The Cae'Za",                              toppings: "Caesar dressing base, spinach, chicken, mozzarella, and shredded Parmesan finished with lemon vinaigrette", tags: [], price: 4 },
-  { id: 28, name: "Scottie's Pizza (Division)", address: "2128 SE Division St.",        neighborhood: "Northeast",        subArea: "Hosford-Aber.", pieName: "Bada Bing!",                              toppings: "Cherry pizza with brie, lemon zesty pistachio pesto and balsamic drizzle", tags: ["veg"], price: 4 },
-  { id: 29, name: "Oakshire Beer Hall",       address: "5013 NE 42nd Ave.",             neighborhood: "Northeast",        subArea: "Rose City Park",pieName: "Let's Get Baked Potato Pizza",            toppings: "Potatoes, smoked bacon, mozzarella and cheddar cheese, green onion and sour cream", tags: ["pork"], price: 4 },
-  { id: 30, name: "Original Dream Pizza",     address: "4620 NE Glisan St.",            neighborhood: "Northeast",        subArea: "Sullivan's Gulch",pieName: "The Carmela",                           toppings: "Original Dream marinara, garlic-parsley ricotta dollops and spicy Italian sausage atop house-made dough with a honey-butter hand-braided crust", tags: ["spicy","pork"], price: 4 },
-  { id: 31, name: "Metropolitan Tavern",      address: "1021 NE Grand Ave.",            neighborhood: "Northeast",        subArea: "Lloyd District",pieName: "Whipped Mascarpone & Smoked Salmon Pizza", toppings: "Whipped mascarpone, smoked salmon, broccoli raab, shaved fennel, arugula and sweet vermouth reduction", tags: [], price: 4 },
-  { id: 32, name: "Via Chicago",              address: "1465 NE Prescott St.",          neighborhood: "Northeast",        subArea: "Concordia",     pieName: "Athena Dion",                             toppings: "Homemade arugula pesto, feta and sliced red onions", tags: ["veg"], price: 4 },
-  { id: 33, name: "Von Ebert Glendoveer",     address: "14021 NE Glisan St.",           neighborhood: "Northeast",        subArea: "Glendoveer",    pieName: "Everything But The Bagel",                toppings: "Whipped lemony cream cheese, mozzarella, smoked salmon, capers, fresh red onion, dill, dressed arugula and everything bagel seasoning", tags: [], price: 4 },
-  { id: 34, name: "The Secret Pizza Society", address: "7201 NE Glisan St.",            neighborhood: "Northeast",        subArea: "East Glisan",   pieName: "TAUMOEBA",                                toppings: "Artichoke, spinach, garlic, tomato, onion, parsley and parmesan", tags: ["veg"], price: 4 },
-  { id: 35, name: "Pizza Thief (SE Division)", address: "1126 SE Division St.",         neighborhood: "Northeast",        subArea: "Richmond",      pieName: "Rossa Pizza Caesar",                      toppings: "Tomato sauce, Pecorino, garlic bread crumbs, oregano and chile flakes topped with kale caesar salad", tags: ["veg"], price: 4 },
-  { id: 36, name: "Good Neighbor Pizzeria",   address: "800 NE Dekum St.",              neighborhood: "Northeast",        subArea: "Woodlawn",      pieName: "Hot Honey Hog",                           toppings: "Red sauce base, pepperoni, pulled pork, crushed red pepper flakes and jalapeños, finished with a honey drizzle and fresh lemon zest", tags: ["spicy","pork"], price: 4 },
-  { id: 37, name: "Paladin Pie",              address: "1027 NE Alberta St.",           neighborhood: "Northeast",        subArea: "Alberta Arts",  pieName: "The Pauper Prince",                       toppings: "Bacon jam, pickled jalapeños, calabrian chili pimento cheese, and garlic chili Cheez-It crumble", tags: ["spicy","pork"], price: 4 },
-  { id: 38, name: "Atlas Pizza North",        address: "710 N. Killingsworth St.",       neighborhood: "North",            subArea: "Killingsworth", pieName: "The Kim(chi)-Possible",                   toppings: "Garlic base, spicy pork belly bulgogi, onion, baechu-kimchi, gochujang aioli drizzle and scallions", tags: ["spicy","pork"], price: 4 },
-  { id: 39, name: "Double Mountain Overlook", address: "1700 N Killingsworth St.",       neighborhood: "North",            subArea: "Overlook",      pieName: "Taos",                                    toppings: "Cilantro pesto, mozzarella, southwest marinated pork belly lardons, oven roasted corn and onions and sliced roasted red peppers finished with cotija cheese", tags: ["pork"], price: 4 },
-  { id: 40, name: "Fino Bistro & Pizzeria",   address: "8225 N Denver Ave.",             neighborhood: "North",            subArea: "Kenton",        pieName: "Alliuminati",                             toppings: "Roasted garlic cream base, caramelized onions, sautéed mushrooms, crispy bacon, tender potato, parmesan, fresh chives", tags: ["pork"], price: 4 },
-  { id: 41, name: "Mississippi Pizza Pub",    address: "3552 N Mississippi Ave.",        neighborhood: "North",            subArea: "Mississippi",   pieName: "Zingo Starr (It don't come cheesy)",      toppings: "Tomato sauce, fresh basil, pickled asparagus, diced cherry peppers, cauliflower and nutritional yeast", tags: ["vegan","veg"], price: 4 },
-  { id: 42, name: "Lazy Days Brewing (Portland)", address: "2326 N. Flint Ave.",         neighborhood: "North",            subArea: "Eliot",         pieName: "You Asked for It",                        toppings: "Detroit-style pizza with a miniature beef slider patty on every slice, topped with American cheese, shredded lettuce, burger sauce, dill pickles and a bun", tags: ["pork"], price: 4 },
-  { id: 43, name: "Satellite Tavern",         address: "5101 N Interstate Ave.",         neighborhood: "North",            subArea: "Overlook",      pieName: "Sausage Pesto",                           toppings: "Creamy pesto base, house made sausage on a garlic herb crust topped with fresh basil, mushrooms and Parmesan", tags: ["pork"], price: 4 },
-  { id: 44, name: "Signal Station Pizza",     address: "8302 N Lombard St.",             neighborhood: "North",            subArea: "St. Johns",     pieName: "Havana Slice",                            toppings: "Olive oil, mozzarella, mojo-marinated pulled pork, ham, dill pickles, Swiss cheese and classic yellow mustard", tags: ["pork"], price: 4 },
-  { id: 45, name: "Baby Doll Pizza Kerns",    address: "2835 SE Stark St.",              neighborhood: "Southeast",        subArea: "Kerns",         pieName: "A-Reuben, Jamaica, Ooh I Wanna Take Ya",  toppings: "Corned beef, sauerkraut, provolone and mozzarella, green onion on a pepperoncini aioli base", tags: ["pork"], price: 4 },
-  { id: 46, name: "Atlas Pizza Division",     address: "3570 SE Division St.",           neighborhood: "Southeast",        subArea: "Division",      pieName: "The Hot Date",                            toppings: "Candied bacon, chopped dates, caramelized onion, chèvre, balsamic glaze and arugula tossed in Newk's Elderfire Mango Habanero hot sauce", tags: ["pork","spicy"], price: 4 },
-  { id: 47, name: "Atlas Pizza Foster",       address: "6535 SE Foster Rd.",             neighborhood: "Southeast",        subArea: "Foster-Powell", pieName: "Schwilly Pie",                            toppings: "Traditional NY plain cheese slice with mini green pie slices, smoked feta, Italian herbs, crushed chili flakes and hot honey", tags: ["veg","spicy"], price: 4 },
-  { id: 48, name: "Blind Onion Belmont",      address: "6031 SE Belmont St.",            neighborhood: "Southeast",        subArea: "Belmont",       pieName: "Chicken Bacon Ranch",                     toppings: "Ranch base, chicken, mozzarella, crispy bacon, light cheddar, ranch drizzle and fresh herbs", tags: ["pork"], price: 4 },
-  { id: 49, name: "Clarklewis",               address: "1001 SE Water Ave.",             neighborhood: "Southeast",        subArea: "Central Eastside",pieName: "Mediterranean Mojo Lamb",               toppings: "Mojo braised Anderson Ranch lamb, harissa spiced tomato sauce, feta, kalamata olive tapenade and Mama Lil's peppers", tags: ["spicy"], price: 4 },
-  { id: 50, name: "Dimo's Apizza",            address: "701 E Burnside St.",             neighborhood: "Southeast",        subArea: "Buckman",       pieName: "The Drunken Pig",                         toppings: "Spicy vodka sauce, bacon, fermented chili hot honey, mozzarella, Grana Padano, Pecorino and fried basil", tags: ["pork","spicy"], price: 4 },
-  { id: 51, name: "Fast Times Pizza & Soft Serve", address: "624 E Burnside St.",        neighborhood: "Southeast",        subArea: "Buckman",       pieName: "Tater Tot Hot Dish Pizza",                toppings: "Creamy garlic sauce, house cheese blend, cheddar, tater tots, bacon and green onions", tags: ["pork"], price: 4 },
-  { id: 52, name: "Dick's Pizza",             address: "7738 SE 13th Ave.",              neighborhood: "Southeast",        subArea: "Sellwood",      pieName: "Pizza Scarp, No Chicken",                 toppings: "Sausage, pickled hot peppers, red bell peppers, onion, garlic and parsley", tags: ["pork","spicy"], price: 4 },
-  { id: 53, name: "Double Mountain Woodstock",address: "4436 SE Woodstock Blvd.",        neighborhood: "Southeast",        subArea: "Woodstock",     pieName: "Belly Up to the Orchard",                 toppings: "Olive oil, mozzarella, thinly sliced apples and pears, braised brown sugar pork belly, pulled burrata, hard cheese, candied walnuts, hot honey and light arugula", tags: ["pork"], price: 4 },
-  { id: 54, name: "Hopworks Brewery",         address: "2944 SE Powell Blvd.",           neighborhood: "Southeast",        subArea: "Richmond",      pieName: "The Wurst Pizza Ever",                    toppings: "Beer cheese and stone ground mustard, mozzarella, caramelized onion, sauerkraut and beer sausage", tags: ["pork"], price: 4 },
-  { id: 55, name: "Humdinger Pizza",          address: "9201 SE Foster Rd.",             neighborhood: "Southeast",        subArea: "Foster",        pieName: "The Lilia",                               toppings: "Guajillo chipotle sauce, mozzarella, potato, chorizo, red onion, roasted red pepper, crema, salsa verde and cilantro", tags: ["spicy","pork"], price: 4 },
-  { id: 56, name: "Meta Pizza",               address: "3541 SE Milwaukie Ave.",         neighborhood: "Southeast",        subArea: "Sellwood",      pieName: "Chicken Piccata",                         toppings: "Chicken thigh, capers, Taggiasca olives, provolone, parsley and pecorino", tags: [], price: 4 },
-  { id: 57, name: "NASO",                     address: "1744 SE Hawthorne Blvd.",        neighborhood: "Southeast",        subArea: "Hawthorne",     pieName: "Fig Me Up Before You Prosciutto",         toppings: "Brie, jammy figs, roasted red grapes, prosciutto, balsamic reduction crema, honey, fresh rosemary and cracked black pepper", tags: ["pork"], price: 4 },
-  { id: 58, name: "New Cascadia Traditional", address: "2502 SE Division St.",           neighborhood: "Southeast",        subArea: "Division",      pieName: "Gluten-Free Buffalo Blue Cheese Chicken", toppings: "GF crust, buffalo blue cheese sauce, butter-and-cheesy cracker-battered chicken, fresh scallions and crumbled blue cheese", tags: ["spicy"], price: 4 },
-  { id: 59, name: "Nicholas Restaurant",      address: "1109 SE Madison St.",            neighborhood: "Southeast",        subArea: "Buckman",       pieName: "Shatta Pizza",                            toppings: "Tender flaky crust covered with fermented red chili paste and topped with a blend of imported Lebanese cheeses", tags: ["veg","spicy"], price: 4 },
-  { id: 60, name: "Pizza Machine",            address: "2216 SE 50th Ave.",              neighborhood: "Southeast",        subArea: "Woodstock",     pieName: "Say When",                                toppings: "Garlic butter brushed crust, minestrone sauce, mozzarella, romaine, Roma tomatoes, red onion, black olives, pepperoncini, Romano cheese and Italian dressing", tags: ["veg"], price: 4 },
-  { id: 61, name: "Pop Pizza",                address: "610 SE Morrison St.",            neighborhood: "Southeast",        subArea: "Central Eastside",pieName: "Prosciutto Broccoli Rabe",              toppings: "Prosciutto di Parma, broccoli rabe, house white sauce, three cheese blend, mushroom confit and Calabrian chilies", tags: ["pork","spicy"], price: 4 },
-  { id: 62, name: "Portland Cider Company",   address: "8925 SE Jannsen Rd.",            neighborhood: "Southeast",        subArea: "Clackamas",     pieName: "You Gotta Ricotta",                       toppings: "Seasoned whipped ricotta, basil and homemade red pepper aioli over red sauce", tags: ["veg"], price: 4 },
-  { id: 63, name: "Rudy's Gourmet Pizza",     address: "2443 SE Powell Blvd.",           neighborhood: "Southeast",        subArea: "Richmond",      pieName: "Super Mario Galaxy Pizza",                toppings: "Red sauce, mozzarella, Italian sausage, red and green bell peppers, mushrooms, peaches and basil", tags: ["pork"], price: 4 },
-  { id: 64, name: "Straight From NY (Hawthorne)", address: "3701 SE Hawthorne Blvd.",   neighborhood: "Southeast",        subArea: "Hawthorne",     pieName: "Happiness is a Shawarm Gun",              toppings: "Tzatziki, ground lamb, red onion, pickled turnip, diced tomato and feta", tags: ["spicy"], price: 4 },
-  { id: 65, name: "Straight From NY (Sunnyside)", address: "3330 SE Belmont St.",        neighborhood: "Southeast",        subArea: "Sunnyside",     pieName: "The Pork Store",                          toppings: "House marinara, provolone, capocollo, salami and vinegar peppers", tags: ["pork","spicy"], price: 4 },
-  { id: 66, name: "The Focacceria",           address: "1613 SE Bybee Blvd.",            neighborhood: "Southeast",        subArea: "Eastmoreland",  pieName: "Staten Island Trio",                      toppings: "Focaccia topped with mozzarella, provolone, red sauce, pesto and vodka sauce", tags: ["veg"], price: 4 },
-  { id: 67, name: "Ya Hala",                  address: "8005 SE Stark St.",              neighborhood: "Southeast",        subArea: "Montavilla",    pieName: '"Baa Baa" Boom',                          toppings: "Tomato, harissa, lamb, onions, feta, pomegranate molasses, mint, dough and olive oil", tags: ["spicy"], price: 4 },
-  { id: 68, name: "Yum's of PDX",             address: "830 SE 8th Ave.",                neighborhood: "Southeast",        subArea: "Buckman",       pieName: "The Italian Big Mac",                     toppings: "Provolone, mozzarella, romano, crumbled Italian fennel sausage, pickled red onion, toasted sesame, kosher dill pickles and secret burger sauce", tags: ["pork"], price: 4 },
-  { id: 69, name: "Checkerboard Pizza",       address: "159 Buxton Rd.",                 neighborhood: "Southeast",        subArea: "Buxton",        pieName: "Snyder Weccacoe",                         toppings: "White pie (garlic + evoo), roasted pork, rapini, Calabrian chili and caciocavallo", tags: ["pork","spicy"], price: 4 },
-  { id: 70, name: "Loowit Brewing – Ole's Outpost", address: "11202 NE Fourth Plain Blvd., Vancouver", neighborhood: "Vancouver / Outer", subArea: "Vancouver WA", pieName: "The Gravy Train", toppings: "Chorizo gravy base, mozzarella and white cheddar, pickled corn, a warm yolk drizzle, finished with fresh chives", tags: ["pork"], price: 4 },
+const BARS = [
+  // ── NORTHWEST / PEARL ──────────────────────────────
+  { id: 1,  name: "Teardrop Cocktail Lounge", address: "1015 NW Everett St.", neighborhood: "Northwest", subArea: "Pearl", type: "cocktail", vibe: "Craft cocktail institution", desc: "One of Portland's cocktail scene keystones since 2007. Vested bartenders sling impeccably balanced classics and originals in a sleek, intimate space.", tags: ["happy-hour","food"], featured: "Classic cocktails done right" },
+  { id: 2,  name: "Joe's Cellar",             address: "4821 NW St Helens Rd.", neighborhood: "Northwest", subArea: "Slabtown", type: "dive", vibe: "Seedy but venerable", desc: "Carpeted floors, wood-paneled walls, battered pool tables. Operating since the '90s with the same stubborn charm — saved from demolition by owners who kept the dive alive.", tags: ["late-night","food"], featured: "PDX dive bar classic" },
+  { id: 3,  name: "10 Barrel Brewing (Pearl)", address: "1411 NW Flanders St.", neighborhood: "Northwest", subArea: "Pearl", type: "brewery", vibe: "Lively brewpub with a rooftop", desc: "Massive Pearl District brewpub with a beloved rooftop patio. Great selection of house-brewed IPAs, lagers, and seasonals alongside a full kitchen.", tags: ["outdoor","happy-hour","food"], featured: "Best rooftop in the Pearl" },
+  { id: 4,  name: "Deschutes Brewery Portland", address: "210 NW 11th Ave.", neighborhood: "Northwest", subArea: "Pearl", type: "brewery", vibe: "Oregon craft beer landmark", desc: "Portland outpost of the beloved Bend brewery. Limited-edition pours you can't find anywhere else, a massive tap list, and a lively bar scene.", tags: ["happy-hour","food"], featured: "Limited edition pours on tap" },
+
+  // ── SOUTHWEST / DOWNTOWN ───────────────────────────
+  { id: 5,  name: "Multnomah Whiskey Library", address: "1124 SW Alder St.", neighborhood: "Southwest", subArea: "Downtown", type: "whiskey", vibe: "Reservation-only whiskey temple", desc: "Over 1,500 whiskeys in a stunning library setting. Make a reservation — serious whiskey lovers make pilgrimages here from around the world.", tags: ["food"], featured: "1,500+ whiskeys" },
+  { id: 6,  name: "Kelly's Olympian",          address: "426 SW Washington St.", neighborhood: "Southwest", subArea: "Downtown", type: "dive", vibe: "Portland's oldest dive, est. 1902", desc: "Century-old institution in the heart of downtown. Motorcycle-themed, loud, and beloved. One of the last true dives in an increasingly polished downtown.", tags: ["late-night","live-music","food"], featured: "Est. 1902 — Portland legend" },
+  { id: 7,  name: "Huber's Cafe",              address: "411 SW 3rd Ave.", neighborhood: "Southwest", subArea: "Downtown", type: "cocktail", vibe: "Portland's oldest restaurant & bar", desc: "Est. 1879. The famous tableside Spanish Coffee is a Portland rite of passage — flaming brandy, coffee liqueur, whipped cream. Don't miss it.", tags: ["food","happy-hour"], featured: "Famous flaming Spanish Coffee" },
+  { id: 8,  name: "Abigail Hall",              address: "309 SW 11th Ave.", neighborhood: "Southwest", subArea: "Downtown", type: "cocktail", vibe: "Chic cocktail bar, cozy vibes", desc: "A pleasing blend of elegant decor and warm atmosphere. Great for a sophisticated drink without the stuffiness of some high-end cocktail bars.", tags: ["happy-hour","food"], featured: "Refined but welcoming" },
+  { id: 9,  name: "Yamhill Pub",               address: "120 SW 3rd Ave.", neighborhood: "Southwest", subArea: "Downtown", type: "dive", vibe: "No-frills downtown dive", desc: "Honest, unpretentious, and cheap. One of downtown's last genuine dives where locals and wanderers alike belly up without pretense.", tags: ["late-night"], featured: "Cheap and cheerful" },
+  { id: 10, name: "Paddy's Bar & Grill",       address: "65 SW Yamhill St.", neighborhood: "Southwest", subArea: "Downtown", type: "sports", vibe: "Classic Irish pub", desc: "Portland's go-to Irish pub with a massive spirits selection, local wine and craft beer, and a properly poured pint of Guinness. Warm, community-minded vibe.", tags: ["food","happy-hour","live-music"], featured: "Best Guinness in Portland" },
+
+  // ── NORTHEAST ──────────────────────────────────────
+  { id: 11, name: "Rum Club",                  address: "720 SE Sandy Blvd.", neighborhood: "Northeast", subArea: "Buckman", type: "cocktail", vibe: "Portland's best rum bar", desc: "Since 2011, the go-to for rum enthusiasts and the rum-curious alike. Classics, tiki drinks, and neighborhood bar warmth. The Pedro Martínez is iconic.", tags: ["happy-hour","food"], featured: "Best rum program in PDX" },
+  { id: 12, name: "Bible Club",                address: "4811 SE Hawthorne Blvd.", neighborhood: "Northeast", subArea: "Hawthorne", type: "speakeasy", vibe: "Prohibition speakeasy inside a 1920s house", desc: "Hidden inside a house built in the early 1920s, this speakeasy-styled bar is dedicated to the repeal of Prohibition. Soft jazz, vintage artifacts, soul-warming cocktails.", tags: ["food"], featured: "Most unique bar in Portland" },
+  { id: 13, name: "Too Soon",                  address: "2327 NE Glisan St.", neighborhood: "Northeast", subArea: "Kerns", type: "cocktail", vibe: "SoHo vibes in Portland", desc: "Named Portland Monthly's best bar in 2025. Sleek midcentury bar with impeccable bartender's-choice cocktails, a buzzy patio, and late-night cookies from the kitchen.", tags: ["outdoor","food","happy-hour","late-night"], featured: "Best Bar in Portland 2025" },
+  { id: 14, name: "Scotch Lodge",              address: "215 SE 9th Ave.", neighborhood: "Northeast", subArea: "Central Eastside", type: "whiskey", vibe: "Sultry whiskey den", desc: "Elegant, intimate, and serious about Scotch. Dark wood, candlelight, and a curated whiskey list that would satisfy even the most discerning single malt obsessive.", tags: ["food"], featured: "Portland's finest Scotch bar" },
+  { id: 15, name: "Palomar",                   address: "959 SE Division St.", neighborhood: "Northeast", subArea: "Richmond", type: "cocktail", vibe: "Cuban-inspired tropical cocktails", desc: "Owner Ricky Gomez brings his Cuban heritage to every glass. Frozen guava margaritas, roasted coconut Moscow mules, and pineapple gin tonics in a colorful, welcoming space.", tags: ["outdoor","happy-hour","food"], featured: "Best tropical cocktails in PDX" },
+  { id: 16, name: "Bar of the Gods",           address: "4801 SE Hawthorne Blvd.", neighborhood: "Northeast", subArea: "Hawthorne", type: "dive", vibe: "Hawthorne institution", desc: "A beloved Hawthorne staple with a dark, comfortable interior, cheap drinks, and a jukebox that actually slaps. Regulars have been coming here for decades.", tags: ["late-night","happy-hour"], featured: "Hawthorne's living room" },
+  { id: 17, name: "The High Dive",             address: "2113 SE 11th Ave.", neighborhood: "Northeast", subArea: "Richmond", type: "dive", vibe: "Portland's top-rated dive", desc: "Frequently topping Yelp's best dive bar lists. Pool tables, cheap beer, and a crowd that ranges from neighborhood lifers to visiting tourists who stumbled in and never left.", tags: ["late-night","food","happy-hour"], featured: "Best dive bar in Portland" },
+  { id: 18, name: "Interurban",                address: "4057 N Mississippi Ave.", neighborhood: "North", subArea: "Mississippi", type: "cocktail", vibe: "Pre-Prohibition classics, cozy neighborhood bar", desc: "Open since 2011 on Mississippi Ave. Pre-Prohibition cocktails, impressive whiskey and beer lists, and great food. Consistently recommended by Portland bartenders.", tags: ["food","happy-hour"], featured: "Bartenders' favorite bar" },
+  { id: 19, name: "Low Brow Lounge",           address: "1036 NW Hoyt St.", neighborhood: "Northwest", subArea: "Pearl", type: "dive", vibe: "Giant patio, no-nonsense dive", desc: "Beloved for its massive covered patio, kind staff, and no-brainer location. Pinball machines, vintage beer signs, and potent slushy cocktails. Come as you are.", tags: ["outdoor","late-night","happy-hour"], featured: "Best patio dive in PDX" },
+  { id: 20, name: "Stormbreaker Brewing",      address: "832 N Beech St.", neighborhood: "North", subArea: "Mississippi", type: "brewery", vibe: "Mississippi Ave neighborhood brewery", desc: "A Mississippi Ave staple with excellent house-brewed beers, a full kitchen, and a lively patio. Great for groups — always a good vibe, never too precious.", tags: ["outdoor","food","happy-hour"], featured: "Mississippi Ave must-visit" },
+
+  // ── NORTH PORTLAND ─────────────────────────────────
+  { id: 21, name: "Slim's Restaurant & Lounge", address: "3518 N Williams Ave.", neighborhood: "North", subArea: "Williams", type: "dive", vibe: "St. Johns institution, est. 1911", desc: "Reportedly first established in 1911. Draws hordes of locals every night — a true neighborhood anchor through 100+ years of Portland history.", tags: ["late-night","food"], featured: "Est. 1911 — Portland original" },
+  { id: 22, name: "Kenton Club",               address: "2025 N Killingsworth St.", neighborhood: "North", subArea: "Kenton", type: "dive", vibe: "North Portland neighborhood anchor", desc: "A Kenton institution with cheap drinks, a friendly crowd, and the kind of unpretentious vibe that makes North Portland special. Cash-only, come ready.", tags: ["late-night","happy-hour"], featured: "North Portland classic" },
+  { id: 23, name: "The Spare Room",            address: "4830 NE 42nd Ave.", neighborhood: "North", subArea: "Rose City Park", type: "dive", vibe: "Karaoke, pool, movies — everything", desc: "Karaoke and dancing. Movie nights and taco nights. Pool tables and pinball. Young and old, hipster and tech geek — The Spare Room does it all without irony.", tags: ["live-music","late-night","food","happy-hour"], featured: "Most fun bar in Portland" },
+  { id: 24, name: "Prost!",                    address: "4237 N Mississippi Ave.", neighborhood: "North", subArea: "Mississippi", type: "brewery", vibe: "German beer hall on Mississippi Ave", desc: "Authentic German beer hall with an impressive selection of German imports, outdoor seating, and a festive atmosphere year-round. Prost!", tags: ["outdoor","food","happy-hour"], featured: "Best German beer in Portland" },
+
+  // ── SOUTHEAST ──────────────────────────────────────
+  { id: 25, name: "Slammer Tavern",            address: "2045 SE Belmont St.", neighborhood: "Southeast", subArea: "Buckman", type: "dive", vibe: "Christmas lights year-round", desc: "Someone put up Christmas lights years ago and they never came down. Skee-Ball, Big Buck Hunter, karaoke, and a U-shaped bar where everyone's a regular by the end of the night.", tags: ["late-night","happy-hour","food"], featured: "Christmas lights 365 days a year" },
+  { id: 26, name: "Ship Ahoy Tavern",          address: "609 SE Taylor St.", neighborhood: "Southeast", subArea: "Buckman", type: "dive", vibe: "Nautical dive since the 1940s", desc: "Around since the 1940s, before many of its clients were born. Cramped, pool table in the back, well liquors and neat whiskeys only. Don't mess with the jukebox.", tags: ["late-night"], featured: "Portland dive since the '40s" },
+  { id: 27, name: "Dots Cafe", address: "2521 SE Clinton St.", neighborhood: "Southeast", subArea: "Clinton", type: "dive", vibe: "Clinton St institution since 1992", desc: "Fuzzy wallpaper, boozy slushies, and cheap food since '92. Portland Monthly named it a best bar. Vegan-friendly menu, great beer selection, and a neighborhood anchor that's never pretentious.", tags: ["late-night","happy-hour","food","outdoor"], featured: "Clinton St staple since 1992", hours: "Mon–Wed 4pm–1am · Thu–Sun 4pm–2:30am", happyHour: "Daily 4–7pm", price: "$", website: "https://dotscafeportland.com", reservationRequired: false },
+  { id: 28, name: "Hopworks Urban Brewery",    address: "2944 SE Powell Blvd.", neighborhood: "Southeast", subArea: "Richmond", type: "brewery", vibe: "Organic craft brewery, bike-friendly", desc: "Portland's organic brewery pioneer. Excellent house beers, a full menu, and a genuinely bike-friendly culture that feels quintessentially Portland.", tags: ["outdoor","food","happy-hour"], featured: "Portland's organic brewery" },
+  { id: 29, name: "Double Mountain Woodstock", address: "4436 SE Woodstock Blvd.", neighborhood: "Southeast", subArea: "Woodstock", type: "brewery", vibe: "Hood River brewery's SE outpost", desc: "The Portland location of Hood River's beloved Double Mountain. Outstanding IPAs and ciders, a great food menu, and a warm neighborhood vibe in Woodstock.", tags: ["food","happy-hour"], featured: "Best IPAs in SE Portland" },
+  { id: 30, name: "The B Side Tavern",         address: "3628 SE Division St.", neighborhood: "Southeast", subArea: "Division", type: "dive", vibe: "Division St dive with a soul", desc: "A beloved Division Street institution. Cheap beer, great jukebox, and the kind of warm neighborhood energy that keeps people coming back night after night.", tags: ["late-night","happy-hour"], featured: "Division's best dive" },
+  { id: 31, name: "Yur's Bar",                 address: "717 SW 2nd Ave.", neighborhood: "Southwest", subArea: "Downtown", type: "sports", vibe: "PDX sports bar institution", desc: "Cheap, semi-dumpy, stocked with enough PBR to satisfy the entire city. A Patriots bar on Sundays and Mondays, jukebox and pool tables the rest of the time.", tags: ["late-night","happy-hour","food"], featured: "Portland's unofficial sports bar" },
+  { id: 32, name: "Raven's Manor",             address: "1645 SE 3rd Ave.", neighborhood: "Southeast", subArea: "Buckman", type: "cocktail", vibe: "Gothic manor, theatrical cocktails", desc: "Fully committed to its dark, gothic theme — staff in costume, atmospheric lighting, theatrical cocktails with dry ice and elaborate garnishes. A must-visit experience.", tags: ["late-night","food"], featured: "Most theatrical bar in PDX" },
+  { id: 33, name: "Cult Classics",             address: "3522 SE Division St.", neighborhood: "Southeast", subArea: "Division", type: "dive", vibe: "Video rental store turned dive bar", desc: "A love letter to cult cinema and classic video rental culture. Cheap drinks, a great vibe, and a crowd that knows their movies. One of Portland's most beloved concept bars.", tags: ["late-night","happy-hour"], featured: "Portland's coolest concept bar" },
+  { id: 34, name: "District",                  address: "2121 NW Burnside Rd.", neighborhood: "Northwest", subArea: "Slabtown", type: "cocktail", vibe: "Sleek modern cocktail bar", desc: "Polished and approachable, District delivers creative cocktails in a comfortable setting without taking itself too seriously. A solid go-to for any night out.", tags: ["happy-hour","food"], featured: "Reliable and delicious" },
+  { id: 35, name: "Holy Ghost Bar",            address: "215 SW 2nd Ave.", neighborhood: "Southwest", subArea: "Old Town", type: "cocktail", vibe: "Intimate moody cocktail bar", desc: "Rotating local artwork, top-notch DJs, and expertly crafted cocktails in an intimate, moody atmosphere. Staff are attentive and genuinely passionate about their craft.", tags: ["live-music","late-night"], featured: "Best DJs + cocktails in PDX" },
+  { id: 36, name: "Grandma's Secret", address: "1524 NW 23rd Ave.", neighborhood: "Northwest", subArea: "Nob Hill", type: "cocktail", vibe: "Vietnamese speakeasy hidden on NW 23rd", desc: "Down a short flight of stairs beneath NW 23rd, a blue light above an unmarked door. Inside: Vietnamese-inspired cocktails, Saigon Old Fashioneds, and intimate candlelit tables. Limited seating — arrive early.", tags: ["happy-hour","food"], featured: "Portland's most charming hidden bar", hours: "Tue–Sun 5pm–12am · Closed Mon", happyHour: "Tue–Fri 5–7pm", price: "$$", website: "https://grandmassecretpdx.com", reservationRequired: true },
+  { id: 37, name: "The Sports Bra",           address: "3258 NE Broadway St.", neighborhood: "Northeast", subArea: "Irvington", type: "sports", vibe: "Women's sports bar — first in the US", desc: "The first and only sports bar in the US dedicated exclusively to women's sports. Owner Jenny Nguyen built an inclusive community that's become a Portland landmark.", tags: ["food","happy-hour","outdoor"], featured: "First women's sports bar in America" },
+  { id: 38, name: "Bauman's on Oak",           address: "723 SW Oak St.", neighborhood: "Southwest", subArea: "Downtown", type: "cocktail", vibe: "Local craft cider bar", desc: "Celebrating Oregon's exceptional cider culture. A rotating selection of local craft ciders in a welcoming downtown space — perfect for cider lovers and the cider-curious.", tags: ["happy-hour","food"], featured: "Portland's best cider bar" },
+  { id: 39, name: "Pink Rabbit",              address: "1808 NW 16th Ave.", neighborhood: "Northwest", subArea: "Slabtown", type: "cocktail", vibe: "Fun, approachable cocktail bar", desc: "Neighborhood cocktail bar with a welcoming vibe that works for a casual Tuesday or a lively Saturday. Great happy hour, solid cocktail program, consistently good time.", tags: ["happy-hour","food","outdoor"], featured: "Best neighborhood cocktail bar NW" },
+  { id: 40, name: "Momo",                     address: "2425 SE 11th Ave.", neighborhood: "Southeast", subArea: "Buckman", type: "dive", vibe: "Warm, unpretentious SE dive", desc: "Exactly what a neighborhood dive should be — warm, unpretentious, and reliably good. Great jukebox, cheap beers, and the kind of staff who remember your name.", tags: ["late-night","happy-hour"], featured: "SE Portland neighborhood gem" },
+  { id: 41, name: "Sousol", address: "227 SE 6th Ave.", neighborhood: "Southeast", subArea: "Buckman", type: "speakeasy", vibe: "Pan-Caribbean underground bar under Kann", desc: "James Beard chef Gregory Gourdet's subterranean Caribbean bar. Hidden side entrance, moody wallpaper, pink velour banquettes. Verify hours before visiting — temporarily closed at press time.", tags: ["food","late-night"], featured: "Portland's most acclaimed bar program", hours: "Thu-Sat 5pm-late (verify before visiting)", happyHour: null, price: "$$$", website: "https://sousolbar.com", reservationRequired: true },
+  { id: 42, name: "Bar Diane", address: "2112 NW Irving St.", neighborhood: "Northwest", subArea: "Slabtown", type: "cocktail", vibe: "Natural wine bar down a NW alley", desc: "Tucked down an alley in NW Portland. Champagne, natural wines, sparkling cocktails, and clever drinking snacks. Portland Monthly's best wine bar.", tags: ["happy-hour","food"], featured: "Portland's best natural wine bar", hours: "Mon-Fri 4pm-10pm, Sat 4pm-11pm", happyHour: "Mon-Sat 4-5:30pm", price: "$$", website: "https://bardiane.com", reservationRequired: false },
+  { id: 43, name: "Blackbird Wine Shop", address: "4323 NE Fremont St.", neighborhood: "Northeast", subArea: "Beaumont", type: "cocktail", vibe: "Neighborhood wine bar and bottle shop", desc: "Part wine bar, part bottle shop, part cheese shop. Welcoming and unpretentious with wine tastings and events. Great staff who help you find something without judgment.", tags: ["happy-hour","food"], featured: "Best wine bar in NE Portland", hours: "Mon-Thu 12pm-9pm, Fri-Sat 12pm-10pm, Sun 12pm-8pm", happyHour: null, price: "$$", website: "https://blackbirdwine.com", reservationRequired: false },
+  { id: 44, name: "LaVerne's", address: "822 NE Dekum St.", neighborhood: "Northeast", subArea: "Woodlawn", type: "dive", vibe: "Woodlawn neighborhood haunt, always a party", desc: "Slipped into the Woodlawn neighborhood like it had always been there. Leather booths, exposed brick, raucous regulars, cheap beer. Portland Monthly top new bar of 2025.", tags: ["happy-hour","food","late-night"], featured: "Portland Monthly top new bar 2025", hours: "Mon-Thu 4pm-12am, Fri-Sun 12pm-12am", happyHour: "Mon-Fri 4-6pm", price: "$", website: null, reservationRequired: false },
+  { id: 45, name: "The Bye and Bye", address: "1011 NE Alberta St.", neighborhood: "Northeast", subArea: "Alberta Arts", type: "dive", vibe: "Vegan-friendly Alberta Arts bar", desc: "Alberta Street staple with Southern-inspired vegan food, strong cocktails, and a lively patio. One of the most welcoming bars on the strip for over a decade.", tags: ["outdoor","happy-hour","food","late-night"], featured: "Alberta's favorite bar", hours: "Mon-Fri 4pm-2am, Sat-Sun 12pm-2am", happyHour: "Mon-Fri 4-7pm", price: "$$", website: "https://thebyeandbye.com", reservationRequired: false },
+  { id: 46, name: "Tulip Shop Tavern", address: "3503 NE 45th Ave.", neighborhood: "Northeast", subArea: "Beaumont", type: "sports", vibe: "Best bar burger and lively neighborhood tavern", desc: "One of Portland's best burgers lives inside this lively neighborhood tavern. Loaded fries, double-fried wings, and a bar program that punches way above its weight.", tags: ["food","happy-hour","outdoor"], featured: "Best bar burger in Portland", hours: "Mon-Thu 11am-11pm, Fri-Sat 11am-12am, Sun 11am-10pm", happyHour: "Mon-Fri 3-6pm", price: "$$", website: null, reservationRequired: false },
+  { id: 47, name: "The Woodsman Tavern", address: "4537 SE Division St.", neighborhood: "Southeast", subArea: "Division", type: "whiskey", vibe: "Sophisticated SE tavern, deep whiskey list", desc: "One of SE Portland's most beloved bars. Great wine, clean cocktails, impressive whiskey, and food that rivals most restaurants. The grown-up neighborhood bar Portland needed.", tags: ["food","happy-hour"], featured: "SE Portland's most sophisticated bar", hours: "Mon-Thu 4pm-12am, Fri-Sat 4pm-1am, Sun 4pm-11pm", happyHour: "Mon-Fri 4-6pm", price: "$$", website: "https://woodsmantavern.com", reservationRequired: false },
+  { id: 48, name: "Wax On", address: "725 SE Morrison St.", neighborhood: "Southeast", subArea: "Buckman", type: "dive", vibe: "Record store dive bar", desc: "A vinyl record store and bar in one. Browse records, drink cheap beer, and listen to whatever's spinning. A quintessentially Portland concept that works perfectly.", tags: ["live-music","late-night","happy-hour"], featured: "Portland's coolest record bar", hours: "Daily 12pm-2am", happyHour: "Daily 12-7pm", price: "$", website: null, reservationRequired: false },
+  { id: 49, name: "Pope House Bourbon Lounge", address: "2075 NW Glisan St.", neighborhood: "Northwest", subArea: "Nob Hill", type: "whiskey", vibe: "Bourbon-focused NW Portland lounge", desc: "Especially strong on bourbon, this cozy NW lounge is a locals' favorite. Comfortable and unpretentious about American whiskey without being precious.", tags: ["happy-hour","food"], featured: "Best bourbon bar in NW Portland", hours: "Mon-Thu 4pm-12am, Fri-Sat 4pm-1am, Sun 4pm-11pm", happyHour: "Mon-Fri 4-7pm", price: "$$", website: null, reservationRequired: false },
+  { id: 50, name: "XO Bar", address: "959 SE Morrison St.", neighborhood: "Southeast", subArea: "Buckman", type: "cocktail", vibe: "Tropical cocktails and plant-based bites", desc: "Tropical cocktails alongside inventive plant-based bar bites. Jackfruit spring rolls, soy curls, and bold fruit-forward drinks. Inclusive, vibrant, and fun.", tags: ["food","happy-hour","outdoor"], featured: "Best tropical and plant-based bar", hours: "Tue-Sun 4pm-12am, Closed Mon", happyHour: "Tue-Fri 4-6pm", price: "$$", website: null, reservationRequired: false },
+  { id: 51, name: "Voysey", address: "710 SE 6th Ave.", neighborhood: "Southeast", subArea: "Central Eastside", type: "speakeasy", vibe: "Subterranean speakeasy under Loyal Legion", desc: "Hidden in the basement of Loyal Legion, marked only by a candle lamp neon sign. Opulent design inspired by architect C.F.A. Voysey, creative signature cocktails, and intimate 50-person capacity. Thu-Sat only — verify hours before visiting.", tags: ["late-night"], featured: "Portland's most stylish speakeasy", hours: "Thu-Sat 6pm-close (verify before visiting)", happyHour: null, price: "$$$", website: "https://voyseypdx.com", reservationRequired: false },
 ];
+
 var crawl = [];
 var currentNeighborhood = 'all';
+var currentType = 'all';
 var activeFilters = [];
 var routeStartIndex = {};
 var visits = {};
-var popupPizzaId = null;
+var popupBarId = null;
 
 // ── TABS ───────────────────────────────────────────────
 function switchTab(tab) {
@@ -600,12 +564,19 @@ function switchTab(tab) {
   if (tab === 'visits') renderVisits();
 }
 
-// ── FILTER / SEARCH ────────────────────────────────────
+// ── FILTERS ────────────────────────────────────────────
 function filterNeighborhood(nbhd, btn) {
   currentNeighborhood = nbhd;
   document.querySelectorAll('.neighborhood-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
   document.getElementById('section-title').textContent = nbhd === 'all' ? 'All Portland' : nbhd;
+  renderCards();
+}
+
+function filterType(type, btn) {
+  currentType = type;
+  document.querySelectorAll('.type-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
   renderCards();
 }
 
@@ -618,27 +589,28 @@ function toggleFilter(filter, btn) {
 
 function getFiltered() {
   var q = document.getElementById('search-input').value.toLowerCase();
-  return PIZZAS.filter(function(p) {
-    var matchNbhd = currentNeighborhood === 'all' || p.neighborhood === currentNeighborhood;
-    var matchSearch = !q || p.name.toLowerCase().indexOf(q) > -1 || p.pieName.toLowerCase().indexOf(q) > -1 || p.toppings.toLowerCase().indexOf(q) > -1 || p.address.toLowerCase().indexOf(q) > -1;
-    var matchFilters = activeFilters.length === 0 || activeFilters.every(function(f) { return p.tags.indexOf(f) > -1; });
-    return matchNbhd && matchSearch && matchFilters;
+  return BARS.filter(function(b) {
+    var matchNbhd = currentNeighborhood === 'all' || b.neighborhood === currentNeighborhood;
+    var matchType = currentType === 'all' || b.type === currentType;
+    var matchSearch = !q || b.name.toLowerCase().indexOf(q) > -1 || b.vibe.toLowerCase().indexOf(q) > -1 || b.desc.toLowerCase().indexOf(q) > -1 || b.address.toLowerCase().indexOf(q) > -1;
+    var matchFilters = activeFilters.length === 0 || activeFilters.every(function(f) { return b.tags.indexOf(f) > -1; });
+    return matchNbhd && matchType && matchSearch && matchFilters;
   });
 }
 
 // ── CRAWL ──────────────────────────────────────────────
-function inCrawl(id) { return crawl.some(function(p) { return p.id === id; }); }
+function inCrawl(id) { return crawl.some(function(b) { return b.id === id; }); }
 
 function toggleCrawl(id) {
-  var pizza = PIZZAS.find(function(p) { return p.id === id; });
-  if (!pizza) return;
-  if (inCrawl(id)) { crawl = crawl.filter(function(p) { return p.id !== id; }); }
-  else { crawl.push(pizza); }
+  var bar = BARS.find(function(b) { return b.id === id; });
+  if (!bar) return;
+  if (inCrawl(id)) { crawl = crawl.filter(function(b) { return b.id !== id; }); }
+  else { crawl.push(bar); }
   renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel();
 }
 
 function removeFromCrawl(id) {
-  crawl = crawl.filter(function(p) { return p.id !== id; });
+  crawl = crawl.filter(function(b) { return b.id !== id; });
   renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel();
 }
 
@@ -650,38 +622,43 @@ function clearCrawl() {
 // ── RENDER CARDS ───────────────────────────────────────
 function renderCards() {
   var filtered = getFiltered();
-  var grid = document.getElementById('pizza-grid');
+  var grid = document.getElementById('bar-grid');
   var noResults = document.getElementById('no-results');
-  var tagLabels = { veg:'🥦 Veggie', vegan:'🌱 Vegan', spicy:'🌶 Spicy', pork:'🐷 Pork', pie:'🥧 Whole Pie' };
-  document.getElementById('section-count').textContent = filtered.length + ' spot' + (filtered.length !== 1 ? 's' : '');
+  var typeLabels = { dive: '🍺 Dive Bar', cocktail: '🍸 Cocktail', brewery: '🍻 Brewery', whiskey: '🥃 Whiskey', sports: '📺 Sports Bar', speakeasy: '🕯 Speakeasy' };
+  var tagLabels = { 'happy-hour': '🕐 Happy Hour', outdoor: '🌿 Outdoor', 'live-music': '🎵 Live Music', 'late-night': '🌙 Late Night', food: '🍔 Food' };
+  document.getElementById('section-count').textContent = filtered.length + ' bar' + (filtered.length !== 1 ? 's' : '');
   if (filtered.length === 0) { grid.innerHTML = ''; noResults.style.display = 'block'; return; }
   noResults.style.display = 'none';
   var html = '';
   for (var i = 0; i < filtered.length; i++) {
-    var p = filtered[i];
-    var added = inCrawl(p.id);
-    var v = visits[p.id];
+    var b = filtered[i];
+    var added = inCrawl(b.id);
+    var v = visits[b.id];
     var hasScore = v && v.score > 0;
-    var tagHtml = '';
-    for (var t = 0; t < p.tags.length; t++) {
-      tagHtml += '<span class="tag tag-' + p.tags[t] + '">' + (tagLabels[p.tags[t]] || p.tags[t]) + '</span>';
-    }
-    var cardBadgeColor = hasScore ? (v.score <= 5 ? '#D9231B' : (v.score <= 8 ? '#E8A838' : '#2C6B3F')) : '';
-    var scoreBadge = hasScore ? '<div class="card-score-badge" style="background:' + cardBadgeColor + ';color:' + (hasScore && v.score <= 8 ? '#0F0F0F' : 'white') + '">' + v.score + '/10</div>' : '';
-    var rateBtnClass = 'rate-btn' + (hasScore ? ' has-score' : '');
-    var rateBtnLabel = hasScore ? ('✓ ' + v.score + '/10') : 'Rate It';
-    html += '<div class="pizza-card' + (added ? ' in-crawl' : '') + (hasScore ? ' is-rated' : '') + '" onclick="toggleCrawl(' + p.id + ')">';
+    var tagHtml = b.tags.map(function(t) { return '<span class="tag tag-' + t + '">' + (tagLabels[t] || t) + '</span>'; }).join('');
+    var badgeColor = hasScore ? (v.score <= 5 ? '#D9231B' : (v.score <= 8 ? '#E8A838' : '#2C6B3F')) : '';
+    var scoreBadge = hasScore ? '<div class="card-score-badge" style="background:' + badgeColor + '">' + v.score + '/10</div>' : '';
+    var rateBtnClass = 'rate-btn' + (hasScore ? ' rated' : '');
+    var rateBtnLabel = hasScore ? ('⭐ ' + v.score + '/10') : 'Rate It';
+    html += '<div class="bar-card' + (added ? ' in-crawl' : '') + (hasScore ? ' is-rated' : '') + '" onclick="toggleCrawl(' + b.id + ')">';
     html += scoreBadge;
-    html += '<div class="card-neighborhood">' + p.neighborhood + (p.subArea ? ' · ' + p.subArea : '') + '</div>';
-    html += '<div class="card-name">' + p.name + '</div>';
-    html += '<div class="card-address">📍 ' + p.address + '</div>';
-    html += '<div class="card-pie-name">&ldquo;' + p.pieName + '&rdquo;</div>';
-    html += '<div class="card-toppings">' + p.toppings + '</div>';
+    html += '<div class="card-neighborhood">' + b.neighborhood + (b.subArea ? ' · ' + b.subArea : '') + '</div>';
+    html += '<div class="card-name">' + b.name + '</div>';
+    html += '<div class="card-address">📍 ' + b.address + '</div>';
+    html += '<div class="card-vibe">&ldquo;' + b.vibe + '&rdquo;</div>';
+    html += '<div class="card-desc">' + b.desc + '</div>';
+    if (b.reservationRequired) html += '<div class="card-reservation">📋 Reservation recommended</div>';
+    if (b.hours) html += '<div class="card-hours">🕐 ' + b.hours + '</div>';
+    if (b.happyHour) html += '<div class="card-happy-hour">🍻 Happy Hour: ' + b.happyHour + '</div>';
     html += '<div class="card-footer">';
-    html += '<div class="card-price">$' + p.price + ' / slice</div>';
+    html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">';
+    html += '<span class="card-price">' + (b.price || '') + '</span>';
+    html += '<span class="card-type-badge type-' + b.type + '">' + (typeLabels[b.type] || b.type) + '</span>';
+    if (b.website) html += '<a class="card-website" href="' + b.website + '" target="_blank" onclick="event.stopPropagation()">🔗 Website</a>';
+    html += '</div>';
     html += '<div class="card-tags">' + tagHtml + '</div>';
     html += '<button class="add-btn' + (added ? ' added' : '') + '">' + (added ? '✓ Added' : '+ Add') + '</button>';
-    html += '<button class="' + rateBtnClass + '" onclick="event.stopPropagation();openPopup(' + p.id + ')">' + rateBtnLabel + '</button>';
+    html += '<button class="' + rateBtnClass + '" onclick="event.stopPropagation();rateFromCard(' + b.id + ')">' + rateBtnLabel + '</button>';
     html += '</div></div>';
   }
   grid.innerHTML = html;
@@ -689,39 +666,55 @@ function renderCards() {
 }
 
 function updateCounts() {
-  var nbhds = ['Northwest','Southwest','Northeast','North','Southeast','Vancouver / Outer'];
-  document.getElementById('count-all').textContent = PIZZAS.length;
-  for (var i = 0; i < nbhds.length; i++) {
-    var n = nbhds[i];
+  var nbhds = ['Northwest','Southwest','Northeast','North','Southeast'];
+  var types = ['dive','cocktail','brewery','whiskey','sports','speakeasy'];
+  document.getElementById('count-all').textContent = BARS.length;
+  nbhds.forEach(function(n) {
     var el = document.getElementById('count-' + n);
-    if (el) el.textContent = PIZZAS.filter(function(p) { return p.neighborhood === n; }).length;
-  }
+    if (el) el.textContent = BARS.filter(function(b) { return b.neighborhood === n; }).length;
+  });
+  document.getElementById('type-count-all').textContent = BARS.length;
+  types.forEach(function(t) {
+    var el = document.getElementById('type-count-' + t);
+    if (el) el.textContent = BARS.filter(function(b) { return b.type === t; }).length;
+  });
 }
 
 // ── SIDEBAR ────────────────────────────────────────────
 function renderCrawlSidebar() {
   var list = document.getElementById('crawl-list');
   if (crawl.length === 0) {
-    list.innerHTML = '<li style="border:none;background:none;padding:0"><span class="empty-crawl">No stops yet.<br>Tap a pizza card to add!</span></li>';
+    list.innerHTML = '<li style="border:none;background:none;padding:0"><span class="empty-crawl">No stops yet.<br>Tap a bar card to add!</span></li>';
     return;
   }
   var html = '';
   for (var i = 0; i < crawl.length; i++) {
-    var p = crawl[i];
+    var b = crawl[i];
     html += '<li><div>';
-    html += '<div class="crawl-item-name">' + (i+1) + '. ' + p.name + '</div>';
-    html += '<div class="crawl-item-nbhd">' + p.neighborhood + '</div>';
-    html += '<div style="font-size:0.6rem;color:#888;font-style:italic;margin-top:0.1rem">' + p.pieName + '</div>';
-    html += '</div><button class="remove-btn" onclick="event.stopPropagation();removeFromCrawl(' + p.id + ')">✕</button></li>';
+    html += '<div class="crawl-item-name">' + (i+1) + '. ' + b.name + '</div>';
+    html += '<div class="crawl-item-nbhd">' + b.neighborhood + '</div>';
+    html += '<div style="font-size:0.6rem;color:#888;font-style:italic;margin-top:0.1rem">' + b.vibe + '</div>';
+    html += '</div><button class="remove-btn" onclick="event.stopPropagation();removeFromCrawl(' + b.id + ')">✕</button></li>';
   }
   list.innerHTML = html;
 }
 
 function updateCrawlBar() {
   document.getElementById('crawl-count').textContent = crawl.length;
-  var total = 0;
-  for (var i = 0; i < crawl.length; i++) total += crawl[i].price;
-  document.getElementById('total-cost').textContent = '$' + total;
+  var counter = document.getElementById('pace-counter');
+  if (crawl.length >= 2) {
+    counter.classList.add('visible');
+    // Estimate 1.5 drinks per stop average
+    var estDrinks = Math.round(crawl.length * 1.5);
+    document.getElementById('pace-drinks').textContent = estDrinks;
+    // Suggest 75 min per stop minimum
+    var totalMins = crawl.length * 75;
+    var hrs = Math.floor(totalMins / 60);
+    var mins = totalMins % 60;
+    document.getElementById('pace-time').textContent = hrs + 'h ' + mins + 'm';
+  } else {
+    counter.classList.remove('visible');
+  }
 }
 
 // ── ROUTE PANEL ────────────────────────────────────────
@@ -732,28 +725,30 @@ function updateRoutePanel() {
   setTimeout(function() { panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 50);
   var html = '';
   for (var i = 0; i < crawl.length; i++) {
-    var p = crawl[i];
+    var b = crawl[i];
     html += '<div class="route-stop">';
     html += '<div class="stop-num">Stop ' + (i+1) + '</div>';
-    html += '<div class="stop-name">' + p.name + '</div>';
-    html += '<div style="font-size:0.58rem;color:#888;margin:0.1rem 0">' + p.address + '</div>';
-    html += '<div class="stop-slice">&ldquo;' + p.pieName + '&rdquo;</div>';
+    html += '<div class="stop-name">' + b.name + '</div>';
+    html += '<div style="font-size:0.58rem;color:#888;margin:0.1rem 0">' + b.address + '</div>';
+    if (b.hours) html += '<div style="font-size:0.55rem;color:#666;margin:0.1rem 0">🕐 ' + b.hours.split('·')[0].trim() + '</div>';
+    html += '<div class="stop-vibe">&ldquo;' + b.vibe + '&rdquo;</div>';
+    if (i < crawl.length - 1) html += '<div style="font-size:0.55rem;color:' + 'var(--blue)' + ';margin-top:0.3rem">🚶 ~10–15 min walk to next stop</div>';
     html += '</div>';
   }
   document.getElementById('route-stops').innerHTML = html;
-  var addresses = crawl.map(function(p) { return encodeURIComponent(p.address + ' Portland OR'); });
+  var addresses = crawl.map(function(b) { return encodeURIComponent(b.address + ' Portland OR'); });
   addresses.push(addresses[0]);
   document.getElementById('map-link').href = 'https://www.google.com/maps/dir/' + addresses.join('/') + '?travelmode=walking';
 }
 
 // ── RATING POPUP ───────────────────────────────────────
-function openPopup(pizzaId) {
-  popupPizzaId = pizzaId;
-  var p = PIZZAS.find(function(x) { return x.id === pizzaId; });
-  if (!p) return;
-  document.getElementById('popup-name').textContent = p.name;
-  document.getElementById('popup-slice').textContent = '\u201c' + p.pieName + '\u201d';
-  var v = visits[pizzaId] || { score: 0, note: '' };
+function openPopup(barId) {
+  popupBarId = barId;
+  var b = BARS.find(function(x) { return x.id === barId; });
+  if (!b) return;
+  document.getElementById('popup-name').textContent = b.name;
+  document.getElementById('popup-vibe').textContent = '\u201c' + b.vibe + '\u201d';
+  var v = visits[barId] || { score: 0, note: '' };
   document.getElementById('popup-note').value = v.note || '';
   var btns = '';
   for (var n = 1; n <= 10; n++) {
@@ -765,38 +760,36 @@ function openPopup(pizzaId) {
 
 function selectScore(n) {
   var buttons = document.getElementById('score-buttons').querySelectorAll('.score-btn');
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].classList.toggle('selected', i + 1 === n);
-  }
+  for (var i = 0; i < buttons.length; i++) { buttons[i].classList.toggle('selected', i + 1 === n); }
 }
 
 function getSelectedScore() {
   var buttons = document.getElementById('score-buttons').querySelectorAll('.score-btn');
-  for (var i = 0; i < buttons.length; i++) {
-    if (buttons[i].classList.contains('selected')) return i + 1;
-  }
+  for (var i = 0; i < buttons.length; i++) { if (buttons[i].classList.contains('selected')) return i + 1; }
   return 0;
 }
 
 function saveRating() {
-  if (!popupPizzaId) return;
+  if (!popupBarId) return;
   var score = getSelectedScore();
   var note = document.getElementById('popup-note').value;
   if (score === 0) { alert('Please select a score first!'); return; }
-  visits[popupPizzaId] = { score: score, note: note };
+  visits[popupBarId] = { score: score, note: note };
   saveVisitsToURL();
   closePopupDirect();
   renderCards();
   showToast('✓ Rating saved!');
 }
 
-function closePopup(e) {
-  if (e.target === document.getElementById('popup-overlay')) closePopupDirect();
-}
+function closePopup(e) { if (e.target === document.getElementById('popup-overlay')) closePopupDirect(); }
+function closePopupDirect() { document.getElementById('popup-overlay').classList.remove('visible'); popupBarId = null; }
 
-function closePopupDirect() {
-  document.getElementById('popup-overlay').classList.remove('visible');
-  popupPizzaId = null;
+function rateFromCard(barId) {
+  if (!visits[barId]) visits[barId] = { score: 1, note: '' };
+  else if (!visits[barId].score) visits[barId].score = 1;
+  saveVisitsToURL();
+  renderCards();
+  openPopup(barId);
 }
 
 // ── VISITS TAB ─────────────────────────────────────────
@@ -804,48 +797,37 @@ function renderVisits() {
   var grid = document.getElementById('visits-grid');
   var empty = document.getElementById('visits-empty');
   var summaryBar = document.getElementById('visits-summary-bar');
-  var visited = PIZZAS.filter(function(p) { return visits[p.id] && visits[p.id].score > 0; });
-  if (visited.length === 0) {
-    grid.innerHTML = '';
-    empty.style.display = 'block';
-    summaryBar.innerHTML = '';
-    return;
-  }
+  var visited = BARS.filter(function(b) { return visits[b.id] && visits[b.id].score > 0; });
+  if (visited.length === 0) { grid.innerHTML = ''; empty.style.display = 'block'; summaryBar.innerHTML = ''; return; }
   empty.style.display = 'none';
-  var total = 0;
-  for (var i = 0; i < visited.length; i++) total += visits[visited[i].id].score;
+  var total = visited.reduce(function(s,b) { return s + visits[b.id].score; }, 0);
   var avg = (total / visited.length).toFixed(1);
-  var sorted = visited.slice().sort(function(a,b) { return visits[b.id].score - visits[a.id].score; });
-  var top = sorted[0];
+  var top = visited.slice().sort(function(a,b) { return visits[b.id].score - visits[a.id].score; })[0];
   summaryBar.innerHTML = '<div class="visits-summary">'
     + '<div class="summary-stat"><div class="summary-num">' + visited.length + '</div><div class="summary-label">Visited</div></div>'
     + '<div class="summary-stat"><div class="summary-num">' + avg + '</div><div class="summary-label">Avg Score</div></div>'
     + '<div class="summary-stat"><div class="summary-num" style="font-size:1rem;padding-top:0.5rem">' + top.name + '</div><div class="summary-label">Top Rated (' + visits[top.id].score + '/10)</div></div>'
     + '</div>';
   var html = '';
+  var sorted = visited.slice().sort(function(a,b) { return visits[b.id].score - visits[a.id].score; });
   for (var j = 0; j < sorted.length; j++) {
-    var p = sorted[j];
-    var v = visits[p.id];
+    var bar = sorted[j];
+    var v = visits[bar.id];
     var pips = '';
+    var badgeColor = v.score <= 5 ? '#D9231B' : (v.score <= 8 ? '#E8A838' : '#2C6B3F');
     for (var n = 1; n <= 10; n++) {
-      var pipColor = '';
-      if (n <= v.score) {
-        if (n <= 5) pipColor = ' style="background:#D9231B"';
-        else if (n <= 8) pipColor = ' style="background:#E8A838"';
-        else pipColor = ' style="background:#2C6B3F"';
-      }
-      pips += '<div class="score-pip' + (n <= v.score ? ' filled' : '') + '"' + pipColor + ' onclick="openPopup(' + p.id + ')" title="Edit rating"></div>';
+      var pipColor = n <= v.score ? (n <= 5 ? '#D9231B' : (n <= 8 ? '#E8A838' : '#2C6B3F')) : '#eee';
+      pips += '<div class="score-pip" style="background:' + pipColor + '" onclick="openPopup(' + bar.id + ')" title="Edit rating"></div>';
     }
     var noteHtml = v.note ? '<div class="visit-note-display">&ldquo;' + v.note + '&rdquo;</div>' : '';
     html += '<div class="visit-card">';
-    var badgeColor = v.score <= 5 ? '#D9231B' : (v.score <= 8 ? '#E8A838' : '#2C6B3F');
     html += '<div class="visit-score-badge" style="background:' + badgeColor + ';color:' + (v.score <= 8 ? '#0F0F0F' : 'white') + '">' + v.score + '</div>';
-    html += '<div class="visit-card-nbhd">' + p.neighborhood + ' · ' + p.subArea + '</div>';
-    html += '<div class="visit-card-name">' + p.name + '</div>';
-    html += '<div class="visit-card-slice">&ldquo;' + p.pieName + '&rdquo;</div>';
+    html += '<div class="visit-card-nbhd">' + bar.neighborhood + ' · ' + bar.subArea + '</div>';
+    html += '<div class="visit-card-name">' + bar.name + '</div>';
+    html += '<div class="visit-card-vibe">&ldquo;' + bar.vibe + '&rdquo;</div>';
     html += '<div class="visit-score-bar">' + pips + '</div>';
     html += noteHtml;
-    html += '<button class="visit-edit-btn" onclick="openPopup(' + p.id + ')">Edit Rating</button>';
+    html += '<button class="visit-edit-btn" onclick="openPopup(' + bar.id + ')">Edit Rating</button>';
     html += '</div>';
   }
   grid.innerHTML = html;
@@ -853,33 +835,27 @@ function renderVisits() {
 
 // ── SHARE ──────────────────────────────────────────────
 function saveVisitsToURL() {
-  var parts = [];
-  var keys = Object.keys(visits);
-  for (var i = 0; i < keys.length; i++) {
-    var id = keys[i];
+  var parts = Object.keys(visits).filter(function(id) { return visits[id].score > 0; }).map(function(id) {
     var v = visits[id];
-    if (v.score > 0) {
-      var noteEnc = v.note ? btoa(unescape(encodeURIComponent(v.note))) : '';
-      parts.push(id + ':' + v.score + ':' + noteEnc);
-    }
-  }
+    var noteEnc = v.note ? btoa(unescape(encodeURIComponent(v.note))) : '';
+    return id + ':' + v.score + ':' + noteEnc;
+  });
   var url = new URL(window.location.href);
   if (parts.length > 0) url.searchParams.set('visits', parts.join(','));
   else url.searchParams.delete('visits');
   window.history.replaceState({}, '', url.toString());
-  // Also persist to localStorage
-  try { localStorage.setItem('ppw2026_visits', JSON.stringify(visits)); } catch(e) {}
+  try { localStorage.setItem('pdxcrawl_bar_visits', JSON.stringify(visits)); } catch(e) {}
 }
 
 function shareCrawl() {
   if (crawl.length === 0) return;
-  var ids = crawl.map(function(p) { return p.id; }).join(',');
+  var ids = crawl.map(function(b) { return b.id; }).join(',');
   var url = window.location.origin + window.location.pathname + '?crawl=' + ids;
-  doShare('Portland Pizza Week Crawl', 'Check out my pizza crawl! 🍕', url, '✓ Crawl link copied!');
+  doShare('PDX Bar Crawl', 'Check out my Portland bar crawl! 🍺', url, '✓ Crawl link copied!');
 }
 
 function shareVisits() {
-  doShare('My Portland Pizza Week Ratings', 'Check out my pizza ratings! 🍕⭐', window.location.href, '✓ Ratings link copied!');
+  doShare('My PDX Bar Crawl Ratings', 'Check out my Portland bar ratings! 🍺⭐', window.location.href, '✓ Ratings link copied!');
 }
 
 function doShare(title, text, url, msg) {
@@ -900,26 +876,22 @@ function loadCrawlFromURL() {
   var params = new URLSearchParams(window.location.search);
   var ids = params.get('crawl');
   if (!ids) return;
-  var parsed = ids.split(',');
-  for (var i = 0; i < parsed.length; i++) {
-    var id = parseInt(parsed[i]);
-    var pizza = PIZZAS.find(function(p) { return p.id === id; });
-    if (pizza) crawl.push(pizza);
-  }
+  ids.split(',').forEach(function(id) {
+    var bar = BARS.find(function(b) { return b.id === parseInt(id); });
+    if (bar) crawl.push(bar);
+  });
   if (crawl.length > 0) { renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel(); }
 }
 
 function loadVisitsFromStorage() {
   try {
-    var stored = localStorage.getItem('ppw2026_visits');
+    var stored = localStorage.getItem('pdxcrawl_bar_visits');
     if (stored) {
       var parsed = JSON.parse(stored);
-      var keys = Object.keys(parsed);
-      for (var i = 0; i < keys.length; i++) {
-        var id = parseInt(keys[i]);
-        var v = parsed[keys[i]];
-        if (id && v && v.score > 0) visits[id] = { score: v.score, note: v.note || '' };
-      }
+      Object.keys(parsed).forEach(function(id) {
+        var v = parsed[id];
+        if (v && v.score > 0) visits[parseInt(id)] = { score: v.score, note: v.note || '' };
+      });
     }
   } catch(e) {}
 }
@@ -928,64 +900,141 @@ function loadVisitsFromURL() {
   var params = new URLSearchParams(window.location.search);
   var raw = params.get('visits');
   if (!raw) return;
-  var parts = raw.split(',');
-  for (var i = 0; i < parts.length; i++) {
-    var bits = parts[i].split(':');
+  raw.split(',').forEach(function(part) {
+    var bits = part.split(':');
     var id = parseInt(bits[0]);
     var score = parseInt(bits[1]) || 0;
     var note = '';
-    try { note = bits[2] ? decodeURIComponent(escape(atob(bits[2]))) : ''; } catch(e) { note = ''; }
+    try { note = bits[2] ? decodeURIComponent(escape(atob(bits[2]))) : ''; } catch(e) {}
     if (id && score > 0) visits[id] = { score: score, note: note };
-  }
+  });
 }
 
+// ── SUGGESTED ROUTES ───────────────────────────────────
 const ROUTES = [
-  { id: 'pearl-nw', name: 'The Pearl & Nob Hill Loop', neighborhood: 'Northwest / Pearl', distanceMi: 2.1, description: 'Start in the Pearl, wind through NW 21st, and loop back. Flat, beautiful streets — classic Portland stroll.', accentColor: '#E8A838', stops: [{ pizzaId: 3, walkToNext: 2 },{ pizzaId: 8, walkToNext: 3 },{ pizzaId: 2, walkToNext: 2 },{ pizzaId: 5, walkToNext: 1 },{ pizzaId: 1, walkToNext: 8 },{ pizzaId: 7, walkToNext: 0 }] },
-  { id: 'downtown-sw', name: 'Downtown Slice Sprint', neighborhood: 'Southwest / Downtown', distanceMi: 1.4, description: 'A tight, punchy loop through the heart of downtown. All within a few blocks — easy to squeeze in on a lunch break.', accentColor: '#D9231B', stops: [{ pizzaId: 16, walkToNext: 3 },{ pizzaId: 14, walkToNext: 2 },{ pizzaId: 10, walkToNext: 2 },{ pizzaId: 15, walkToNext: 3 },{ pizzaId: 13, walkToNext: 4 },{ pizzaId: 11, walkToNext: 0 }] },
-  { id: 'alberta-concordia', name: 'Alberta Arts & Concordia', neighborhood: 'Northeast', distanceMi: 2.4, description: "Walk NE Alberta's famous arts corridor then dip into Concordia. Murals, vibes, and great slices every few blocks.", accentColor: '#F26522', stops: [{ pizzaId: 37, walkToNext: 5 },{ pizzaId: 36, walkToNext: 8 },{ pizzaId: 32, walkToNext: 6 },{ pizzaId: 26, walkToNext: 7 },{ pizzaId: 37, walkToNext: 0 }] },
-  { id: 'ne-broadway-glisan', name: 'Broadway to Glisan', neighborhood: 'Northeast', distanceMi: 2.8, description: "From NE Broadway's lively corridor east along Glisan — passes through Irvington, Sullivan's Gulch, and Rose City Park.", accentColor: '#2C6B3F', stops: [{ pizzaId: 27, walkToNext: 6 },{ pizzaId: 31, walkToNext: 8 },{ pizzaId: 30, walkToNext: 5 },{ pizzaId: 29, walkToNext: 7 },{ pizzaId: 27, walkToNext: 0 }] },
-  { id: 'north-mississippi', name: 'Mississippi Ave & Overlook', neighborhood: 'North', distanceMi: 2.2, description: "Two of North Portland's best streets combined. Mississippi's indie scene meets the Overlook neighborhood — great views included.", accentColor: '#7B68C8', stops: [{ pizzaId: 42, walkToNext: 5 },{ pizzaId: 41, walkToNext: 7 },{ pizzaId: 43, walkToNext: 8 },{ pizzaId: 39, walkToNext: 6 },{ pizzaId: 38, walkToNext: 0 }] },
-  { id: 'north-kenton', name: 'Kenton & St. Johns', neighborhood: 'North', distanceMi: 2.6, description: "Head up N Denver Ave through Kenton's quirky strip to St. Johns. Portland's most underrated neighborhoods with a stunning bridge view at the end.", accentColor: '#4A9EC1', stops: [{ pizzaId: 40, walkToNext: 14 },{ pizzaId: 44, walkToNext: 14 },{ pizzaId: 40, walkToNext: 0 }] },
-  { id: 'se-buckman-kerns', name: 'Buckman & Kerns', neighborhood: 'Southeast', distanceMi: 1.6, description: 'East Burnside and Stark form the spine of this crawl. Dense, walkable, and loaded with great spots within a few blocks of each other.', accentColor: '#C87B40', stops: [{ pizzaId: 50, walkToNext: 2 },{ pizzaId: 51, walkToNext: 2 },{ pizzaId: 45, walkToNext: 4 },{ pizzaId: 59, walkToNext: 5 },{ pizzaId: 61, walkToNext: 4 },{ pizzaId: 68, walkToNext: 0 }] },
-  { id: 'se-division', name: 'Division Street Classic', neighborhood: 'Southeast', distanceMi: 2.3, description: "One of Portland's most celebrated food streets. Walk SE Division from the Central Eastside out to Richmond — a true pizza crawl corridor.", accentColor: '#D9231B', stops: [{ pizzaId: 49, walkToNext: 8 },{ pizzaId: 35, walkToNext: 4 },{ pizzaId: 58, walkToNext: 2 },{ pizzaId: 46, walkToNext: 5 },{ pizzaId: 63, walkToNext: 8 },{ pizzaId: 54, walkToNext: 0 }] },
-  { id: 'se-hawthorne-belmont', name: 'Hawthorne & Belmont', neighborhood: 'Southeast', distanceMi: 2.0, description: "Two of SE Portland's iconic corridors make one great crawl. Vintage shops, bookstores, and $4 slices at every turn.", accentColor: '#E8A838', stops: [{ pizzaId: 57, walkToNext: 5 },{ pizzaId: 64, walkToNext: 4 },{ pizzaId: 48, walkToNext: 5 },{ pizzaId: 65, walkToNext: 5 },{ pizzaId: 57, walkToNext: 0 }] },
-  { id: 'se-sellwood-woodstock', name: 'Sellwood & Woodstock', neighborhood: 'Southeast', distanceMi: 2.7, description: "Portland's leafy south side. Sellwood's antique row meets Woodstock's neighborhood charm — a mellower, residential crawl.", accentColor: '#4A9E6A', stops: [{ pizzaId: 52, walkToNext: 10 },{ pizzaId: 56, walkToNext: 8 },{ pizzaId: 53, walkToNext: 8 },{ pizzaId: 60, walkToNext: 0 }] },
-];
+  {
+    id: 'downtown-cocktail',
+    name: 'Downtown Cocktail Circuit',
+    neighborhood: 'Southwest / Downtown',
+    distanceMi: 1.2,
+    description: 'A tight loop through downtown hitting Portland\'s most iconic cocktail spots — from a flaming Spanish Coffee to the city\'s finest whiskey collection.',
+    accentColor: '#1E6FA8',
+    stops: [
+      { barId: 7  },  // Huber's Cafe
+      { barId: 9  },  // Yamhill Pub
+      { barId: 6  },  // Kelly's Olympian
+      { barId: 8  },  // Abigail Hall
+      { barId: 35 },  // Holy Ghost Bar
+    ]
+  },
+  {
+    id: 'se-dive-crawl',
+    name: 'SE Dive Bar Classic',
+    neighborhood: 'Southeast',
+    distanceMi: 1.8,
+    description: 'Buckman and Belmont\'s finest dive bars — Christmas lights, pool tables, and cheap beer. SE Portland at its most authentic.',
+    accentColor: '#8B4513',
+    stops: [
+      { barId: 25 },  // Slammer Tavern
+      { barId: 26 },  // Ship Ahoy
+      { barId: 40 },  // Momo
+      { barId: 11 },  // Rum Club
+      { barId: 32 },  // Raven's Manor
+    ]
+  },
+  {
+    id: 'ne-cocktail-tour',
+    name: 'NE Cocktail Tour',
+    neighborhood: 'Northeast',
+    distanceMi: 2.0,
+    description: 'From a Prohibition speakeasy to Portland\'s best rum bar, this NE route hits the city\'s most celebrated cocktail destinations.',
+    accentColor: '#1E6FA8',
+    stops: [
+      { barId: 13 },  // Too Soon
+      { barId: 12 },  // Bible Club
+      { barId: 15 },  // Palomar
+      { barId: 14 },  // Scotch Lodge
+      { barId: 11 },  // Rum Club
+    ]
+  },
+  {
+    id: 'mississippi-north',
+    name: 'Mississippi Ave Bar Hop',
+    neighborhood: 'North / Northeast',
+    distanceMi: 1.5,
+    description: 'Mississippi Avenue is one of Portland\'s best bar streets. This route covers everything from German beer halls to cocktail bars to beloved neighborhood dives.',
+    accentColor: '#2C6B3F',
+    stops: [
+      { barId: 24 },  // Prost!
+      { barId: 36 },  // Grandma's Secret
+      { barId: 18 },  // Interurban
+      { barId: 20 },  // Stormbreaker
+    ]
+  },
+  {
+    id: 'pearl-nw-bars',
+    name: 'Pearl District Bar Tour',
+    neighborhood: 'Northwest / Pearl',
+    distanceMi: 1.3,
+    description: 'The Pearl\'s best bars in a walkable loop — from craft cocktails at Teardrop to rooftop beers at 10 Barrel.',
+    accentColor: '#1E6FA8',
+    stops: [
+      { barId: 1  },  // Teardrop
+      { barId: 39 },  // Pink Rabbit
+      { barId: 19 },  // Low Brow Lounge
+      { barId: 3  },  // 10 Barrel
+      { barId: 4  },  // Deschutes
+    ]
+  },
+  {
+    id: 'whiskey-tour',
+    name: 'Portland Whiskey Trail',
+    neighborhood: 'Citywide',
+    distanceMi: 3.2,
+    description: 'For the serious whiskey lover. From 1,500 bottles at the Multnomah Whiskey Library to Scotch Lodge\'s sultry single malts — this is Portland\'s definitive whiskey crawl.',
+    accentColor: '#8B6914',
+    stops: [
+      { barId: 5  },  // Multnomah Whiskey Library
+      { barId: 7  },  // Huber's (Spanish Coffee)
+      { barId: 14 },  // Scotch Lodge
+      { barId: 1  },  // Teardrop
+    ]
+  },
+  {
+    id: 'speakeasy-tour',
+    name: 'Portland Speakeasy Tour',
+    neighborhood: 'Citywide',
+    distanceMi: 2.8,
+    description: "Portland's most secretive bars — hidden entrances, unmarked doors, and cocktails worth finding. Plan ahead: limited seating and specific hours apply to all stops.",
+    accentColor: '#7b2d8b',
+    stops: [
+      { barId: 36 },
+      { barId: 12 },
+      { barId: 51 },
+      { barId: 41 }
+    ]
+  }];
+
 function getRotatedStops(route) {
   var uniqueIds = [];
-  for (var i = 0; i < route.stops.length; i++) {
-    if (uniqueIds.indexOf(route.stops[i].pizzaId) === -1) uniqueIds.push(route.stops[i].pizzaId);
-  }
+  route.stops.forEach(function(s) { if (uniqueIds.indexOf(s.barId) === -1) uniqueIds.push(s.barId); });
   var startIdx = routeStartIndex[route.id] || 0;
   return uniqueIds.slice(startIdx).concat(uniqueIds.slice(0, startIdx));
 }
 
-function setRouteStart(routeId, idx) {
-  routeStartIndex[routeId] = idx;
-  renderRoutes();
-}
+function setRouteStart(routeId, idx) { routeStartIndex[routeId] = idx; renderRoutes(); }
 
 function loadSuggestedRoute(routeId) {
-  var route = null;
-  for (var i = 0; i < ROUTES.length; i++) { if (ROUTES[i].id === routeId) { route = ROUTES[i]; break; } }
+  var route = ROUTES.find(function(r) { return r.id === routeId; });
   if (!route) return;
-  var orderedIds = getRotatedStops(route);
-  crawl = [];
-  for (var j = 0; j < orderedIds.length; j++) {
-    var pizza = PIZZAS.find(function(p) { return p.id === orderedIds[j]; });
-    if (pizza) crawl.push(pizza);
-  }
+  crawl = getRotatedStops(route).map(function(id) { return BARS.find(function(b) { return b.id === id; }); }).filter(Boolean);
   renderCrawlSidebar(); renderCards(); updateCrawlBar(); updateRoutePanel();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function buildMapUrl(route) {
-  var orderedIds = getRotatedStops(route);
-  var addresses = [];
-  for (var i = 0; i < orderedIds.length; i++) {
-    var pizza = PIZZAS.find(function(p) { return p.id === orderedIds[i]; });
-    if (pizza) addresses.push(encodeURIComponent(pizza.address + ' Portland OR'));
-  }
+  var pizzas = getRotatedStops(route).map(function(id) { return BARS.find(function(b) { return b.id === id; }); }).filter(Boolean);
+  var addresses = pizzas.map(function(b) { return encodeURIComponent(b.address + ' Portland OR'); });
   if (addresses.length > 0) addresses.push(addresses[0]);
   return 'https://www.google.com/maps/dir/' + addresses.join('/') + '?travelmode=walking';
 }
@@ -995,31 +1044,30 @@ function renderRoutes() {
   var html = '';
   for (var r = 0; r < ROUTES.length; r++) {
     var route = ROUTES[r];
-    var uniqueIds = [];
-    for (var i = 0; i < route.stops.length; i++) {
-      if (uniqueIds.indexOf(route.stops[i].pizzaId) === -1) uniqueIds.push(route.stops[i].pizzaId);
-    }
+    var uniqueIds = getRotatedStops(route);
     var startIdx = routeStartIndex[route.id] || 0;
     var stopsHtml = '';
-    for (var s = 0; s < uniqueIds.length; s++) {
-      var pid = uniqueIds[s];
-      var p = PIZZAS.find(function(x) { return x.id === pid; });
-      if (!p) continue;
+    var origIds = [];
+    route.stops.forEach(function(s) { if (origIds.indexOf(s.barId) === -1) origIds.push(s.barId); });
+    for (var s = 0; s < origIds.length; s++) {
+      var bid = origIds[s];
+      var b = BARS.find(function(x) { return x.id === bid; });
+      if (!b) continue;
       var isStart = s === startIdx;
-      var displayNum = ((s - startIdx + uniqueIds.length) % uniqueIds.length) + 1;
+      var displayNum = ((s - startIdx + origIds.length) % origIds.length) + 1;
       stopsHtml += '<li class="' + (isStart ? 'is-start' : '') + '" onclick="setRouteStart(\'' + route.id + '\',' + s + ')">';
       stopsHtml += '<div class="stop-num-dot" style="' + (isStart ? 'background:#E8A838;color:#0F0F0F' : '') + '">' + (isStart ? '★' : displayNum) + '</div>';
-      stopsHtml += '<div class="stop-info"><div class="stop-info-name">' + p.name + '</div><div class="stop-info-slice">&ldquo;' + p.pieName + '&rdquo;</div></div>';
+      stopsHtml += '<div class="stop-info"><div class="stop-info-name">' + b.name + '</div><div class="stop-info-vibe">' + b.vibe + '</div></div>';
       stopsHtml += '<span class="start-hint" style="color:' + (isStart ? '#E8A838' : '#555') + '">' + (isStart ? 'START' : 'tap to start') + '</span>';
       stopsHtml += '</li>';
     }
     html += '<div class="route-card" style="border-top-color:' + route.accentColor + '">';
     html += '<div class="route-card-nbhd">' + route.neighborhood + '</div>';
     html += '<div class="route-card-name">' + route.name + '</div>';
-    html += '<div class="route-meta"><span class="route-badge badge-dist">🚶 ' + route.distanceMi + ' mi roundtrip</span><span class="route-badge badge-cost">💰 $' + (uniqueIds.length * 4) + ' total</span><span class="route-badge">' + uniqueIds.length + ' stops</span></div>';
+    html += '<div class="route-meta"><span class="route-badge badge-dist">🚶 ' + route.distanceMi + ' mi roundtrip</span><span class="route-badge badge-bars">🍺 ' + origIds.length + ' stops</span></div>';
     html += '<div class="route-desc">' + route.description + '</div>';
     html += '<ul class="route-stops-list">' + stopsHtml + '</ul>';
-    html += '<div class="route-actions"><button class="route-load-btn" onclick="loadSuggestedRoute(\'' + route.id + '\')">🍕 Load This Crawl</button><a class="route-map-btn" href="' + buildMapUrl(route) + '" target="_blank">Map →</a></div>';
+    html += '<div class="route-actions"><button class="route-load-btn" onclick="loadSuggestedRoute(\'' + route.id + '\')">🍺 Load This Crawl</button><a class="route-map-btn" href="' + buildMapUrl(route) + '" target="_blank">Map →</a></div>';
     html += '</div>';
   }
   grid.innerHTML = html;
@@ -1031,20 +1079,7 @@ renderCards();
 renderRoutes();
 loadCrawlFromURL();
 loadVisitsFromStorage();
-loadVisitsFromURL(); // URL params override local storage (for shared links)
+loadVisitsFromURL();
 </script>
-<footer style="background:#0F0F0F;color:#FAF3E8;padding:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;border-top:4px solid #F26522;">
-  <div style="display:flex;align-items:center;gap:1rem;">
-    <img src="../logo.png" alt="PDX Crawl" style="width:56px;height:56px;object-fit:contain;">
-    <div>
-      <div style="font-family:'Bebas Neue',Impact,sans-serif;font-size:1.5rem;letter-spacing:0.05em;color:#E8A838;line-height:1;">PDX Crawl</div>
-      <div style="font-size:0.62rem;color:#7A6F62;font-style:italic;font-family:'Instrument Serif',serif;margin-top:0.1rem;">Your crew. Your crawl. Your Portland.</div>
-    </div>
-  </div>
-  <div style="font-size:0.6rem;color:#555;letter-spacing:0.08em;text-transform:uppercase;text-align:right;line-height:1.8;">
-    <div>© 2026 PDX Crawl. All rights reserved.</div>
-    <div style="color:#444;">Built with 🍕 in Portland, Oregon</div>
-  </div>
-</footer>
 </body>
 </html>
