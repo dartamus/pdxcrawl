@@ -470,6 +470,7 @@
       <div class="start-here-intro">
         <div class="start-here-heading">Pick a crawl and go.</div>
         <div class="start-tagline">Don't overthink it. Pick a crawl. Start walking.</div>
+        <button onclick="switchTab('browse')" style="background:none;border:none;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:0;margin-top:0.75rem;text-decoration:underline;">or browse & build your own crawl →</button>
       </div>
       <div class="start-routes-grid" id="start-routes-grid"></div>
     </div>
@@ -640,6 +641,7 @@ function filterNeighborhood(nbhd, btn) {
   document.querySelectorAll('.neighborhood-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
   document.getElementById('section-title').textContent = nbhd === 'all' ? 'All Portland' : nbhd;
+  switchTab('browse');
   renderCards();
 }
 
@@ -647,6 +649,7 @@ function filterType(type, btn) {
   currentType = type;
   document.querySelectorAll('.type-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
+  switchTab('browse');
   renderCards();
 }
 
@@ -667,6 +670,7 @@ function toggleNearMe() {
       document.getElementById('near-me-btn').classList.add('active');
       document.getElementById('near-me-btn').textContent = '📍 Near Me ✓';
       document.getElementById('distance-wrap').classList.add('visible');
+      switchTab('browse');
       renderCards();
     }, function() {
       alert('Unable to get your location. Please enable location access in your browser settings.');
@@ -685,6 +689,7 @@ function toggleOpenNow() {
   openNowActive = !openNowActive;
   document.getElementById('open-now-btn').classList.toggle('active', openNowActive);
   document.getElementById('open-now-btn').innerHTML = openNowActive ? '🟢 Open Now ✓' : '🟢 Open Now';
+  switchTab('browse');
   renderCards();
 }
 
