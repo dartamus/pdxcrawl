@@ -739,7 +739,7 @@ function updateRoutePanel() {
   document.getElementById('route-stops').innerHTML = html;
   var addresses = crawl.map(function(p) { return encodeURIComponent(p.address + ' Portland OR'); });
   addresses.push(addresses[0]);
-  document.getElementById('map-link').href = 'https://www.google.com/maps/dir/' + addresses.join('/');
+  document.getElementById('map-link').href = 'https://www.google.com/maps/dir/' + addresses.join('/') + '?travelmode=walking';
 }
 
 // ── RATING POPUP ───────────────────────────────────────
@@ -983,7 +983,7 @@ function buildMapUrl(route) {
     if (pizza) addresses.push(encodeURIComponent(pizza.address + ' Portland OR'));
   }
   if (addresses.length > 0) addresses.push(addresses[0]);
-  return 'https://www.google.com/maps/dir/' + addresses.join('/');
+  return 'https://www.google.com/maps/dir/' + addresses.join('/') + '?travelmode=walking';
 }
 
 function renderRoutes() {
