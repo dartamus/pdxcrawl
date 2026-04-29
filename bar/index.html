@@ -128,6 +128,7 @@
   .type-brewery { border-color: var(--green); color: var(--green); }
   .type-whiskey { border-color: #8B6914; color: #8B6914; }
   .type-sports { border-color: var(--muted); color: var(--muted); }
+  .type-speakeasy { border-color: #7b2d8b; color: #7b2d8b; }
   .card-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
   .tag { font-size: 0.55rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.15rem 0.4rem; border: 1px solid; }
   .tag-happy-hour { border-color: var(--orange); color: var(--orange); }
@@ -141,6 +142,24 @@
   .rate-btn { background: #555; color: var(--cream); border: none; font-family: 'Space Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 0.35rem 0.65rem; cursor: pointer; transition: background 0.15s; min-height: 40px; }
   .rate-btn:hover { background: var(--gold); color: var(--black); }
   .rate-btn.rated { background: var(--gold); color: var(--black); font-weight: 700; }
+
+  /* CARD META INFO */
+  .card-hours { font-size: 0.58rem; color: var(--muted); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.35rem; }
+  .card-happy-hour { font-size: 0.55rem; color: #2C6B3F; font-weight: 700; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.35rem; }
+  .card-price { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.1rem; color: #2C6B3F; letter-spacing: 0.05em; }
+  .card-reservation { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.55rem; background: #fff3cd; color: #856404; border: 1px solid #ffc107; padding: 0.15rem 0.45rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .card-website { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.55rem; color: var(--blue); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .card-website:hover { border-bottom-color: var(--blue); }
+
+  /* PACE YOURSELF COUNTER */
+  .pace-counter { background: var(--black); color: var(--cream); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-top: 2px solid var(--blue); display: none; }
+  .pace-counter.visible { display: flex; }
+  .pace-text { font-family: 'Bebas Neue', Impact, sans-serif; font-size: 1.1rem; letter-spacing: 0.05em; }
+  .pace-tip { font-size: 0.58rem; color: rgba(250,243,232,0.5); font-style: italic; }
+  .pace-drinks { color: var(--gold); font-weight: 700; }
+
+  /* 21+ BANNER */
+  .age-banner { background: #1a1a1a; border-bottom: 1px solid #333; padding: 0.4rem 2rem; text-align: center; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(250,243,232,0.35); }
 
   /* NO RESULTS */
   .no-results { text-align: center; padding: 3rem 1rem; color: var(--muted); }
@@ -314,7 +333,7 @@
   </div>
   <div class="header-meta-bar">
     <div class="meta-pills">
-      <div class="meta-pill">🍺 40 Bars</div>
+      <div class="meta-pill">🍺 51 Bars</div>
       <div class="meta-pill">🍸 Dive · Cocktail · Brewery · Whiskey</div>
       <div class="meta-pill">🗺 6 Neighborhoods</div>
     </div>
@@ -333,11 +352,16 @@
   </div>
 </div>
 
+<div class="age-banner">🔞 Must be 21+ to participate · Please drink responsibly · Know your limits</div>
 <div class="crawl-bar">
   <div class="crawl-bar-text">Your Crawl: <span id="crawl-count">0</span> stops</div>
   <div><span class="stat-chip">Tap a card to add · Tap again to remove</span></div>
 </div>
 
+<div class="pace-counter" id="pace-counter">
+  <div class="pace-text">Pace Yourself: <span class="pace-drinks" id="pace-drinks">0</span> estimated drinks · <span id="pace-time">0h 0m</span> minimum crawl time</div>
+  <div class="pace-tip">We suggest 60–90 min per stop · Water between drinks 💧</div>
+</div>
 <div class="app-shell">
   <aside class="sidebar" style="background:#1C1C1C;color:#FAF3E8;">
     <div class="sidebar-title">Neighborhoods</div>
@@ -356,6 +380,7 @@
       <button class="type-btn" onclick="filterType('brewery',this)">🍻 Brewery <span class="nbhd-count" id="type-count-brewery">0</span></button>
       <button class="type-btn" onclick="filterType('whiskey',this)">🥃 Whiskey Bar <span class="nbhd-count" id="type-count-whiskey">0</span></button>
       <button class="type-btn" onclick="filterType('sports',this)">📺 Sports Bar <span class="nbhd-count" id="type-count-sports">0</span></button>
+      <button class="type-btn" onclick="filterType('speakeasy',this)">🕯 Speakeasy <span class="nbhd-count" id="type-count-speakeasy">0</span></button>
     </div>
 
     <div class="your-crawl">
@@ -473,15 +498,15 @@ const BARS = [
 
   // ── NORTHEAST ──────────────────────────────────────
   { id: 11, name: "Rum Club",                  address: "720 SE Sandy Blvd.", neighborhood: "Northeast", subArea: "Buckman", type: "cocktail", vibe: "Portland's best rum bar", desc: "Since 2011, the go-to for rum enthusiasts and the rum-curious alike. Classics, tiki drinks, and neighborhood bar warmth. The Pedro Martínez is iconic.", tags: ["happy-hour","food"], featured: "Best rum program in PDX" },
-  { id: 12, name: "Bible Club",                address: "4811 SE Hawthorne Blvd.", neighborhood: "Northeast", subArea: "Hawthorne", type: "cocktail", vibe: "Prohibition speakeasy inside a 1920s house", desc: "Hidden inside a house built in the early 1920s, this speakeasy-styled bar is dedicated to the repeal of Prohibition. Soft jazz, vintage artifacts, soul-warming cocktails.", tags: ["food"], featured: "Most unique bar in Portland" },
+  { id: 12, name: "Bible Club",                address: "4811 SE Hawthorne Blvd.", neighborhood: "Northeast", subArea: "Hawthorne", type: "speakeasy", vibe: "Prohibition speakeasy inside a 1920s house", desc: "Hidden inside a house built in the early 1920s, this speakeasy-styled bar is dedicated to the repeal of Prohibition. Soft jazz, vintage artifacts, soul-warming cocktails.", tags: ["food"], featured: "Most unique bar in Portland" },
   { id: 13, name: "Too Soon",                  address: "2327 NE Glisan St.", neighborhood: "Northeast", subArea: "Kerns", type: "cocktail", vibe: "SoHo vibes in Portland", desc: "Named Portland Monthly's best bar in 2025. Sleek midcentury bar with impeccable bartender's-choice cocktails, a buzzy patio, and late-night cookies from the kitchen.", tags: ["outdoor","food","happy-hour","late-night"], featured: "Best Bar in Portland 2025" },
   { id: 14, name: "Scotch Lodge",              address: "215 SE 9th Ave.", neighborhood: "Northeast", subArea: "Central Eastside", type: "whiskey", vibe: "Sultry whiskey den", desc: "Elegant, intimate, and serious about Scotch. Dark wood, candlelight, and a curated whiskey list that would satisfy even the most discerning single malt obsessive.", tags: ["food"], featured: "Portland's finest Scotch bar" },
   { id: 15, name: "Palomar",                   address: "959 SE Division St.", neighborhood: "Northeast", subArea: "Richmond", type: "cocktail", vibe: "Cuban-inspired tropical cocktails", desc: "Owner Ricky Gomez brings his Cuban heritage to every glass. Frozen guava margaritas, roasted coconut Moscow mules, and pineapple gin tonics in a colorful, welcoming space.", tags: ["outdoor","happy-hour","food"], featured: "Best tropical cocktails in PDX" },
   { id: 16, name: "Bar of the Gods",           address: "4801 SE Hawthorne Blvd.", neighborhood: "Northeast", subArea: "Hawthorne", type: "dive", vibe: "Hawthorne institution", desc: "A beloved Hawthorne staple with a dark, comfortable interior, cheap drinks, and a jukebox that actually slaps. Regulars have been coming here for decades.", tags: ["late-night","happy-hour"], featured: "Hawthorne's living room" },
   { id: 17, name: "The High Dive",             address: "2113 SE 11th Ave.", neighborhood: "Northeast", subArea: "Richmond", type: "dive", vibe: "Portland's top-rated dive", desc: "Frequently topping Yelp's best dive bar lists. Pool tables, cheap beer, and a crowd that ranges from neighborhood lifers to visiting tourists who stumbled in and never left.", tags: ["late-night","food","happy-hour"], featured: "Best dive bar in Portland" },
-  { id: 18, name: "Interurban",                address: "4057 N Mississippi Ave.", neighborhood: "Northeast", subArea: "Mississippi", type: "cocktail", vibe: "Pre-Prohibition classics, cozy neighborhood bar", desc: "Open since 2011 on Mississippi Ave. Pre-Prohibition cocktails, impressive whiskey and beer lists, and great food. Consistently recommended by Portland bartenders.", tags: ["food","happy-hour"], featured: "Bartenders' favorite bar" },
+  { id: 18, name: "Interurban",                address: "4057 N Mississippi Ave.", neighborhood: "North", subArea: "Mississippi", type: "cocktail", vibe: "Pre-Prohibition classics, cozy neighborhood bar", desc: "Open since 2011 on Mississippi Ave. Pre-Prohibition cocktails, impressive whiskey and beer lists, and great food. Consistently recommended by Portland bartenders.", tags: ["food","happy-hour"], featured: "Bartenders' favorite bar" },
   { id: 19, name: "Low Brow Lounge",           address: "1036 NW Hoyt St.", neighborhood: "Northwest", subArea: "Pearl", type: "dive", vibe: "Giant patio, no-nonsense dive", desc: "Beloved for its massive covered patio, kind staff, and no-brainer location. Pinball machines, vintage beer signs, and potent slushy cocktails. Come as you are.", tags: ["outdoor","late-night","happy-hour"], featured: "Best patio dive in PDX" },
-  { id: 20, name: "Stormbreaker Brewing",      address: "832 N Beech St.", neighborhood: "Northeast", subArea: "Mississippi", type: "brewery", vibe: "Mississippi Ave neighborhood brewery", desc: "A Mississippi Ave staple with excellent house-brewed beers, a full kitchen, and a lively patio. Great for groups — always a good vibe, never too precious.", tags: ["outdoor","food","happy-hour"], featured: "Mississippi Ave must-visit" },
+  { id: 20, name: "Stormbreaker Brewing",      address: "832 N Beech St.", neighborhood: "North", subArea: "Mississippi", type: "brewery", vibe: "Mississippi Ave neighborhood brewery", desc: "A Mississippi Ave staple with excellent house-brewed beers, a full kitchen, and a lively patio. Great for groups — always a good vibe, never too precious.", tags: ["outdoor","food","happy-hour"], featured: "Mississippi Ave must-visit" },
 
   // ── NORTH PORTLAND ─────────────────────────────────
   { id: 21, name: "Slim's Restaurant & Lounge", address: "3518 N Williams Ave.", neighborhood: "North", subArea: "Williams", type: "dive", vibe: "St. Johns institution, est. 1911", desc: "Reportedly first established in 1911. Draws hordes of locals every night — a true neighborhood anchor through 100+ years of Portland history.", tags: ["late-night","food"], featured: "Est. 1911 — Portland original" },
@@ -492,7 +517,7 @@ const BARS = [
   // ── SOUTHEAST ──────────────────────────────────────
   { id: 25, name: "Slammer Tavern",            address: "2045 SE Belmont St.", neighborhood: "Southeast", subArea: "Buckman", type: "dive", vibe: "Christmas lights year-round", desc: "Someone put up Christmas lights years ago and they never came down. Skee-Ball, Big Buck Hunter, karaoke, and a U-shaped bar where everyone's a regular by the end of the night.", tags: ["late-night","happy-hour","food"], featured: "Christmas lights 365 days a year" },
   { id: 26, name: "Ship Ahoy Tavern",          address: "609 SE Taylor St.", neighborhood: "Southeast", subArea: "Buckman", type: "dive", vibe: "Nautical dive since the 1940s", desc: "Around since the 1940s, before many of its clients were born. Cramped, pool table in the back, well liquors and neat whiskeys only. Don't mess with the jukebox.", tags: ["late-night"], featured: "Portland dive since the '40s" },
-  { id: 27, name: "Bar of the Gods",           address: "4801 SE Hawthorne Blvd.", neighborhood: "Southeast", subArea: "Hawthorne", type: "dive", vibe: "Hawthorne neighborhood staple", desc: "Dark, comfortable, cheap. A Hawthorne institution with loyal regulars and a jukebox that sets the tone for the evening. One of SE's best dives.", tags: ["late-night","happy-hour"], featured: "SE Portland classic" },
+  { id: 27, name: "Dots Cafe", address: "2521 SE Clinton St.", neighborhood: "Southeast", subArea: "Clinton", type: "dive", vibe: "Clinton St institution since 1992", desc: "Fuzzy wallpaper, boozy slushies, and cheap food since '92. Portland Monthly named it a best bar. Vegan-friendly menu, great beer selection, and a neighborhood anchor that's never pretentious.", tags: ["late-night","happy-hour","food","outdoor"], featured: "Clinton St staple since 1992", hours: "Mon–Wed 4pm–1am · Thu–Sun 4pm–2:30am", happyHour: "Daily 4–7pm", price: "$", website: "https://dotscafeportland.com", reservationRequired: false },
   { id: 28, name: "Hopworks Urban Brewery",    address: "2944 SE Powell Blvd.", neighborhood: "Southeast", subArea: "Richmond", type: "brewery", vibe: "Organic craft brewery, bike-friendly", desc: "Portland's organic brewery pioneer. Excellent house beers, a full menu, and a genuinely bike-friendly culture that feels quintessentially Portland.", tags: ["outdoor","food","happy-hour"], featured: "Portland's organic brewery" },
   { id: 29, name: "Double Mountain Woodstock", address: "4436 SE Woodstock Blvd.", neighborhood: "Southeast", subArea: "Woodstock", type: "brewery", vibe: "Hood River brewery's SE outpost", desc: "The Portland location of Hood River's beloved Double Mountain. Outstanding IPAs and ciders, a great food menu, and a warm neighborhood vibe in Woodstock.", tags: ["food","happy-hour"], featured: "Best IPAs in SE Portland" },
   { id: 30, name: "The B Side Tavern",         address: "3628 SE Division St.", neighborhood: "Southeast", subArea: "Division", type: "dive", vibe: "Division St dive with a soul", desc: "A beloved Division Street institution. Cheap beer, great jukebox, and the kind of warm neighborhood energy that keeps people coming back night after night.", tags: ["late-night","happy-hour"], featured: "Division's best dive" },
@@ -501,11 +526,22 @@ const BARS = [
   { id: 33, name: "Cult Classics",             address: "3522 SE Division St.", neighborhood: "Southeast", subArea: "Division", type: "dive", vibe: "Video rental store turned dive bar", desc: "A love letter to cult cinema and classic video rental culture. Cheap drinks, a great vibe, and a crowd that knows their movies. One of Portland's most beloved concept bars.", tags: ["late-night","happy-hour"], featured: "Portland's coolest concept bar" },
   { id: 34, name: "District",                  address: "2121 NW Burnside Rd.", neighborhood: "Northwest", subArea: "Slabtown", type: "cocktail", vibe: "Sleek modern cocktail bar", desc: "Polished and approachable, District delivers creative cocktails in a comfortable setting without taking itself too seriously. A solid go-to for any night out.", tags: ["happy-hour","food"], featured: "Reliable and delicious" },
   { id: 35, name: "Holy Ghost Bar",            address: "215 SW 2nd Ave.", neighborhood: "Southwest", subArea: "Old Town", type: "cocktail", vibe: "Intimate moody cocktail bar", desc: "Rotating local artwork, top-notch DJs, and expertly crafted cocktails in an intimate, moody atmosphere. Staff are attentive and genuinely passionate about their craft.", tags: ["live-music","late-night"], featured: "Best DJs + cocktails in PDX" },
-  { id: 36, name: "Grandma's Secret",         address: "3838 N Mississippi Ave.", neighborhood: "North", subArea: "Mississippi", type: "cocktail", vibe: "Cozy hidden gem on Mississippi", desc: "What a cool bar with great music and a friendly bartender who might just be the owner. Fairly priced, surprising cocktail list, and an energy that's hard to replicate.", tags: ["live-music","happy-hour"], featured: "Mississippi Ave hidden gem" },
-  { id: 37, name: "The Sports Bra",           address: "3258 NE Broadway", neighborhood: "Northeast", subArea: "Broadway", type: "sports", vibe: "Women's sports bar — first in the US", desc: "The first and only sports bar in the US dedicated exclusively to women's sports. Owner Jenny Nguyen built an inclusive community that's become a Portland landmark.", tags: ["food","happy-hour","outdoor"], featured: "First women's sports bar in America" },
+  { id: 36, name: "Grandma's Secret", address: "1524 NW 23rd Ave.", neighborhood: "Northwest", subArea: "Nob Hill", type: "cocktail", vibe: "Vietnamese speakeasy hidden on NW 23rd", desc: "Down a short flight of stairs beneath NW 23rd, a blue light above an unmarked door. Inside: Vietnamese-inspired cocktails, Saigon Old Fashioneds, and intimate candlelit tables. Limited seating — arrive early.", tags: ["happy-hour","food"], featured: "Portland's most charming hidden bar", hours: "Tue–Sun 5pm–12am · Closed Mon", happyHour: "Tue–Fri 5–7pm", price: "$$", website: "https://grandmassecretpdx.com", reservationRequired: true },
+  { id: 37, name: "The Sports Bra",           address: "3258 NE Broadway St.", neighborhood: "Northeast", subArea: "Irvington", type: "sports", vibe: "Women's sports bar — first in the US", desc: "The first and only sports bar in the US dedicated exclusively to women's sports. Owner Jenny Nguyen built an inclusive community that's become a Portland landmark.", tags: ["food","happy-hour","outdoor"], featured: "First women's sports bar in America" },
   { id: 38, name: "Bauman's on Oak",           address: "723 SW Oak St.", neighborhood: "Southwest", subArea: "Downtown", type: "cocktail", vibe: "Local craft cider bar", desc: "Celebrating Oregon's exceptional cider culture. A rotating selection of local craft ciders in a welcoming downtown space — perfect for cider lovers and the cider-curious.", tags: ["happy-hour","food"], featured: "Portland's best cider bar" },
   { id: 39, name: "Pink Rabbit",              address: "1808 NW 16th Ave.", neighborhood: "Northwest", subArea: "Slabtown", type: "cocktail", vibe: "Fun, approachable cocktail bar", desc: "Neighborhood cocktail bar with a welcoming vibe that works for a casual Tuesday or a lively Saturday. Great happy hour, solid cocktail program, consistently good time.", tags: ["happy-hour","food","outdoor"], featured: "Best neighborhood cocktail bar NW" },
   { id: 40, name: "Momo",                     address: "2425 SE 11th Ave.", neighborhood: "Southeast", subArea: "Buckman", type: "dive", vibe: "Warm, unpretentious SE dive", desc: "Exactly what a neighborhood dive should be — warm, unpretentious, and reliably good. Great jukebox, cheap beers, and the kind of staff who remember your name.", tags: ["late-night","happy-hour"], featured: "SE Portland neighborhood gem" },
+  { id: 41, name: "Sousol", address: "227 SE 6th Ave.", neighborhood: "Southeast", subArea: "Buckman", type: "speakeasy", vibe: "Pan-Caribbean underground bar under Kann", desc: "James Beard chef Gregory Gourdet's subterranean Caribbean bar. Hidden side entrance, moody wallpaper, pink velour banquettes. Verify hours before visiting — temporarily closed at press time.", tags: ["food","late-night"], featured: "Portland's most acclaimed bar program", hours: "Thu-Sat 5pm-late (verify before visiting)", happyHour: null, price: "$$$", website: "https://sousolbar.com", reservationRequired: true },
+  { id: 42, name: "Bar Diane", address: "2112 NW Irving St.", neighborhood: "Northwest", subArea: "Slabtown", type: "cocktail", vibe: "Natural wine bar down a NW alley", desc: "Tucked down an alley in NW Portland. Champagne, natural wines, sparkling cocktails, and clever drinking snacks. Portland Monthly's best wine bar.", tags: ["happy-hour","food"], featured: "Portland's best natural wine bar", hours: "Mon-Fri 4pm-10pm, Sat 4pm-11pm", happyHour: "Mon-Sat 4-5:30pm", price: "$$", website: "https://bardiane.com", reservationRequired: false },
+  { id: 43, name: "Blackbird Wine Shop", address: "4323 NE Fremont St.", neighborhood: "Northeast", subArea: "Beaumont", type: "cocktail", vibe: "Neighborhood wine bar and bottle shop", desc: "Part wine bar, part bottle shop, part cheese shop. Welcoming and unpretentious with wine tastings and events. Great staff who help you find something without judgment.", tags: ["happy-hour","food"], featured: "Best wine bar in NE Portland", hours: "Mon-Thu 12pm-9pm, Fri-Sat 12pm-10pm, Sun 12pm-8pm", happyHour: null, price: "$$", website: "https://blackbirdwine.com", reservationRequired: false },
+  { id: 44, name: "LaVerne's", address: "822 NE Dekum St.", neighborhood: "Northeast", subArea: "Woodlawn", type: "dive", vibe: "Woodlawn neighborhood haunt, always a party", desc: "Slipped into the Woodlawn neighborhood like it had always been there. Leather booths, exposed brick, raucous regulars, cheap beer. Portland Monthly top new bar of 2025.", tags: ["happy-hour","food","late-night"], featured: "Portland Monthly top new bar 2025", hours: "Mon-Thu 4pm-12am, Fri-Sun 12pm-12am", happyHour: "Mon-Fri 4-6pm", price: "$", website: null, reservationRequired: false },
+  { id: 45, name: "The Bye and Bye", address: "1011 NE Alberta St.", neighborhood: "Northeast", subArea: "Alberta Arts", type: "dive", vibe: "Vegan-friendly Alberta Arts bar", desc: "Alberta Street staple with Southern-inspired vegan food, strong cocktails, and a lively patio. One of the most welcoming bars on the strip for over a decade.", tags: ["outdoor","happy-hour","food","late-night"], featured: "Alberta's favorite bar", hours: "Mon-Fri 4pm-2am, Sat-Sun 12pm-2am", happyHour: "Mon-Fri 4-7pm", price: "$$", website: "https://thebyeandbye.com", reservationRequired: false },
+  { id: 46, name: "Tulip Shop Tavern", address: "3503 NE 45th Ave.", neighborhood: "Northeast", subArea: "Beaumont", type: "sports", vibe: "Best bar burger and lively neighborhood tavern", desc: "One of Portland's best burgers lives inside this lively neighborhood tavern. Loaded fries, double-fried wings, and a bar program that punches way above its weight.", tags: ["food","happy-hour","outdoor"], featured: "Best bar burger in Portland", hours: "Mon-Thu 11am-11pm, Fri-Sat 11am-12am, Sun 11am-10pm", happyHour: "Mon-Fri 3-6pm", price: "$$", website: null, reservationRequired: false },
+  { id: 47, name: "The Woodsman Tavern", address: "4537 SE Division St.", neighborhood: "Southeast", subArea: "Division", type: "whiskey", vibe: "Sophisticated SE tavern, deep whiskey list", desc: "One of SE Portland's most beloved bars. Great wine, clean cocktails, impressive whiskey, and food that rivals most restaurants. The grown-up neighborhood bar Portland needed.", tags: ["food","happy-hour"], featured: "SE Portland's most sophisticated bar", hours: "Mon-Thu 4pm-12am, Fri-Sat 4pm-1am, Sun 4pm-11pm", happyHour: "Mon-Fri 4-6pm", price: "$$", website: "https://woodsmantavern.com", reservationRequired: false },
+  { id: 48, name: "Wax On", address: "725 SE Morrison St.", neighborhood: "Southeast", subArea: "Buckman", type: "dive", vibe: "Record store dive bar", desc: "A vinyl record store and bar in one. Browse records, drink cheap beer, and listen to whatever's spinning. A quintessentially Portland concept that works perfectly.", tags: ["live-music","late-night","happy-hour"], featured: "Portland's coolest record bar", hours: "Daily 12pm-2am", happyHour: "Daily 12-7pm", price: "$", website: null, reservationRequired: false },
+  { id: 49, name: "Pope House Bourbon Lounge", address: "2075 NW Glisan St.", neighborhood: "Northwest", subArea: "Nob Hill", type: "whiskey", vibe: "Bourbon-focused NW Portland lounge", desc: "Especially strong on bourbon, this cozy NW lounge is a locals' favorite. Comfortable and unpretentious about American whiskey without being precious.", tags: ["happy-hour","food"], featured: "Best bourbon bar in NW Portland", hours: "Mon-Thu 4pm-12am, Fri-Sat 4pm-1am, Sun 4pm-11pm", happyHour: "Mon-Fri 4-7pm", price: "$$", website: null, reservationRequired: false },
+  { id: 50, name: "XO Bar", address: "959 SE Morrison St.", neighborhood: "Southeast", subArea: "Buckman", type: "cocktail", vibe: "Tropical cocktails and plant-based bites", desc: "Tropical cocktails alongside inventive plant-based bar bites. Jackfruit spring rolls, soy curls, and bold fruit-forward drinks. Inclusive, vibrant, and fun.", tags: ["food","happy-hour","outdoor"], featured: "Best tropical and plant-based bar", hours: "Tue-Sun 4pm-12am, Closed Mon", happyHour: "Tue-Fri 4-6pm", price: "$$", website: null, reservationRequired: false },
+  { id: 51, name: "Voysey", address: "710 SE 6th Ave.", neighborhood: "Southeast", subArea: "Central Eastside", type: "speakeasy", vibe: "Subterranean speakeasy under Loyal Legion", desc: "Hidden in the basement of Loyal Legion, marked only by a candle lamp neon sign. Opulent design inspired by architect C.F.A. Voysey, creative signature cocktails, and intimate 50-person capacity. Thu-Sat only — verify hours before visiting.", tags: ["late-night"], featured: "Portland's most stylish speakeasy", hours: "Thu-Sat 6pm-close (verify before visiting)", happyHour: null, price: "$$$", website: "https://voyseypdx.com", reservationRequired: false },
 ];
 
 var crawl = [];
@@ -585,7 +621,7 @@ function renderCards() {
   var filtered = getFiltered();
   var grid = document.getElementById('bar-grid');
   var noResults = document.getElementById('no-results');
-  var typeLabels = { dive: '🍺 Dive Bar', cocktail: '🍸 Cocktail', brewery: '🍻 Brewery', whiskey: '🥃 Whiskey', sports: '📺 Sports Bar' };
+  var typeLabels = { dive: '🍺 Dive Bar', cocktail: '🍸 Cocktail', brewery: '🍻 Brewery', whiskey: '🥃 Whiskey', sports: '📺 Sports Bar', speakeasy: '🕯 Speakeasy' };
   var tagLabels = { 'happy-hour': '🕐 Happy Hour', outdoor: '🌿 Outdoor', 'live-music': '🎵 Live Music', 'late-night': '🌙 Late Night', food: '🍔 Food' };
   document.getElementById('section-count').textContent = filtered.length + ' bar' + (filtered.length !== 1 ? 's' : '');
   if (filtered.length === 0) { grid.innerHTML = ''; noResults.style.display = 'block'; return; }
@@ -608,8 +644,15 @@ function renderCards() {
     html += '<div class="card-address">📍 ' + b.address + '</div>';
     html += '<div class="card-vibe">&ldquo;' + b.vibe + '&rdquo;</div>';
     html += '<div class="card-desc">' + b.desc + '</div>';
+    if (b.reservationRequired) html += '<div class="card-reservation">📋 Reservation recommended</div>';
+    if (b.hours) html += '<div class="card-hours">🕐 ' + b.hours + '</div>';
+    if (b.happyHour) html += '<div class="card-happy-hour">🍻 Happy Hour: ' + b.happyHour + '</div>';
     html += '<div class="card-footer">';
+    html += '<div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap">';
+    html += '<span class="card-price">' + (b.price || '') + '</span>';
     html += '<span class="card-type-badge type-' + b.type + '">' + (typeLabels[b.type] || b.type) + '</span>';
+    if (b.website) html += '<a class="card-website" href="' + b.website + '" target="_blank" onclick="event.stopPropagation()">🔗 Website</a>';
+    html += '</div>';
     html += '<div class="card-tags">' + tagHtml + '</div>';
     html += '<button class="add-btn' + (added ? ' added' : '') + '">' + (added ? '✓ Added' : '+ Add') + '</button>';
     html += '<button class="' + rateBtnClass + '" onclick="event.stopPropagation();rateFromCard(' + b.id + ')">' + rateBtnLabel + '</button>';
@@ -621,7 +664,7 @@ function renderCards() {
 
 function updateCounts() {
   var nbhds = ['Northwest','Southwest','Northeast','North','Southeast'];
-  var types = ['dive','cocktail','brewery','whiskey','sports'];
+  var types = ['dive','cocktail','brewery','whiskey','sports','speakeasy'];
   document.getElementById('count-all').textContent = BARS.length;
   nbhds.forEach(function(n) {
     var el = document.getElementById('count-' + n);
@@ -655,6 +698,20 @@ function renderCrawlSidebar() {
 
 function updateCrawlBar() {
   document.getElementById('crawl-count').textContent = crawl.length;
+  var counter = document.getElementById('pace-counter');
+  if (crawl.length >= 2) {
+    counter.classList.add('visible');
+    // Estimate 1.5 drinks per stop average
+    var estDrinks = Math.round(crawl.length * 1.5);
+    document.getElementById('pace-drinks').textContent = estDrinks;
+    // Suggest 75 min per stop minimum
+    var totalMins = crawl.length * 75;
+    var hrs = Math.floor(totalMins / 60);
+    var mins = totalMins % 60;
+    document.getElementById('pace-time').textContent = hrs + 'h ' + mins + 'm';
+  } else {
+    counter.classList.remove('visible');
+  }
 }
 
 // ── ROUTE PANEL ────────────────────────────────────────
@@ -669,7 +726,9 @@ function updateRoutePanel() {
     html += '<div class="stop-num">Stop ' + (i+1) + '</div>';
     html += '<div class="stop-name">' + b.name + '</div>';
     html += '<div style="font-size:0.58rem;color:#888;margin:0.1rem 0">' + b.address + '</div>';
+    if (b.hours) html += '<div style="font-size:0.55rem;color:#666;margin:0.1rem 0">🕐 ' + b.hours.split('·')[0].trim() + '</div>';
     html += '<div class="stop-vibe">&ldquo;' + b.vibe + '&rdquo;</div>';
+    if (i < crawl.length - 1) html += '<div style="font-size:0.55rem;color:' + 'var(--blue)' + ';margin-top:0.3rem">🚶 ~10–15 min walk to next stop</div>';
     html += '</div>';
   }
   document.getElementById('route-stops').innerHTML = html;
@@ -937,7 +996,20 @@ const ROUTES = [
       { barId: 1  },  // Teardrop
     ]
   },
-];
+  {
+    id: 'speakeasy-tour',
+    name: 'Portland Speakeasy Tour',
+    neighborhood: 'Citywide',
+    distanceMi: 2.8,
+    description: "Portland's most secretive bars — hidden entrances, unmarked doors, and cocktails worth finding. Plan ahead: limited seating and specific hours apply to all stops.",
+    accentColor: '#7b2d8b',
+    stops: [
+      { barId: 36 },
+      { barId: 12 },
+      { barId: 51 },
+      { barId: 41 }
+    ]
+  }];
 
 function getRotatedStops(route) {
   var uniqueIds = [];
