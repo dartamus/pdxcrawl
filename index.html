@@ -299,6 +299,88 @@
   .footer-right { font-size: 0.55rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,243,232,0.45); text-align: right; line-height: 1.8; }
 
 
+  /* CONTACT SECTION */
+  .contact-section {
+    border-top: 1px solid #2a2a2a;
+    padding: 4rem 2.5rem;
+    background: #0d0d0d;
+  }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 1100px;
+  }
+  .contact-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 1rem;
+  }
+  .contact-heading {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 3rem;
+    line-height: 0.95;
+    color: #FAF3E8;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+  .contact-sub {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(250,243,232,0.45);
+    line-height: 1.6;
+  }
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    cursor: pointer;
+  }
+  .contact-btn:hover {
+    background: #222;
+    border-color: var(--orange);
+    transform: translateX(4px);
+  }
+  .contact-btn-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .contact-btn-label {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    color: #FAF3E8;
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+  .contact-btn-sub {
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    color: rgba(250,243,232,0.4);
+  }
+  .contact-btn-arrow {
+    margin-left: auto;
+    color: rgba(250,243,232,0.2);
+    font-size: 1rem;
+    transition: color 0.15s;
+    flex-shrink: 0;
+  }
+  .contact-btn:hover .contact-btn-arrow { color: var(--orange); }
+
   /* ── MOBILE: 480px and below ── */
   @media (max-width: 480px) {
     nav { padding: 0.85rem 1rem; }
@@ -330,6 +412,8 @@
     .crawl-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
     .stats-strip { grid-template-columns: 1fr 1fr; gap: 2rem; padding: 3rem 1.5rem; }
     footer { padding: 1.5rem 1.5rem; }
+    .contact-section { padding: 3rem 1.5rem; }
+    .contact-inner { gap: 2.5rem; }
   }
 
   /* ── SMALL DESKTOP: 769px – 1024px ── */
@@ -548,7 +632,7 @@
 <!-- ── STATS ─────────────────────────────────────────── -->
 <div class="stats-strip">
   <div>
-    <div class="stat-num">120+</div>
+    <div class="stat-num">70+</div>
     <div class="stat-label">Locations & counting</div>
     <div class="stat-desc">Every crawl is hand-curated with real Portland spots, not algorithmic filler.</div>
   </div>
@@ -563,6 +647,42 @@
     <div class="stat-desc">Build your crawl, rate your stops, share with your crew. Your Portland adventure starts here.</div>
   </div>
 </div>
+
+<section class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="contact-eyebrow">Get In Touch</div>
+      <h2 class="contact-heading">We'd love to<br>hear from you.</h2>
+      <p class="contact-sub">Whether you're a bar owner, a fan, or a potential partner — drop us a line.</p>
+    </div>
+    <div class="contact-right">
+      <a class="contact-btn" href="mailto:pdxcrawl@gmail.com?subject=Get Listed on PDX Crawl">
+        <span class="contact-btn-icon">🍺</span>
+        <div>
+          <div class="contact-btn-label">Get Listed</div>
+          <div class="contact-btn-sub">Add your bar or restaurant to PDX Crawl</div>
+        </div>
+        <span class="contact-btn-arrow">→</span>
+      </a>
+      <a class="contact-btn" href="mailto:pdxcrawl@gmail.com?subject=Report an Error on PDX Crawl">
+        <span class="contact-btn-icon">✏️</span>
+        <div>
+          <div class="contact-btn-label">Report an Error</div>
+          <div class="contact-btn-sub">Wrong hours, closed bar, bad info? Let us know</div>
+        </div>
+        <span class="contact-btn-arrow">→</span>
+      </a>
+      <a class="contact-btn" href="mailto:pdxcrawl@gmail.com?subject=Partner With PDX Crawl">
+        <span class="contact-btn-icon">🤝</span>
+        <div>
+          <div class="contact-btn-label">Partner With Us</div>
+          <div class="contact-btn-sub">Sponsorships, events, and collaborations</div>
+        </div>
+        <span class="contact-btn-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="footer-left">
